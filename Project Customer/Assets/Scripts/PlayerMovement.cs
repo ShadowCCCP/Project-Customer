@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ImprovedPlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     float movementSpeed = 1;
@@ -18,7 +18,6 @@ public class ImprovedPlayerMovement : MonoBehaviour
 
     [SerializeField]
     Transform orientation;
-
 
     Rigidbody rb;
 
@@ -92,7 +91,7 @@ public class ImprovedPlayerMovement : MonoBehaviour
     {
         //Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * groundCheckDist, Color.cyan);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, groundCheckDist) && !hit.transform.CompareTag("Pit"))
+        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, groundCheckDist))
         {
             return true;
         }
