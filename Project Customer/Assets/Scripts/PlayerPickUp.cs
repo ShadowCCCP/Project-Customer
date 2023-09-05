@@ -17,6 +17,7 @@ public class PlayerPickUp : MonoBehaviour
     private GameObject pickUp;
 
     private bool pickedUp = false;
+    private string objectName;
 
     private RaycastHit hit;
     void Start()
@@ -54,8 +55,9 @@ public class PlayerPickUp : MonoBehaviour
                 Debug.Log("raycast work");
                 if (Input.GetKeyDown(KeyCode.E) && !pickedUp)
                 {
-                    Debug.Log("picked up");
                     pickedUp = true;
+                    objectName = hit.collider.gameObject.name;
+                    Debug.Log("picked up " + objectName);
                     hit.collider.gameObject.transform.parent = this.transform;
 
                     pickUp = hit.collider.gameObject;
