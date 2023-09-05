@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(transform.up * jumpPower, ForceMode.Impulse);
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         //Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * groundCheckDist, Color.cyan);
         RaycastHit hit;
