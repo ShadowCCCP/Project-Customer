@@ -19,15 +19,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     Transform orientation;
 
+    [SerializeField]
+    Transform cameraHolder;
+
+    [SerializeField]
+    Transform playerObject;
+
     Rigidbody rb;
+    MoveCamera moveCamera;
 
     float groundCheckDist = 1.1f;
     float horizontalInput;
     float verticalInput;
 
+    float normalMoveSpeed;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        moveCamera = cameraHolder.GetComponent<MoveCamera>();
+        normalMoveSpeed = movementSpeed;
     }
 
     void Update()
@@ -60,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             Jump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl) && IsGrounded())
+        {
+            Crouch();
         }
     }
 
@@ -97,6 +113,24 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void Crouch()
+    {
+        if (!moveCamera.IsCrouching())
+        {
+            moveCamera.ActivateCrouch();
+            playerObject.localScale = new Vector3(1, 0.5f, 1);
+            playerObject.localPosition = new Vector3(0, -0.5f, 0);
+            movementSpeed = normalMoveSpeed / 2;
+        }
+        else
+        {
+            moveCamera.DeactivateCrouch();
+            playerObject.localScale = new Vector3(1, 1, 1);
+            playerObject.localPosition = new Vector3(0, 0, 0);
+            movementSpeed = normalMoveSpeed;
+        }
     }
 
     public bool IsMoving()
