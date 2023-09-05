@@ -14,6 +14,8 @@ public class PlayerPickUp : MonoBehaviour
     private GameObject pickUp;
 
     private bool pickedUp = false;
+
+    private RaycastHit hit;
     void Start()
     {
         
@@ -33,12 +35,24 @@ public class PlayerPickUp : MonoBehaviour
             pickUp.gameObject.transform.rotation = pickUpPos.rotation;
         }
     }
-
+    
+    private void FixedUpdate()
+    {
+        Debug.DrawRay(pickUpPos.position, pickUpPos.forward, Color.red);
+        if (Physics.Raycast(pickUpPos.position, Vector3.forward, out hit))
+        {
+           
+            if(hit.collider.tag == "PickUp")
+            {
+                Debug.Log("raycast work");
+            }
+        }
+    }
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "PickUp")
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !pickedUp)
             {
                 Debug.Log("picked up");
                 pickedUp=true;
