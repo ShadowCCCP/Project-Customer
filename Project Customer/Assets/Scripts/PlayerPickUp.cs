@@ -37,6 +37,11 @@ public class PlayerPickUp : MonoBehaviour
             pickUp.gameObject.transform.position = pickUpPos.position; 
             pickUp.gameObject.transform.rotation = pickUpPos.rotation;
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Pressed left-click. Do interaction");
+        }
     }
     
     private void FixedUpdate()
