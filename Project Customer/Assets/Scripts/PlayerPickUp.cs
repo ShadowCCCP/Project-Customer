@@ -41,8 +41,8 @@ public class PlayerPickUp : MonoBehaviour
     
     private void FixedUpdate()
     {
-        Debug.DrawRay(pickUpPos.position, mainCameraPos.forward * distanceMultiplierRaycast, Color.red);
-        if (Physics.Raycast(pickUpPos.position, mainCameraPos.forward *distanceMultiplierRaycast, out hit))
+        Debug.DrawRay(mainCameraPos.position, mainCameraPos.forward * distanceMultiplierRaycast, Color.red);
+        if (Physics.Raycast(mainCameraPos.position, mainCameraPos.forward *distanceMultiplierRaycast, out hit))
         {
             if(hit.collider.tag == "PickUp")
             {
