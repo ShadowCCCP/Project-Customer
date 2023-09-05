@@ -10,6 +10,9 @@ public class PlayerPickUp : MonoBehaviour
     private GameObject pickUpHolder;
     [SerializeField]
     private Transform pickUpPos;
+    [SerializeField]
+    private Transform mainCameraPos;
+    public int distanceMultiplierRaycast = 5;
 
     private GameObject pickUp;
 
@@ -29,7 +32,7 @@ public class PlayerPickUp : MonoBehaviour
             pickUp.gameObject.transform.parent = pickUpHolder.transform;
             pickedUp = false;
         }
-        if (pickedUp)
+        if (pickedUp) //update the pos of the picked up item
         {
             pickUp.gameObject.transform.position = pickUpPos.position; 
             pickUp.gameObject.transform.rotation = pickUpPos.rotation;
@@ -38,27 +41,20 @@ public class PlayerPickUp : MonoBehaviour
     
     private void FixedUpdate()
     {
-        Debug.DrawRay(pickUpPos.position, pickUpPos.forward, Color.red);
-        if (Physics.Raycast(pickUpPos.position, Vector3.forward, out hit))
+        Debug.DrawRay(mainCameraPos.position, mainCameraPos.forward * distanceMultiplierRaycast, Color.red);
+        if (Physics.Raycast(mainCameraPos.position, mainCameraPos.forward *distanceMultiplierRaycast, out hit))
         {
-           
             if(hit.collider.tag == "PickUp")
             {
                 Debug.Log("raycast work");
-            }
-        }
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.tag == "PickUp")
-        {
-            if (Input.GetKeyDown(KeyCode.E) && !pickedUp)
-            {
-                Debug.Log("picked up");
-                pickedUp=true;
-                collision.gameObject.transform.parent = this.transform;
-                
-                pickUp = collision.gameObject;
+                if (Input.GetKeyDown(KeyCode.E) && !pickedUp)
+                {
+                    Debug.Log("picked up");
+                    pickedUp = true;
+                    hit.collider.gameObject.transform.parent = this.transform;
+
+                    pickUp = hit.collider.gameObject;
+                }
             }
         }
     }
