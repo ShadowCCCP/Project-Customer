@@ -53,25 +53,6 @@ public class UIManager : MonoBehaviour
         if (ItemName.text != null)
         {
             ItemDescription.text = findDesc(ItemName.text);
-
-            /*if (ItemName.text == "Bucket")
-            {
-                //ItemDescription.text = "maybe i can fill this with water";
-                ItemDescription.text = Objects[0].Description;
-                
-            }
-            if (ItemName.text == "Blanket")
-            {
-                //ItemDescription.text = "maybe i can wet thiss";
-            }
-            if (ItemName.text == "Key")
-            {
-                //ItemDescription.text = "this a key";
-            }
-            if (ItemName.text == "Fire Extinguisher")
-            {
-                //ItemDescription.text = "ur moms favorite fire extinguisher";
-            }*/
         }
         else
         {
