@@ -16,9 +16,9 @@ public class PhysicsPickup : MonoBehaviour
     [SerializeField]
     float pickupRange;
 
-    Rigidbody currentObject;
+    public Rigidbody currentObject;
 
-    private string objectName;
+    public string objectName;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E))
@@ -28,6 +28,7 @@ public class PhysicsPickup : MonoBehaviour
             {
                 currentObject.useGravity = true;
                 currentObject = null;
+                objectName = null;
                 return;
             }
 
@@ -52,10 +53,5 @@ public class PhysicsPickup : MonoBehaviour
 
             currentObject.velocity = directionToPoint * 12 * distanceToPoint;
         }
-    }
-
-    public string GetItemName()
-    {
-        return objectName;
     }
 }
