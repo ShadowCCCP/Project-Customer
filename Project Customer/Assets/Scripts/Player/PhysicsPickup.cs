@@ -42,8 +42,8 @@ public class PhysicsPickup : MonoBehaviour
             Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             if(Physics.Raycast(cameraRay, out RaycastHit hitInfo, pickupRange, pickupMask))
             {
-                objectNormalAngularDrag = currentObject.angularDrag;
                 currentObject = hitInfo.rigidbody;
+                objectNormalAngularDrag = currentObject.angularDrag;
                 objectName = currentObject.name;
                 currentObject.useGravity = false;
             }
