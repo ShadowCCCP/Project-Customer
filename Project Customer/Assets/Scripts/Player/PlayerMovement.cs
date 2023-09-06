@@ -25,9 +25,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     Transform playerObject;
 
-    [SerializeField]
-    Transform pickUpPos;
-
     Rigidbody rb;
     MoveCamera moveCamera;
 
@@ -125,7 +122,6 @@ public class PlayerMovement : MonoBehaviour
             moveCamera.ActivateCrouch();
             playerObject.localScale = new Vector3(1, 0.5f, 1);
             playerObject.localPosition = new Vector3(0, -0.5f, 0);
-            pickUpPos.localPosition = new Vector3(0.6f, -0.4f, 1);
             movementSpeed = normalMoveSpeed / 2;
         }
         else
@@ -133,7 +129,6 @@ public class PlayerMovement : MonoBehaviour
             moveCamera.DeactivateCrouch();
             playerObject.localScale = new Vector3(1, 1, 1);
             playerObject.localPosition = new Vector3(0, 0.5f, 0);
-            pickUpPos.localPosition = new Vector3(0.6f, 0.6f, 1);
 
             movementSpeed = normalMoveSpeed;
         }

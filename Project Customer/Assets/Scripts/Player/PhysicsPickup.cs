@@ -16,6 +16,9 @@ public class PhysicsPickup : MonoBehaviour
     [SerializeField]
     float pickupRange;
 
+    [SerializeField]
+    float angularDrag = 5;
+
     public Rigidbody currentObject;
 
     public string objectName;
@@ -52,6 +55,8 @@ public class PhysicsPickup : MonoBehaviour
             float distanceToPoint = directionToPoint.magnitude;
 
             currentObject.velocity = directionToPoint * 12 * distanceToPoint;
+            currentObject.angularDrag = angularDrag;
+            Debug.Log(currentObject.angularVelocity);
         }
     }
 }
