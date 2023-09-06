@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FoamBullet : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    float foamRemoveTimer = 20; 
+
+    Rigidbody rb;
+    bool hitOnce;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Shoot(Vector3 force)
     {
-        
+        rb.AddForce(force, ForceMode.Impulse);
+        transform.SetParent(null);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!hitOnce)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+            hitOnce = true;
+            
+        }
     }
 }
