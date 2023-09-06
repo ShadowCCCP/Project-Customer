@@ -23,16 +23,28 @@ public class WaterInteractable : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnCollisionStay(Collision collision)
     {
-        if(other.tag == "WaterSource")
+        if (collision.gameObject.tag == "WaterSource" )
         {
             Debug.Log("water in");
             wet.SetActive(true);
             wetBool = true;
         }
-    }
+    }*/
 
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "WaterSource" )
+        {
+            if (Input.GetMouseButtonDown(0)) {
+                Debug.Log("water in");
+                wet.SetActive(true);
+                wetBool = true;
+            }
+        }
+    }
+    
     public bool GetWetStatus()
     {
         return wetBool;
