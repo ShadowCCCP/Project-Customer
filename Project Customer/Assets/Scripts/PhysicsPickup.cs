@@ -18,6 +18,7 @@ public class PhysicsPickup : MonoBehaviour
 
     Rigidbody currentObject;
 
+    private string objectName;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E))
@@ -35,6 +36,7 @@ public class PhysicsPickup : MonoBehaviour
             if(Physics.Raycast(cameraRay, out RaycastHit hitInfo, pickupRange, pickupMask))
             {
                 currentObject = hitInfo.rigidbody;
+                objectName = currentObject.name;
                 currentObject.useGravity = false;
             }
         }
@@ -50,5 +52,10 @@ public class PhysicsPickup : MonoBehaviour
 
             currentObject.velocity = directionToPoint * 12 * distanceToPoint;
         }
+    }
+
+    public string GetItemName()
+    {
+        return objectName;
     }
 }
