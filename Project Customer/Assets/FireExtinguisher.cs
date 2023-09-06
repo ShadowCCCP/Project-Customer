@@ -13,17 +13,23 @@ public class FireExtinguisher : MonoBehaviour
     [SerializeField]
     float shootPower;
 
-    void Start()
-    {
-        
-    }
+    FoamBullet currentFoam;
+    float lastShot;
+    float cooldown = 100;
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Time.time - lastShot > cooldown)
         {
-
+            Shoot();
         }
+    }
+
+    private void Shoot()
+    {
+        currentFoam = Instantiate(foamPrefab, spawnPoint.position, spawnPoint.rotation);
+        currentFoam.transform.localPosition = Vector3.zero;
+        currentFoam.transform.SetParent(null);
+        //currentFoam.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower);
     }
 }

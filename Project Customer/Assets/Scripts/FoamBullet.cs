@@ -8,21 +8,58 @@ public class FoamBullet : MonoBehaviour
     [SerializeField]
     float foamRemoveTimer = 3; 
 
-    Rigidbody rb;
     bool hitOnce;
-
-    Collider otherFoam;
-    bool hitFoam;
-
     float groundCheckDist = 0.15f;
 
+    /*
+    Collider otherFoam;
+    bool hitFoam;
     Coroutine myCoroutine;
+    */
 
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        rb = GetComponent<Rigidbody>();
+        if(!hitOnce)
+        {
+            StartCoroutine(RemoveFoamTimer());
+        }
     }
 
+    private bool HitBottom()
+    {
+        //Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * groundCheckDist, Color.cyan);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, groundCheckDist))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private IEnumerator RemoveFoamTimer()
+    {
+        yield return new WaitForSeconds(foamRemoveTimer);
+        Destroy(gameObject);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
     void Update()
     {
         CapFallingVelocity();
@@ -104,4 +141,5 @@ public class FoamBullet : MonoBehaviour
 
         return false;
     }
+    */
 }
