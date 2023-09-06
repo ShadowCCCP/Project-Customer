@@ -9,10 +9,17 @@ public class Fire : MonoBehaviour
 
     [SerializeField]
     int life = 5;
+    [SerializeField]
+    int fireLifeEmptyBucket = 5;
+    [SerializeField]
+    int fireLifeFilledBucket = 5;
+
+    Bucket bucket;
+    
 
     void Start()
     {
-        
+        bucket = FindObjectOfType<Bucket>();
     }
 
     // Update is called once per frame
@@ -30,6 +37,20 @@ public class Fire : MonoBehaviour
             life--;
             Destroy(other.gameObject);
         }
+        if (other.GetComponent<Bucket>()) 
+        {
+            bucket = other.GetComponent<Bucket>();
+            if(life <= fireLifeEmptyBucket && !bucket.GetFillStatus())
+            {
+                life = 0;
+                Debug.Log("empty extinguished");
+            }
+            else if(life <= fireLifeFilledBucket && bucket.GetFillStatus())
+            {
+                life = 0;
+                Debug.Log("filled extinguished");
+            }
+        }
     }
-    
+
 }
