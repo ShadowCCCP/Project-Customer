@@ -6,20 +6,25 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    [SerializeField]
+    GameObject smoke;
     [SerializeField]
     int life = 5;
     [SerializeField]
     int fireLifeEmptyBucket = 5;
     [SerializeField]
     int fireLifeFilledBucket = 5;
+    [SerializeField]
+    int fireLifeBlanket = 5;
+    [SerializeField]
+    int fireLifeWetBlanket = 5;
 
-    Bucket bucket;
+    WaterInteractable waterInteractable;
     
 
     void Start()
     {
-        bucket = FindObjectOfType<Bucket>();
+        waterInteractable = FindObjectOfType<WaterInteractable>();
     }
 
     // Update is called once per frame
@@ -27,6 +32,10 @@ public class Fire : MonoBehaviour
     {
         if(life <= 0)
         {
+            if (smoke != null)
+            {
+                smoke.SetActive(true);
+            }
             Destroy(gameObject);
         }   
     }
@@ -37,18 +46,35 @@ public class Fire : MonoBehaviour
             life--;
             Destroy(other.gameObject);
         }
-        if (other.GetComponent<Bucket>()) 
+        if (other.GetComponent<WaterInteractable>()) 
         {
-            bucket = other.GetComponent<Bucket>();
-            if(life <= fireLifeEmptyBucket && !bucket.GetFillStatus())
+            waterInteractable = other.GetComponent<WaterInteractable>();
+            if (!waterInteractable.trueIfBlanket)
             {
-                life = 0;
-                Debug.Log("empty extinguished");
+                if (life <= fireLifeEmptyBucket && !waterInteractable.GetWetStatus()) //empty bucket
+                {
+                    life = 0;
+                    //Debug.Log("empty extinguished");
+                }
+                else if (life <= fireLifeFilledBucket && waterInteractable.GetWetStatus()) //water bucket
+                {
+                    life = 0;
+                    //Debug.Log("filled extinguished");
+                }
             }
-            else if(life <= fireLifeFilledBucket && bucket.GetFillStatus())
+            else
             {
-                life = 0;
-                Debug.Log("filled extinguished");
+                if (life <= fireLifeBlanket && !waterInteractable.GetWetStatus()) // dry blanket
+                {
+                   // life = 0; //destroy?
+                    Destroy(other.gameObject);
+                    Debug.Log("level failed");
+                }
+                else if (life <= fireLifeWetBlanket && waterInteractable.GetWetStatus()) //wet blanket
+                {
+                    life = 0;
+                    //Debug.Log("filled extinguished");
+                }
             }
         }
     }

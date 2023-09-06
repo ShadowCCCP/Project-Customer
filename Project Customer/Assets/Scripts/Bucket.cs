@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bucket : MonoBehaviour
+public class WaterInteractable : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private GameObject water;
+    private GameObject wet;
 
-    bool filled = false;
+    bool wetBool = false;
+
+    public bool trueIfBlanket = false;
 
     void Start()
     {
@@ -26,13 +28,13 @@ public class Bucket : MonoBehaviour
         if(other.tag == "WaterSource")
         {
             Debug.Log("water in");
-            water.SetActive(true);
-            filled = true;
+            wet.SetActive(true);
+            wetBool = true;
         }
     }
 
-    public bool GetFillStatus()
+    public bool GetWetStatus()
     {
-        return filled;
+        return wetBool;
     }
 }
