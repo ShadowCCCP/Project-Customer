@@ -15,21 +15,26 @@ public class FireExtinguisher : MonoBehaviour
 
     FoamBullet currentFoam;
     float lastShot;
-    float cooldown = 100;
+    float cooldown = 0.25f;
+
+    void Start()
+    {
+        lastShot = Time.time;
+    }
 
     void Update()
     {
         if (Input.GetMouseButton(0) && Time.time - lastShot > cooldown)
         {
             Shoot();
+            lastShot = Time.time;
         }
     }
 
     private void Shoot()
     {
         currentFoam = Instantiate(foamPrefab, spawnPoint.position, spawnPoint.rotation);
-        currentFoam.transform.localPosition = Vector3.zero;
         currentFoam.transform.SetParent(null);
-        //currentFoam.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower);
+        currentFoam.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower);
     }
 }

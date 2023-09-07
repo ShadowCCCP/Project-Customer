@@ -9,19 +9,44 @@ public class FoamBullet : MonoBehaviour
     float foamRemoveTimer = 3; 
 
     bool hitOnce;
-    float groundCheckDist = 0.15f;
+    float groundCheckDist = 0.18f;
+    Rigidbody rb;
 
-    /*
     Collider otherFoam;
     bool hitFoam;
     Coroutine myCoroutine;
-    */
 
-    private void OnTriggerEnter(Collider other)
+    void Start()
     {
-        if(!hitOnce)
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        ReactivatePhysics();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!hitOnce && HitBottom())
         {
-            StartCoroutine(RemoveFoamTimer());
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+
+            if (collision.collider.tag == "FoamBullet")
+            {
+                otherFoam = collision.collider;
+                hitFoam = true;
+            }
+            else hitFoam = false;
+
+            if (myCoroutine != null)
+            {
+                StopCoroutine(myCoroutine);
+            }
+            myCoroutine = StartCoroutine(RemoveFoamTimer());
+            hitOnce = true;
         }
     }
 
@@ -41,6 +66,15 @@ public class FoamBullet : MonoBehaviour
     {
         yield return new WaitForSeconds(foamRemoveTimer);
         Destroy(gameObject);
+    }
+
+    private void ReactivatePhysics()
+    {
+        if (hitFoam && otherFoam == null)
+        {
+            rb.isKinematic = false;
+            hitOnce = false;
+        }
     }
 
 
