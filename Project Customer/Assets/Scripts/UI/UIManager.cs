@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ItemName;
     public TextMeshProUGUI ItemDescription;
     public TextMeshProUGUI OxygenLeftText;
+    public TextMeshProUGUI LifeText;
+
+    
+    
 
     [Serializable]
     public struct ObjectNamesAndDescriptions
@@ -20,18 +24,24 @@ public class UIManager : MonoBehaviour
     public ObjectNamesAndDescriptions[] Objects;
 
 
-    private PhysicsPickup player;
+    private PhysicsPickup playerPhysicsPickup;
+    private Life playerLife;
 
     public float Oxygen = 100;
     public float OxygenRundownSpeed = 0.5f;
+
+
     // Start is called before the first frame update
     void Start()
     {
         ItemDescription.text = null;
         
-        player = FindObjectOfType<PhysicsPickup>();
-        ItemName.text = player.objectName;
-        
+        playerPhysicsPickup = FindObjectOfType<PhysicsPickup>();
+        playerLife = FindObjectOfType<Life>();
+        ItemName.text = playerPhysicsPickup.objectName;
+        LifeText.text = "Life: " + playerLife.GetLife().ToString();
+
+
 
         OxygenLeftText.text = "Oxygen: " + Oxygen;
     }
@@ -39,11 +49,15 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ItemName.text != player.objectName)
+        if(ItemName.text != playerPhysicsPickup.objectName)
         {
-            ItemName.text = player.objectName;
+            ItemName.text = playerPhysicsPickup.objectName;
             descriptionCheck();
-            //change desc
+        }
+
+        if(LifeText.text != playerLife.GetLife().ToString())
+        {
+            LifeText.text = "Life: " + playerLife.GetLife().ToString();
         }
         oxygenRundown();
     }
