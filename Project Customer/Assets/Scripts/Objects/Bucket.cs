@@ -20,31 +20,31 @@ public class WaterInteractable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    /*private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.tag == "WaterSource" )
+        if (Input.GetMouseButtonDown(0) && onWaterSource)
         {
             Debug.Log("water in");
             wet.SetActive(true);
             wetBool = true;
         }
-    }*/
+    }
 
-    private void OnTriggerStay(Collider other)
+    bool onWaterSource = false;
+    private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "WaterSource" )
         {
-            if (Input.GetMouseButtonDown(0)) {
-                Debug.Log("water in");
-                wet.SetActive(true);
-                wetBool = true;
-            }
+            onWaterSource = true;
         }
     }
     
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "WaterSource")
+        {
+            onWaterSource = false;
+        }
+    }
+
     public bool GetWetStatus()
     {
         return wetBool;
