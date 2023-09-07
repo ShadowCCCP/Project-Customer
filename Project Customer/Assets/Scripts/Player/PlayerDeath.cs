@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    //Listen to event to activate this script...
-
     [SerializeField]
     Transform playerModel;
 
@@ -24,13 +22,17 @@ public class PlayerDeath : MonoBehaviour
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
         playerMovementScript = playerModel.GetComponent<PlayerMovement>();
         physicsPickupScript = playerModel.GetComponent<PhysicsPickup>();
-
         Life.onDeath += Die;
     }
 
     void OnDestroy()
     {
         Life.onDeath -= Die;
+    }
+
+    private void FixedUpdate()
+    {
+        transform.localPosition = playerModel.position;
     }
 
     private void Die()
