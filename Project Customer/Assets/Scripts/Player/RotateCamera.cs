@@ -13,6 +13,8 @@ public class RotateCamera : MonoBehaviour
     Quaternion cameraRotation;
     float maxRotation = 90;
 
+    bool gamePaused = false;
+
     void Start()
     {
         LockCursor();
@@ -21,7 +23,10 @@ public class RotateCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotateView();
+        if (!gamePaused)
+        {
+            RotateView();
+        }
     }
 
     private void RotateView()
@@ -34,9 +39,16 @@ public class RotateCamera : MonoBehaviour
         orientation.transform.rotation = Quaternion.Euler(0, cameraRotation.y, 0);
     }
 
-    private void LockCursor()
+    public void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        gamePaused = false;
+    }
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        gamePaused = true;
     }
 }

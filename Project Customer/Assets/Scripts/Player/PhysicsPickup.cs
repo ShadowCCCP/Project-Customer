@@ -20,8 +20,10 @@ public class PhysicsPickup : MonoBehaviour
     float angularDrag = 5;
 
     public Rigidbody currentObject;
-
     public string objectName;
+
+    private float objectNormalAngularDrag;
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E))
@@ -29,6 +31,7 @@ public class PhysicsPickup : MonoBehaviour
             // If you hold an object, let go of it...
             if(currentObject != null)
             {
+                currentObject.angularDrag = objectNormalAngularDrag;
                 currentObject.useGravity = true;
                 currentObject = null;
                 objectName = null;
@@ -40,6 +43,7 @@ public class PhysicsPickup : MonoBehaviour
             if(Physics.Raycast(cameraRay, out RaycastHit hitInfo, pickupRange, pickupMask))
             {
                 currentObject = hitInfo.rigidbody;
+                objectNormalAngularDrag = currentObject.angularDrag;
                 objectName = currentObject.name;
                 currentObject.useGravity = false;
             }
@@ -56,7 +60,6 @@ public class PhysicsPickup : MonoBehaviour
 
             currentObject.velocity = directionToPoint * 12 * distanceToPoint;
             currentObject.angularDrag = angularDrag;
-            Debug.Log(currentObject.angularVelocity);
         }
     }
 }
