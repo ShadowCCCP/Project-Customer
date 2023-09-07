@@ -10,7 +10,11 @@ public class PlayerDeath : MonoBehaviour
     [SerializeField]
     Transform _camera;
 
-    Animator anim;
+    [SerializeField]
+    Transform cameraHolder;
+
+    Animator animCam;
+    Animator animModel;
 
     RotateCamera rotateCameraScript;
     PlayerMovement playerMovementScript;
@@ -18,7 +22,8 @@ public class PlayerDeath : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        animCam = cameraHolder.GetComponent<Animator>();
+        animModel = playerModel.GetComponent<Animator>();
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
         playerMovementScript = playerModel.GetComponent<PlayerMovement>();
         physicsPickupScript = playerModel.GetComponent<PhysicsPickup>();
@@ -30,14 +35,10 @@ public class PlayerDeath : MonoBehaviour
         Life.onDeath -= Die;
     }
 
-    private void FixedUpdate()
-    {
-        transform.localPosition = playerModel.position;
-    }
-
     private void Die()
     {
-        anim.SetTrigger("Die");
+        animCam.SetTrigger("die");
+        animModel.SetTrigger("die");
         rotateCameraScript.enabled = false;
         playerMovementScript.enabled = false;
         physicsPickupScript.enabled = false;

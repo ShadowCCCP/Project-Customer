@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -286,7 +286,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218406347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 37d91b85886e0804393ece2bf304598a, type: 2}
   m_CullingMode: 0
@@ -309,6 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 347382353}
   - component: {fileID: 347382354}
+  - component: {fileID: 347382355}
   m_Layer: 3
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -345,6 +346,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPos: {fileID: 384784896}
+--- !u!95 &347382355
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347382352}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 68a27878e02aef34e9dee35f7a62294d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &354627323
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,6 +622,7 @@ GameObject:
   - component: {fileID: 697048687}
   - component: {fileID: 697048688}
   - component: {fileID: 697048689}
+  - component: {fileID: 697048690}
   m_Layer: 3
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -723,6 +746,27 @@ MonoBehaviour:
   life: 100
   fireDamage: 20
   fireDamageRate: 1
+--- !u!95 &697048690
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697048683}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 67b24820b19469441a54d33ef2e9e3bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &711033931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -735,6 +779,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936946254549839577, guid: ce9605c5b67ab1d41adba4a97dc3437e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4285594919413973924, guid: ce9605c5b67ab1d41adba4a97dc3437e,
         type: 3}
@@ -841,6 +890,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 218406349}
     - target: {fileID: 5017020635928904964, guid: ce9605c5b67ab1d41adba4a97dc3437e,
         type: 3}
       propertyPath: playerModel
@@ -1339,7 +1393,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630167451}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1572,6 +1626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerModel: {fileID: 697048684}
   _camera: {fileID: 218406350}
+  cameraHolder: {fileID: 347382353}
 --- !u!114 &1800531317
 MonoBehaviour:
   m_ObjectHideFlags: 0
