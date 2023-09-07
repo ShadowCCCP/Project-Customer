@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &104758963 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2611464451652168929, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+    type: 3}
+  m_PrefabInstance: {fileID: 3713064954413745920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &128586482
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +401,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &192825776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 85038287209092439, guid: ce9605c5b67ab1d41adba4a97dc3437e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7716785633886676218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &218406347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,6 +1765,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thing that gets unlocked by key
       objectReference: {fileID: 0}
+    - target: {fileID: 2499965641957133244, guid: 716bc2bb898b2cc4d98fe18c788fabfc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6655554143989827285, guid: 716bc2bb898b2cc4d98fe18c788fabfc,
         type: 3}
       propertyPath: m_RootOrder
@@ -1879,6 +1902,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 7712817961098370562, guid: b7970923cd49f984b81a9ee6797138b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7712817961098370562, guid: b7970923cd49f984b81a9ee6797138b4,
         type: 3}
@@ -2122,6 +2150,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sink
       objectReference: {fileID: 0}
+    - target: {fileID: 2141382480919031034, guid: 35b3c1c808409c345bc0ec93408c683b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2746982746792930051, guid: 35b3c1c808409c345bc0ec93408c683b,
         type: 3}
       propertyPath: m_IsTrigger
@@ -2195,6 +2228,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1945376489036371455, guid: ce9605c5b67ab1d41adba4a97dc3437e,
+        type: 3}
+      propertyPath: m_Name
+      value: LookatItem
+      objectReference: {fileID: 0}
     - target: {fileID: 2936946254549839577, guid: ce9605c5b67ab1d41adba4a97dc3437e,
         type: 3}
       propertyPath: m_Name
@@ -2304,6 +2342,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 104758963}
+    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
+        type: 3}
+      propertyPath: LookedAtItem
+      value: 
+      objectReference: {fileID: 192825776}
+    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
+        type: 3}
+      propertyPath: lookAtMask.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 5017020635928904964, guid: ce9605c5b67ab1d41adba4a97dc3437e,
         type: 3}
