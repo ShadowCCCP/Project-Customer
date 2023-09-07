@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class PauseMenuScript : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    void resume()
+    public void resume()
     {
         player.LockCursor();
         gamePaused = false;
@@ -51,5 +52,11 @@ public class PauseMenuScript : MonoBehaviour
         gameUI.SetActive(true);
         Time.timeScale = 1;
     }
+    public void LoadStart()
+    {
+        SceneManager.LoadScene("StartScreen");
+    }
+
+
 
 }
