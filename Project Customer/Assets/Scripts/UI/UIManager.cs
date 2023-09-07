@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -10,9 +11,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ItemDescription;
     public TextMeshProUGUI OxygenLeftText;
     public TextMeshProUGUI LifeText;
+    public TextMeshProUGUI LookedAtItem;
 
-    
-    
+
 
     [Serializable]
     public struct ObjectNamesAndDescriptions
@@ -30,15 +31,26 @@ public class UIManager : MonoBehaviour
     public float Oxygen = 100;
     public float OxygenRundownSpeed = 0.5f;
 
+    [SerializeField]
+    Camera _camera;
+
+    [SerializeField]
+    int lookAtDistance = 10;
+    [SerializeField]
+    LayerMask pickupMask;
+    [SerializeField]
+    LayerMask lookAtMask;
 
     // Start is called before the first frame update
     void Start()
     {
         ItemDescription.text = null;
-        
+        //ItemName.text = null;
+        LookedAtItem.text = null;
+
         playerPhysicsPickup = FindObjectOfType<PhysicsPickup>();
         playerLife = FindObjectOfType<Life>();
-        ItemName.text = playerPhysicsPickup.objectName;
+        //ItemName.text = playerPhysicsPickup.objectName;
         LifeText.text = "Life: " + playerLife.GetLife().ToString();
 
 
@@ -49,7 +61,16 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ItemName.text != playerPhysicsPickup.objectName)
+        if(ItemName.text == null || ItemName.text == "")
+        {
+            lookAtObject();
+        }
+        else
+        {
+            LookedAtItem.text = null;
+        }
+
+        if (ItemName.text != playerPhysicsPickup.objectName)
         {
             ItemName.text = playerPhysicsPickup.objectName;
             descriptionCheck();
@@ -59,7 +80,10 @@ public class UIManager : MonoBehaviour
         {
             LifeText.text = "Life: " + playerLife.GetLife().ToString();
         }
+
         oxygenRundown();
+
+        
     }
 
     void descriptionCheck()
@@ -92,6 +116,20 @@ public class UIManager : MonoBehaviour
         if (Oxygen < 0)
         {
             //death
+        }
+    }
+
+    private void lookAtObject()
+    {
+        Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hitInfo;
+        if (Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, lookAtMask))
+        {
+            LookedAtItem.text = hitInfo.transform.name;
+        }
+        else
+        {
+            LookedAtItem.text = null;
         }
     }
 }
