@@ -8,6 +8,7 @@ TagManager:
   - FoamBullet
   - Unlockable
   - WaterSource
+  - Fire
   layers:
   - Default
   - TransparentFX
