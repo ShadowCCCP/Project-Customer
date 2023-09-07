@@ -24,13 +24,13 @@ public class PlayerDeath : MonoBehaviour
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
         playerMovementScript = playerModel.GetComponent<PlayerMovement>();
         physicsPickupScript = playerModel.GetComponent<PhysicsPickup>();
-        // Subscribe to event here...
-        Die();
+
+        Life.onDeath += Die;
     }
 
     void OnDestroy()
     {
-        // Unsubscribe from event here...
+        Life.onDeath -= Die;
     }
 
     private void Die()
