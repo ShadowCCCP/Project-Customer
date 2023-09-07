@@ -34,8 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     float normalMoveSpeed;
 
+    Collider[] playerColliders;
+
     void Start()
     {
+        playerColliders = playerObject.GetComponents<Collider>();
         rb = GetComponent<Rigidbody>();
         moveCamera = cameraHolder.GetComponent<MoveCamera>();
         normalMoveSpeed = movementSpeed;
@@ -120,17 +123,20 @@ public class PlayerMovement : MonoBehaviour
         if (!moveCamera.IsCrouching())
         {
             moveCamera.ActivateCrouch();
-            playerObject.localScale = new Vector3(1, 0.5f, 1);
-            playerObject.localPosition = playerObject.localPosition - new Vector3(0, 1, 0);
+            //playerObject.localScale = new Vector3(1, 0.5f, 1);
+            //playerObject.localPosition = playerObject.localPosition - new Vector3(0, 1, 0);
             movementSpeed = normalMoveSpeed / 2;
+            playerColliders[0].enabled = false;
+            playerColliders[1].enabled = true;
         }
         else
         {
             moveCamera.DeactivateCrouch();
-            playerObject.localScale = new Vector3(1, 1, 1);
-            playerObject.localPosition = playerObject.localPosition + new Vector3(0, 1, 0);
-
+            //playerObject.localScale = new Vector3(1, 1, 1);
+            //playerObject.localPosition = playerObject.localPosition + new Vector3(0, 1, 0);
             movementSpeed = normalMoveSpeed;
+            playerColliders[0].enabled = true;
+            playerColliders[1].enabled = false;
         }
     }
 
