@@ -689,7 +689,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 171096768}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &108092322
+--- !u!64 &108092326
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -896,7 +896,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 43b6aca74a8d6d64aa2331ba8407c484,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 108092322}
+      addedObject: {fileID: 108092326}
   m_SourcePrefab: {fileID: 100100000, guid: 43b6aca74a8d6d64aa2331ba8407c484, type: 3}
 --- !u!1001 &202823680
 PrefabInstance:
@@ -3285,6 +3285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790760001329462414, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 7585445722787696598, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
