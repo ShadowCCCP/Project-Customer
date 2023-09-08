@@ -17,6 +17,9 @@ public class Fire : MonoBehaviour
     [SerializeField]
     int fireLifeWetBlanket = 5;
 
+    [SerializeField]
+    bool electricFire = false;
+
     WaterInteractable waterInteractable;
     
 
@@ -54,12 +57,14 @@ public class Fire : MonoBehaviour
                     life = 0;
                     //Debug.Log("empty extinguished");
                 }*/
-                if (life <= fireLifeFilledBucket && waterInteractable.GetWetStatus()) //water bucket
+                if (life <= fireLifeFilledBucket && waterInteractable.GetWetStatus() && !electricFire) //water bucket
                 {
-                    life = 0;
+                    electricFireCheck();
+                    //life = 0;
                     //Debug.Log("filled extinguished");
-                    waterInteractable.Dry();
+                    //waterInteractable.Dry();
                 }
+                
             }
             else
             {
@@ -69,14 +74,42 @@ public class Fire : MonoBehaviour
                     Destroy(other.gameObject);
                     Debug.Log("level failed");
                 }
-                else if (life <= fireLifeWetBlanket && waterInteractable.GetWetStatus()) //wet blanket
-                {
-                    life = 0;
-                    waterInteractable.Dry();
+                else if (life <= fireLifeWetBlanket && waterInteractable.GetWetStatus() && !electricFire) //wet blanket
+                { 
+                    electricFireCheck();
+                    //life = 0;
+                    //waterInteractable.Dry();
                     //Debug.Log("filled extinguished");
                 }
             }
         }
+
+        if (other.gameObject.tag == "ElectricFireStop")
+        {
+            if (electricFire)
+            {
+                life = 0;
+            }
+            else
+            {
+                Destroy(other.gameObject);
+                Debug.Log("level failed");
+            }
+        }
     }
+
+    void electricFireCheck()
+    {
+        if (!electricFire)
+        {
+            life = 0;
+            waterInteractable.Dry();
+        }
+        else
+        {
+            Debug.Log("explosion");
+        }
+    }
+
 
 }
