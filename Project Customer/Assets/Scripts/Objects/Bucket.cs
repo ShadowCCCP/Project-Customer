@@ -8,19 +8,20 @@ public class WaterInteractable : MonoBehaviour
     [SerializeField]
     private GameObject wet;
 
+
     bool wetBool = false;
 
     public bool trueIfBlanket = false;
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && onWaterSource)
+        if (/*Input.GetMouseButtonDown(0) && */ onWaterSource)
         {
             Debug.Log("water in");
             wet.SetActive(true);
@@ -33,7 +34,12 @@ public class WaterInteractable : MonoBehaviour
     {
         if(other.tag == "WaterSource" )
         {
-            onWaterSource = true;
+            Sink sink = other.gameObject.GetComponent<Sink>();
+            if (sink.GetWaterStatus())
+            {
+                onWaterSource = true;
+            }
+
         }
     }
     
@@ -42,6 +48,7 @@ public class WaterInteractable : MonoBehaviour
         if (other.tag == "WaterSource")
         {
             onWaterSource = false;
+
         }
     }
 
@@ -56,4 +63,6 @@ public class WaterInteractable : MonoBehaviour
     {
         return wetBool;
     }
+
+    
 }

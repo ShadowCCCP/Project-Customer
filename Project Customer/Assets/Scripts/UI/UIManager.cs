@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI LifeText;
     public TextMeshProUGUI LookedAtItem;
     public TextMeshProUGUI LookedAtItemDesc;
-
+    public TextMeshProUGUI ExtraHint;
 
 
     [Serializable]
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     public float Oxygen = 100;
     public float OxygenRundownSpeed = 0.5f;
 
-    [SerializeField]
+   // [SerializeField]
     Camera _camera;
 
     [SerializeField]
@@ -43,12 +43,16 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     LayerMask lookAtMask;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        _camera = FindObjectOfType<Camera>();
+
         ItemDescription.text = null;
         LookedAtItem.text = null;
-        LookedAtItemDesc.text = null;  
+        LookedAtItemDesc.text = null;
+        ExtraHint.text = null;
 
         playerPhysicsPickup = FindObjectOfType<PhysicsPickup>();
         playerLife = FindObjectOfType<Life>();
@@ -85,6 +89,7 @@ public class UIManager : MonoBehaviour
         }
 
         oxygenRundown();
+
 
         
     }
