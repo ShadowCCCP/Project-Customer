@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 5418479963829747045}
   - component: {fileID: 85038287209092439}
   m_Layer: 5
-  m_Name: ItemHeldText (1)
+  m_Name: ItemLookedAt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -575,7 +575,7 @@ RectTransform:
   - {fileID: 6819646223905844411}
   - {fileID: 74230586523877106}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -661,6 +661,7 @@ MonoBehaviour:
   ItemDescription: {fileID: 8489348256910362235}
   OxygenLeftText: {fileID: 3737094096311171269}
   LifeText: {fileID: 9052165409102281302}
+  LookedAtItem: {fileID: 85038287209092439}
   Objects:
   - Name: Bucket
     Description: this a bucket
@@ -679,7 +680,7 @@ MonoBehaviour:
     m_Bits: 64
   lookAtMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!114 &5017020635928904964
 MonoBehaviour:
   m_ObjectHideFlags: 0
