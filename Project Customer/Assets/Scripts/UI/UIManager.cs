@@ -30,10 +30,6 @@ public class UIManager : MonoBehaviour
     private PhysicsPickup playerPhysicsPickup;
     private Life playerLife;
 
-    public float Oxygen = 100;
-    public float OxygenRundownSpeed = 0.5f;
-
-   // [SerializeField]
     Camera _camera;
 
     [SerializeField]
@@ -57,11 +53,9 @@ public class UIManager : MonoBehaviour
         playerPhysicsPickup = FindObjectOfType<PhysicsPickup>();
         playerLife = FindObjectOfType<Life>();
         //ItemName.text = playerPhysicsPickup.objectName;
+
         LifeText.text = "Life: " + playerLife.GetLife().ToString();
-
-
-
-        OxygenLeftText.text = "Oxygen: " + Oxygen;
+        OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
     }
 
     // Update is called once per frame
@@ -87,11 +81,13 @@ public class UIManager : MonoBehaviour
         {
             LifeText.text = "Life: " + playerLife.GetLife().ToString();
         }
+        if (OxygenLeftText.text != playerLife.GetOxygen().ToString())
+        {
+            OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
+        }
 
-        oxygenRundown();
 
 
-        
     }
 
     void descriptionCheck()
@@ -128,15 +124,6 @@ public class UIManager : MonoBehaviour
             }
         }
         return null;
-    }
-    void oxygenRundown()
-    {
-        Oxygen -= Time.deltaTime * OxygenRundownSpeed;
-        OxygenLeftText.text = "Oxygen: " + (int)Oxygen;
-        if (Oxygen < 0)
-        {
-            //death
-        }
     }
 
     private void lookAtObject()
