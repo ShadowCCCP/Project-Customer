@@ -33,7 +33,10 @@ public class WaterInteractable : MonoBehaviour
             wet.SetActive(true);
             wetBool = true;
         }
+    }
 
+    private void FixedUpdate()
+    {
         Quaternion targetRotation = Quaternion.Euler(targetRotationEulerAngles);
         Quaternion currentRotation = transform.rotation;
 

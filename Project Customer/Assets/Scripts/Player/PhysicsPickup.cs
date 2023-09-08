@@ -65,4 +65,9 @@ public class PhysicsPickup : MonoBehaviour
             currentObject.angularDrag = angularDrag;
         }
     }
+
+    private void PickupItem()
+    {
+
+    }
 }
