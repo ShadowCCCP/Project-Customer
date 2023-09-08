@@ -12,14 +12,16 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI OxygenLeftText;
     public TextMeshProUGUI LifeText;
     public TextMeshProUGUI LookedAtItem;
+    public TextMeshProUGUI LookedAtItemDesc;
 
 
 
     [Serializable]
     public struct ObjectNamesAndDescriptions
     {
-         public string Name;
-         public string Description;
+        public string Name;
+        public string Description;
+        public string LookAtDescription;
     }
 
     public ObjectNamesAndDescriptions[] Objects;
@@ -45,8 +47,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         ItemDescription.text = null;
-        //ItemName.text = null;
         LookedAtItem.text = null;
+        LookedAtItemDesc.text = null;  
 
         playerPhysicsPickup = FindObjectOfType<PhysicsPickup>();
         playerLife = FindObjectOfType<Life>();
@@ -68,6 +70,7 @@ public class UIManager : MonoBehaviour
         else
         {
             LookedAtItem.text = null;
+            LookedAtItemDesc.text = null;
         }
 
         if (ItemName.text != playerPhysicsPickup.objectName)
@@ -109,6 +112,18 @@ public class UIManager : MonoBehaviour
         }
         return null;
     }
+
+    string findLookAtDesc(string objectToLookFor)
+    {
+        foreach (var o in Objects)
+        {
+            if (o.Name == objectToLookFor.ToString())
+            {
+                return o.LookAtDescription;
+            }
+        }
+        return null;
+    }
     void oxygenRundown()
     {
         Oxygen -= Time.deltaTime * OxygenRundownSpeed;
@@ -126,10 +141,12 @@ public class UIManager : MonoBehaviour
         if (Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, lookAtMask))
         {
             LookedAtItem.text = hitInfo.transform.name;
+            LookedAtItemDesc.text = findLookAtDesc(hitInfo.transform.name);
         }
         else
         {
             LookedAtItem.text = null;
+            LookedAtItemDesc.text = null;
         }
     }
 }
