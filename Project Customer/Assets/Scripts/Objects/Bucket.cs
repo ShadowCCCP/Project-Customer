@@ -13,6 +13,11 @@ public class WaterInteractable : MonoBehaviour
 
     public bool trueIfBlanket = false;
 
+    // For the bucket rotation...
+    Vector3 targetRotationEulerAngles = new Vector3(0, 0, 0);
+    float maxDegreesPerSecond = 180;
+    float rotationTolerance = 1;
+
     void Start()
     {
 
@@ -21,11 +26,20 @@ public class WaterInteractable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (/*Input.GetMouseButtonDown(0) && */ onWaterSource)
+        if ( onWaterSource)
         {
             Debug.Log("water in");
             wet.SetActive(true);
             wetBool = true;
+        }
+
+        Quaternion targetRotation = Quaternion.Euler(targetRotationEulerAngles);
+        Quaternion currentRotation = transform.rotation;
+
+        if (!trueIfBlanket && Quaternion.Angle(currentRotation, targetRotation) > rotationTolerance)
+        {
+            Quaternion newRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxDegreesPerSecond * Time.deltaTime);
+            transform.rotation = newRotation;
         }
     }
 
