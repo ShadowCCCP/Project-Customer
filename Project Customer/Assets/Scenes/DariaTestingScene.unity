@@ -2252,6 +2252,11 @@ PrefabInstance:
       objectReference: {fileID: 104758963}
     - target: {fileID: 4928375809600192972, guid: 35b3c1c808409c345bc0ec93408c683b,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928375809600192972, guid: 35b3c1c808409c345bc0ec93408c683b,
+        type: 3}
       propertyPath: lookAtMask.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -2342,6 +2347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936946254549839577, guid: ce9605c5b67ab1d41adba4a97dc3437e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4285594919413973924, guid: ce9605c5b67ab1d41adba4a97dc3437e,
         type: 3}
@@ -2486,7 +2496,7 @@ PrefabInstance:
     - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
         type: 3}
       propertyPath: Objects.Array.data[5].LookAtDescription
-      value: its a sink
+      value: Click to turn On
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
         type: 3}

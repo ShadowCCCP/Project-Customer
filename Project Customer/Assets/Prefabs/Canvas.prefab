@@ -682,13 +682,12 @@ MonoBehaviour:
     LookAtDescription: q
   - Name: Sink
     Description: 
-    LookAtDescription: Its a sink
+    LookAtDescription: Click to turn on
   - Name: Lock
     Description: 
     LookAtDescription: Maybe it needs a key
   Oxygen: 100
   OxygenRundownSpeed: 0.5
-  _camera: {fileID: 0}
   lookAtDistance: 10
   pickupMask:
     serializedVersion: 2
