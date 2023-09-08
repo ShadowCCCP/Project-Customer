@@ -83,6 +83,19 @@ public class Fire : MonoBehaviour
                 }
             }
         }
+
+        if (other.gameObject.tag == "ElectricFireStop")
+        {
+            if (electricFire)
+            {
+                life = 0;
+            }
+            else
+            {
+                Destroy(other.gameObject);
+                Debug.Log("level failed");
+            }
+        }
     }
 
     void electricFireCheck()

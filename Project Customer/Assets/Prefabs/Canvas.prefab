@@ -671,6 +671,8 @@ MonoBehaviour:
     Description: this a Fire Extinguisher
   - Name: Key
     Description: a key
+  - Name: Baking Soda
+    Description: 'hint: electricity'
   Oxygen: 100
   OxygenRundownSpeed: 0.5
   _camera: {fileID: 0}
