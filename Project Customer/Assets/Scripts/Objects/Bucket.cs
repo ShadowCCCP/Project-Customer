@@ -13,15 +13,17 @@ public class WaterInteractable : MonoBehaviour
 
     public bool trueIfBlanket = false;
 
-    // For the bucket rotation...
-    Vector3 targetRotationEulerAngles = new Vector3(0, 0, 0);
-    float maxDegreesPerSecond = 180;
-    float rotationTolerance = 1;
-
+<<<<<<< Updated upstream
     void Start()
     {
 
     }
+=======
+    // For the bucket rotation...
+    Vector3 targetRotationEulerAngles = new Vector3(0, 0, 0);
+    float maxDegreesPerSecond = 180;
+    float rotationTolerance = 1;
+>>>>>>> Stashed changes
 
     // Update is called once per frame
     void Update()

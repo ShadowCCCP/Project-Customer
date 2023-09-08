@@ -25,7 +25,7 @@ public class PhysicsPickup : MonoBehaviour
     public Rigidbody currentObject;
     public string objectName;
 
-    private float objectNormalAngularDrag;
+    float objectNormalAngularDrag;
 
     void Update()
     {
