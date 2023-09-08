@@ -19,6 +19,9 @@ public class Life : MonoBehaviour
     bool canTakeDamage = true;
     bool triggerOnce;
 
+    public float Oxygen = 100;
+    public float OxygenRundownSpeed = 0.5f;
+
     //private float fireDamageRate = 0.5f;
     void Start()
     {
@@ -29,6 +32,7 @@ public class Life : MonoBehaviour
     void Update()
     {
         timer();
+        oxygenRundown();
     }
     private void OnTriggerStay(Collider other)
     {
@@ -63,8 +67,23 @@ public class Life : MonoBehaviour
             }
         }
     }
+
+    void oxygenRundown()
+    {
+        Oxygen -= Time.deltaTime * OxygenRundownSpeed;
+        if (Oxygen <= 0)
+        {
+            life = 0;
+        }
+    }
+
     public int GetLife()
     {
         return life;
+    }
+
+    public int GetOxygen()
+    {
+        return (int)Oxygen;
     }
 }
