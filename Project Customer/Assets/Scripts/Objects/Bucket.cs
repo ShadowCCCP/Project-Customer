@@ -45,6 +45,13 @@ public class WaterInteractable : MonoBehaviour
         }
     }
 
+    public void Dry()
+    {
+        Debug.Log("dry");
+        wetBool=false;
+        wet.gameObject.SetActive(false);
+    }
+
     public bool GetWetStatus()
     {
         return wetBool;

@@ -11,11 +11,9 @@ public class Fire : MonoBehaviour
     [SerializeField]
     int life = 5;
     [SerializeField]
-    int fireLifeEmptyBucket = 5;
-    [SerializeField]
     int fireLifeFilledBucket = 5;
-    [SerializeField]
-    int fireLifeBlanket = 5;
+    //[SerializeField]
+   // int fireLifeBlanket = 5;
     [SerializeField]
     int fireLifeWetBlanket = 5;
 
@@ -51,28 +49,30 @@ public class Fire : MonoBehaviour
             waterInteractable = other.GetComponent<WaterInteractable>();
             if (!waterInteractable.trueIfBlanket)
             {
-                if (life <= fireLifeEmptyBucket && !waterInteractable.GetWetStatus()) //empty bucket
+                /*if (life <= fireLifeEmptyBucket && !waterInteractable.GetWetStatus()) //empty bucket
                 {
                     life = 0;
                     //Debug.Log("empty extinguished");
-                }
-                else if (life <= fireLifeFilledBucket && waterInteractable.GetWetStatus()) //water bucket
+                }*/
+                if (life <= fireLifeFilledBucket && waterInteractable.GetWetStatus()) //water bucket
                 {
                     life = 0;
                     //Debug.Log("filled extinguished");
+                    waterInteractable.Dry();
                 }
             }
             else
             {
-                if (life <= fireLifeBlanket && !waterInteractable.GetWetStatus()) // dry blanket
+                if (!waterInteractable.GetWetStatus()) // dry blanket
                 {
-                   // life = 0; //destroy?
+                    //destroy?
                     Destroy(other.gameObject);
                     Debug.Log("level failed");
                 }
                 else if (life <= fireLifeWetBlanket && waterInteractable.GetWetStatus()) //wet blanket
                 {
                     life = 0;
+                    waterInteractable.Dry();
                     //Debug.Log("filled extinguished");
                 }
             }
