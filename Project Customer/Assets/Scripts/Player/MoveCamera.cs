@@ -16,7 +16,7 @@ public class MoveCamera : MonoBehaviour
 
     public void ActivateCrouch()
     {
-        cameraPos.localPosition = new Vector3(0, -0.5f, 0);
+        cameraPos.localPosition = new Vector3(0, 0.5f, 0);
         inCrouch = true;
     }
 

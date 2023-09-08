@@ -9,6 +9,7 @@ TagManager:
   - Unlockable
   - WaterSource
   - Fire
+  - ElectricFireStop
   layers:
   - Default
   - TransparentFX
