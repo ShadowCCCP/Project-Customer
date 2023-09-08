@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    //Listen to event to activate this script...
-
     [SerializeField]
     Transform playerModel;
 
     [SerializeField]
     Transform _camera;
 
-    Animator anim;
+    [SerializeField]
+    Transform cameraHolder;
+
+    Animator animCam;
+    Animator animModel;
 
     RotateCamera rotateCameraScript;
     PlayerMovement playerMovementScript;
@@ -20,11 +22,11 @@ public class PlayerDeath : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        animCam = cameraHolder.GetComponent<Animator>();
+        animModel = playerModel.GetComponent<Animator>();
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
         playerMovementScript = playerModel.GetComponent<PlayerMovement>();
         physicsPickupScript = playerModel.GetComponent<PhysicsPickup>();
-
         Life.onDeath += Die;
     }
 
@@ -35,7 +37,8 @@ public class PlayerDeath : MonoBehaviour
 
     private void Die()
     {
-        anim.SetTrigger("Die");
+        animCam.SetTrigger("die");
+        animModel.SetTrigger("die");
         rotateCameraScript.enabled = false;
         playerMovementScript.enabled = false;
         physicsPickupScript.enabled = false;

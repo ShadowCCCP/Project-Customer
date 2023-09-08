@@ -9,11 +9,16 @@ public class Life : MonoBehaviour
 
     [SerializeField]
     private int life = 100;
+
     [SerializeField]
     private int fireDamage = 20;
+
     [SerializeField]
     float fireDamageRate = 1;
+
     bool canTakeDamage = true;
+    bool triggerOnce;
+
     //private float fireDamageRate = 0.5f;
     void Start()
     {
@@ -37,9 +42,10 @@ public class Life : MonoBehaviour
 
             if (life <= 0)
             {
-                if(onDeath != null)
+                if(onDeath != null && !triggerOnce)
                 {
                     onDeath();
+                    triggerOnce = true;
                 }
             }
         }
