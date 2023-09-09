@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PhysicsPickup : MonoBehaviour
@@ -23,31 +22,35 @@ public class PhysicsPickup : MonoBehaviour
     [SerializeField]
     float pickupMoveSpeed = 12;
 
-    [SerializeField]
-    float throwPower = 6;
-
     public Rigidbody currentObject;
     public string objectName;
 
-    float objectNormalAngularDrag;
-
-    // Mouse rotation control
-    [SerializeField]
-    float rotationSpeed = 2;
-
-    bool isRotating = false;
-    RotateCamera rotateCameraScript;
-
-    void Start()
-    {
-        rotateCameraScript = _camera.GetComponent<RotateCamera>();
-    }
+    private float objectNormalAngularDrag;
 
     void Update()
     {
-        PickupItem();
-        RotateItem();
-        ThrowItem();
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            // If you hold an object, let go of it...
+            if(currentObject != null)
+            {
+                currentObject.angularDrag = objectNormalAngularDrag;
+                currentObject.useGravity = true;
+                currentObject = null;
+                objectName = null;
+                return;
+            }
+
+            // If you're looking at a pickable item, pick it up...
+            Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            if(Physics.Raycast(cameraRay, out RaycastHit hitInfo, pickupRange, pickupMask))
+            {
+                currentObject = hitInfo.rigidbody;
+                objectNormalAngularDrag = currentObject.angularDrag;
+                objectName = currentObject.name;
+                currentObject.useGravity = false;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -61,72 +64,5 @@ public class PhysicsPickup : MonoBehaviour
             currentObject.velocity = directionToPoint * pickupMoveSpeed * distanceToPoint;
             currentObject.angularDrag = angularDrag;
         }
-    }
-
-    private void PickupItem()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            // If you hold an object, let go of it...
-            if (currentObject != null)
-            {
-                DropObject();
-                return;
-            }
-
-            // If you're looking at a pickable item, pick it up...
-            Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            if (Physics.Raycast(cameraRay, out RaycastHit hitInfo, pickupRange, pickupMask))
-            {
-                currentObject = hitInfo.rigidbody;
-                objectNormalAngularDrag = currentObject.angularDrag;
-                objectName = currentObject.name;
-                currentObject.useGravity = false;
-            }
-        }
-    }
-
-    private void RotateItem()
-    {
-        if (currentObject != null && currentObject.tag != "Bucket")
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                rotateCameraScript.enabled = false;
-                isRotating = true;
-            }
-            else if (Input.GetMouseButtonUp(1))
-            {
-                rotateCameraScript.enabled = true;
-                isRotating = false;
-            }
-
-            if (isRotating)
-            {
-                float xRotation = Input.GetAxisRaw("Mouse X") * rotationSpeed;
-                float yRotation = Input.GetAxisRaw("Mouse Y") * rotationSpeed;
-
-                currentObject.transform.Rotate(Vector3.down, xRotation);
-                currentObject.transform.Rotate(Vector3.right, yRotation);
-            }
-        }
-    }
-
-    private void ThrowItem()
-    {
-        if (currentObject != null && Input.GetMouseButtonDown(0))
-        {
-            Rigidbody rb = currentObject.GetComponent<Rigidbody>();
-            DropObject();
-            rb.AddForce(_camera.transform.forward * throwPower, ForceMode.Impulse);
-        }
-    }
-
-    private void DropObject()
-    {
-        currentObject.angularDrag = objectNormalAngularDrag;
-        currentObject.useGravity = true;
-        currentObject = null;
-        objectName = null;
     }
 }

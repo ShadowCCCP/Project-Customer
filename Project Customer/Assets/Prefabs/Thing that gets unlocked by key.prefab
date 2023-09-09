@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4095562043610331233}
   - component: {fileID: 8569840978750713178}
   m_Layer: 0
-  m_Name: Lock
+  m_Name: Thing that gets unlocked by key
   m_TagString: Unlockable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

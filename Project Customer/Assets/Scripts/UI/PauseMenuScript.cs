@@ -56,23 +56,10 @@ public class PauseMenuScript : MonoBehaviour
         gameUI.SetActive(true);
         Time.timeScale = 1;
     }
-
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
-    }
-    public void QuitGame()
-    {
-        Application.Quit();
-        Debug.Log("Quit");
-    }
-
     public void LoadStart()
     {
         SceneManager.LoadScene("StartScreen");
     }
-
 
 
 

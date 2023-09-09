@@ -8,42 +8,23 @@ public class WaterInteractable : MonoBehaviour
     [SerializeField]
     private GameObject wet;
 
-
     bool wetBool = false;
 
     public bool trueIfBlanket = false;
 
     void Start()
     {
-
+        
     }
-
-    // For the bucket rotation...
-    Vector3 targetRotationEulerAngles = new Vector3(0, 0, 0);
-    float maxDegreesPerSecond = 180;
-    float rotationTolerance = 1;
-
 
     // Update is called once per frame
     void Update()
     {
-        if ( onWaterSource)
+        if (Input.GetMouseButtonDown(0) && onWaterSource)
         {
             Debug.Log("water in");
             wet.SetActive(true);
             wetBool = true;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        Quaternion targetRotation = Quaternion.Euler(targetRotationEulerAngles);
-        Quaternion currentRotation = transform.rotation;
-
-        if (!trueIfBlanket && Quaternion.Angle(currentRotation, targetRotation) > rotationTolerance)
-        {
-            Quaternion newRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxDegreesPerSecond * Time.deltaTime);
-            transform.rotation = newRotation;
         }
     }
 
@@ -52,12 +33,7 @@ public class WaterInteractable : MonoBehaviour
     {
         if(other.tag == "WaterSource" )
         {
-            Sink sink = other.gameObject.GetComponent<Sink>();
-            if (sink.GetWaterStatus())
-            {
-                onWaterSource = true;
-            }
-
+            onWaterSource = true;
         }
     }
     
@@ -66,7 +42,6 @@ public class WaterInteractable : MonoBehaviour
         if (other.tag == "WaterSource")
         {
             onWaterSource = false;
-
         }
     }
 
@@ -81,6 +56,4 @@ public class WaterInteractable : MonoBehaviour
     {
         return wetBool;
     }
-
-    
 }
