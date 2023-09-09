@@ -12,14 +12,16 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI OxygenLeftText;
     public TextMeshProUGUI LifeText;
     public TextMeshProUGUI LookedAtItem;
-
+    public TextMeshProUGUI LookedAtItemDesc;
+    public TextMeshProUGUI ExtraHint;
 
 
     [Serializable]
     public struct ObjectNamesAndDescriptions
     {
-         public string Name;
-         public string Description;
+        public string Name;
+        public string Description;
+        public string LookAtDescription;
     }
 
     public ObjectNamesAndDescriptions[] Objects;
@@ -28,10 +30,6 @@ public class UIManager : MonoBehaviour
     private PhysicsPickup playerPhysicsPickup;
     private Life playerLife;
 
-    public float Oxygen = 100;
-    public float OxygenRundownSpeed = 0.5f;
-
-    [SerializeField]
     Camera _camera;
 
     [SerializeField]
@@ -41,21 +39,23 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     LayerMask lookAtMask;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        _camera = FindObjectOfType<Camera>();
+
         ItemDescription.text = null;
-        //ItemName.text = null;
         LookedAtItem.text = null;
+        LookedAtItemDesc.text = null;
+        ExtraHint.text = null;
 
         playerPhysicsPickup = FindObjectOfType<PhysicsPickup>();
         playerLife = FindObjectOfType<Life>();
         //ItemName.text = playerPhysicsPickup.objectName;
+
         LifeText.text = "Life: " + playerLife.GetLife().ToString();
-
-
-
-        OxygenLeftText.text = "Oxygen: " + Oxygen;
+        OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
     }
 
     // Update is called once per frame
@@ -68,6 +68,7 @@ public class UIManager : MonoBehaviour
         else
         {
             LookedAtItem.text = null;
+            LookedAtItemDesc.text = null;
         }
 
         if (ItemName.text != playerPhysicsPickup.objectName)
@@ -80,10 +81,13 @@ public class UIManager : MonoBehaviour
         {
             LifeText.text = "Life: " + playerLife.GetLife().ToString();
         }
+        if (OxygenLeftText.text != playerLife.GetOxygen().ToString())
+        {
+            OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
+        }
 
-        oxygenRundown();
 
-        
+
     }
 
     void descriptionCheck()
@@ -109,14 +113,17 @@ public class UIManager : MonoBehaviour
         }
         return null;
     }
-    void oxygenRundown()
+
+    string findLookAtDesc(string objectToLookFor)
     {
-        Oxygen -= Time.deltaTime * OxygenRundownSpeed;
-        OxygenLeftText.text = "Oxygen: " + (int)Oxygen;
-        if (Oxygen < 0)
+        foreach (var o in Objects)
         {
-            //death
+            if (o.Name == objectToLookFor.ToString())
+            {
+                return o.LookAtDescription;
+            }
         }
+        return null;
     }
 
     private void lookAtObject()
@@ -126,10 +133,12 @@ public class UIManager : MonoBehaviour
         if (Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, lookAtMask))
         {
             LookedAtItem.text = hitInfo.transform.name;
+            LookedAtItemDesc.text = findLookAtDesc(hitInfo.transform.name);
         }
         else
         {
             LookedAtItem.text = null;
+            LookedAtItemDesc.text = null;
         }
     }
 }
