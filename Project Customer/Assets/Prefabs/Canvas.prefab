@@ -862,6 +862,8 @@ MonoBehaviour:
   lookAtMask:
     serializedVersion: 2
     m_Bits: 256
+  shaderMaterial: {fileID: 2100000, guid: 93ef7d6b2245cdf4ea680996ef104f61, type: 2}
+  shaderMaterialEmpty: {fileID: 2100000, guid: 38069117300dbfa40b804732be4675e6, type: 2}
 --- !u!114 &5017020635928904964
 MonoBehaviour:
   m_ObjectHideFlags: 0

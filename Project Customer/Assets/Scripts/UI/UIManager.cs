@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -39,6 +37,15 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     LayerMask lookAtMask;
 
+    [SerializeField]
+    bool useOutline = false;
+
+    [SerializeField]
+    Material shaderMaterial;
+    [SerializeField]
+    Material shaderMaterialEmpty;
+    //Shader shaderEmpty;
+    Renderer rend;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +63,11 @@ public class UIManager : MonoBehaviour
 
         LifeText.text = "Life: " + playerLife.GetLife().ToString();
         OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
+
+
+     
+       // shader = Material.Find("OutlineShaderMaterial");
+
     }
 
     // Update is called once per frame
@@ -126,19 +138,35 @@ public class UIManager : MonoBehaviour
         return null;
     }
 
+
     private void lookAtObject()
     {
         Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hitInfo;
         if (Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, lookAtMask))
         {
+            if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
+                rend = hitInfo.collider.GetComponent<Renderer>();
+
+                rend.material = shaderMaterial;
+               /// rend.materials[1] = shaderMaterial;
+            }
             LookedAtItem.text = hitInfo.transform.name;
             LookedAtItemDesc.text = findLookAtDesc(hitInfo.transform.name);
+            
+
         }
         else
         {
             LookedAtItem.text = null;
             LookedAtItemDesc.text = null;
+            if (rend && useOutline)
+            {
+                rend.material = shaderMaterialEmpty;
+                //rend.materials[1] = shaderMaterialEmpty;
+               
+            }
+
         }
     }
 }
