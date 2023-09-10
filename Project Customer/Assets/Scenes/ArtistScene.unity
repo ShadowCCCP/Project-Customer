@@ -1646,7 +1646,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.337
+    m_Strength: 0.415
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -2574,7 +2574,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.128
+    m_Strength: 0.23
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.1
@@ -2797,7 +2797,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.337
+    m_Strength: 0.415
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -3040,7 +3040,7 @@ GameObject:
   - component: {fileID: 906232776}
   - component: {fileID: 906232775}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Point Light (far)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4489,7 +4489,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.337
+    m_Strength: 0.415
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -4647,7 +4647,7 @@ GameObject:
   - component: {fileID: 1429854729}
   - component: {fileID: 1429854728}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Point Light (far)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5104,8 +5104,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.78
-  m_Range: 13.2
+  m_Intensity: 1.4
+  m_Range: 17.2
   m_SpotAngle: 179
   m_InnerSpotAngle: 116.558136
   m_CookieSize: 10
@@ -5147,7 +5147,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
-  m_ColorTemperature: 12622
+  m_ColorTemperature: 20000
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
