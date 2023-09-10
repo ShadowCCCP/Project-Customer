@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.456, g: 0.5, b: 0.532, a: 1}
   m_AmbientGroundColor: {r: 0.188, g: 0.172, b: 0.14, a: 1}
-  m_AmbientIntensity: 1.23
+  m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: d43b325b48576a542aa1f97450c8e434, type: 2}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1970985714}
-  m_IndirectSpecularColor: {r: 0.002057965, g: 0.016565384, b: 0.041310817, a: 1}
+  m_IndirectSpecularColor: {r: 0.004603189, g: 0.036333054, b: 0.08903324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6899721}
   m_Layer: 0
-  m_Name: Environmental
+  m_Name: Environmental Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4183,10 +4183,10 @@ Transform:
   m_LocalScale: {x: 0.62460965, y: 0.62460965, z: 0.62460965}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1904157244}
   - {fileID: 1970985715}
   - {fileID: 30050228}
   - {fileID: 6899721}
-  - {fileID: 1904157244}
   - {fileID: 1966455299}
   m_Father: {fileID: 582007457}
   m_RootOrder: -1
@@ -5771,7 +5771,7 @@ ReflectionProbe:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IntensityMultiplier: 1.97
+  m_IntensityMultiplier: 1
   m_BlendDistance: 0
   m_HDR: 1
   m_BoxProjection: 1
