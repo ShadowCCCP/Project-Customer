@@ -4783,6 +4783,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2611464451652168929, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
+      propertyPath: field of view
+      value: 76.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611464451652168929, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
       propertyPath: near clip plane
       value: 0.09
       objectReference: {fileID: 0}
