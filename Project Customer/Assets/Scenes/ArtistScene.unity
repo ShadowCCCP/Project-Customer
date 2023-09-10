@@ -1158,6 +1158,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1815991676466951410, guid: 563f577261dfb32498705edadbb7d930,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1c714477eea04645a61fbb626a839aa, type: 2}
     - target: {fileID: 919132149155446097, guid: 563f577261dfb32498705edadbb7d930,
         type: 3}
       propertyPath: m_Name
@@ -2060,6 +2065,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2333585605836179164, guid: e0b5b157b36ff644eab96cf662a89225,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1c714477eea04645a61fbb626a839aa, type: 2}
     - target: {fileID: 919132149155446097, guid: e0b5b157b36ff644eab96cf662a89225,
         type: 3}
       propertyPath: m_Name
@@ -4130,6 +4140,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LivingroomLampStand
       objectReference: {fileID: 0}
+    - target: {fileID: 5430213050572906498, guid: 9adf407e5d048d545af2b0be73ad5e80,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1c714477eea04645a61fbb626a839aa, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
