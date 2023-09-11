@@ -20,6 +20,12 @@ public class FireExtinguisher : MonoBehaviour
     void Start()
     {
         lastShot = Time.time;
+        Life.onDeath += DeactivateSelf;
+    }
+
+    void OnDestroy()
+    {
+        Life.onDeath -= DeactivateSelf;
     }
 
     void Update()
@@ -36,5 +42,10 @@ public class FireExtinguisher : MonoBehaviour
         currentFoam = Instantiate(foamPrefab, spawnPoint.position, spawnPoint.rotation);
         currentFoam.transform.SetParent(null);
         currentFoam.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower);
+    }
+
+    private void DeactivateSelf()
+    {
+        gameObject.SetActive(false);
     }
 }
