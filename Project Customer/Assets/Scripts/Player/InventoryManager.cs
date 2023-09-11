@@ -40,4 +40,9 @@ public class InventoryManager : MonoBehaviour
     {
         hasFireExtinguisher = true;
     }
+
+    public bool GetFireExtinguisherHoldState()
+    {
+        return hasFireExtinguisher;
+    }
 }

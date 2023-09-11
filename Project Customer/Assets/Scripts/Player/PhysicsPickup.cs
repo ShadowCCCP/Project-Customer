@@ -129,4 +129,9 @@ public class PhysicsPickup : MonoBehaviour
         currentObject = null;
         objectName = null;
     }
+
+    public bool GetRotationState()
+    {
+        return isRotating;
+    }
 }
