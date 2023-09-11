@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 5418479963829747045}
   - component: {fileID: 85038287209092439}
   m_Layer: 5
-  m_Name: ItemLookedAt
+  m_Name: LookatItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,7 +744,7 @@ RectTransform:
   - {fileID: 74230586523877106}
   - {fileID: 6078034998697150883}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -851,10 +851,10 @@ MonoBehaviour:
     LookAtDescription: q
   - Name: Sink
     Description: 
-    LookAtDescription: Click to turn on
+    LookAtDescription: Click to turn On
   - Name: Lock
     Description: 
-    LookAtDescription: Maybe it needs a key
+    LookAtDescription: Maybe I need a key
   lookAtDistance: 10
   pickupMask:
     serializedVersion: 2
@@ -862,6 +862,7 @@ MonoBehaviour:
   lookAtMask:
     serializedVersion: 2
     m_Bits: 256
+  useOutline: 1
   shaderMaterial: {fileID: 2100000, guid: 93ef7d6b2245cdf4ea680996ef104f61, type: 2}
   shaderMaterialEmpty: {fileID: 2100000, guid: 38069117300dbfa40b804732be4675e6, type: 2}
 --- !u!114 &5017020635928904964

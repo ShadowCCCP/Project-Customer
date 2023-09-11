@@ -20,8 +20,10 @@ public class WaterInteractable : MonoBehaviour
 
     // For the bucket rotation...
     Vector3 targetRotationEulerAngles = new Vector3(0, 0, 0);
-    float maxDegreesPerSecond = 180;
     float rotationTolerance = 1;
+
+    [SerializeField]
+    float maxDegreesPerSecond = 180;
 
 
     // Update is called once per frame

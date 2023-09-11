@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -402,18 +402,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &192825776 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 85038287209092439, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-    type: 3}
-  m_PrefabInstance: {fileID: 7716785633886676218}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &218406347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,20 +2419,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1945376489036371455, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: m_Name
-      value: LookatItem
-      objectReference: {fileID: 0}
     - target: {fileID: 2936946254549839577, guid: ce9605c5b67ab1d41adba4a97dc3437e,
         type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2936946254549839577, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4285594919413973924, guid: ce9605c5b67ab1d41adba4a97dc3437e,
         type: 3}
@@ -2550,71 +2528,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: shader
-      value: 
-      objectReference: {fileID: 2100000, guid: 93ef7d6b2245cdf4ea680996ef104f61, type: 2}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: _camera
-      value: 
-      objectReference: {fileID: 104758963}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: useOutline
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: LookedAtItem
-      value: 
-      objectReference: {fileID: 192825776}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: shaderMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 93ef7d6b2245cdf4ea680996ef104f61, type: 2}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: lookAtMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: Objects.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: shaderMaterialEmpty
-      value: 
-      objectReference: {fileID: 2100000, guid: 38069117300dbfa40b804732be4675e6, type: 2}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: Objects.Array.data[5].Name
-      value: Sink
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: Objects.Array.data[6].Name
-      value: Lock
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: Objects.Array.data[5].Description
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: Objects.Array.data[5].LookAtDescription
-      value: Click to turn On
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919707323617154903, guid: ce9605c5b67ab1d41adba4a97dc3437e,
-        type: 3}
-      propertyPath: Objects.Array.data[6].LookAtDescription
-      value: Maybe I need a key
       objectReference: {fileID: 0}
     - target: {fileID: 5017020635928904964, guid: ce9605c5b67ab1d41adba4a97dc3437e,
         type: 3}
