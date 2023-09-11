@@ -20,6 +20,10 @@ public class Fire : MonoBehaviour
     [SerializeField]
     bool electricFire = false;
 
+    [SerializeField]
+    float cooldown = 0.75f;
+    float lastHit;
+
     WaterInteractable waterInteractable;
 
     ParticleSystem fire;
@@ -57,9 +61,9 @@ public class Fire : MonoBehaviour
     {
         FlameExtinguished();
         SpreadFire();
+        FireGrowth();
 
-
-        //Testing();
+        Testing();
     }
 
     private void Testing()
@@ -74,60 +78,73 @@ public class Fire : MonoBehaviour
         }
     }
 
+    private void FireGrowth()
+    {
+        ParticleSystem.MainModule pSMain = fire.main;
+        float lifeValue = (float)life / (float)maxLife;
+        Debug.Log(lifeValue);
+        pSMain.startLifetime = Mathf.Lerp(1.1f, 2.1f, lifeValue);
+    }
+
     private void OnParticleCollision(GameObject other)
     {
-        if (other.gameObject.tag == "FoamBullet")
+        if(Time.time - lastHit > cooldown)
         {
-            Life--;
-        }
-        if (other.GetComponent<WaterInteractable>())
-        {
-            waterInteractable = other.GetComponent<WaterInteractable>();
-            if (!waterInteractable.trueIfBlanket)
+            if (other.gameObject.tag == "FoamBullet")
             {
-                /*if (life <= fireLifeEmptyBucket && !waterInteractable.GetWetStatus()) //empty bucket
-                {
-                    life = 0;
-                    //Debug.Log("empty extinguished");
-                }*/
-                if (Life <= fireLifeFilledBucket && waterInteractable.GetWetStatus() && !electricFire) //water bucket
-                {
-                    ElectricFireCheck();
-                    //life = 0;
-                    //Debug.Log("filled extinguished");
-                    //waterInteractable.Dry();
-                }
-
+                Life--;
             }
-            else
+            if (other.GetComponent<WaterInteractable>())
             {
-                if (!waterInteractable.GetWetStatus()) // dry blanket
+                waterInteractable = other.GetComponent<WaterInteractable>();
+                if (!waterInteractable.trueIfBlanket)
                 {
-                    //destroy?
+                    /*if (life <= fireLifeEmptyBucket && !waterInteractable.GetWetStatus()) //empty bucket
+                    {
+                        life = 0;
+                        //Debug.Log("empty extinguished");
+                    }*/
+                    if (Life <= fireLifeFilledBucket && waterInteractable.GetWetStatus() && !electricFire) //water bucket
+                    {
+                        ElectricFireCheck();
+                        //life = 0;
+                        //Debug.Log("filled extinguished");
+                        //waterInteractable.Dry();
+                    }
+
+                }
+                else
+                {
+                    if (!waterInteractable.GetWetStatus()) // dry blanket
+                    {
+                        //destroy?
+                        gameObject.SetActive(false);
+                        Debug.Log("level failed");
+                    }
+                    else if (Life <= fireLifeWetBlanket && waterInteractable.GetWetStatus() && !electricFire) //wet blanket
+                    {
+                        ElectricFireCheck();
+                        //life = 0;
+                        //waterInteractable.Dry();
+                        //Debug.Log("filled extinguished");
+                    }
+                }
+            }
+
+            if (other.gameObject.tag == "ElectricFireStop")
+            {
+                if (electricFire)
+                {
+                    Life = 0;
+                }
+                else
+                {
                     gameObject.SetActive(false);
                     Debug.Log("level failed");
                 }
-                else if (Life <= fireLifeWetBlanket && waterInteractable.GetWetStatus() && !electricFire) //wet blanket
-                {
-                    ElectricFireCheck();
-                    //life = 0;
-                    //waterInteractable.Dry();
-                    //Debug.Log("filled extinguished");
-                }
             }
-        }
 
-        if (other.gameObject.tag == "ElectricFireStop")
-        {
-            if (electricFire)
-            {
-                Life = 0;
-            }
-            else
-            {
-                gameObject.SetActive(false);
-                Debug.Log("level failed");
-            }
+            lastHit = Time.time;
         }
     }
 

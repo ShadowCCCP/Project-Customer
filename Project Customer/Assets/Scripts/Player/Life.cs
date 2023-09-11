@@ -14,7 +14,8 @@ public class Life : MonoBehaviour
     private int fireDamage = 20;
 
     [SerializeField]
-    float fireDamageRate = 1;
+    float fireDamageRate = 2;
+    float normalFireDamageRate;
 
     bool canTakeDamage = true;
     bool triggerOnce;
@@ -25,7 +26,7 @@ public class Life : MonoBehaviour
     //private float fireDamageRate = 0.5f;
     void Start()
     {
-        
+        normalFireDamageRate = fireDamageRate;
     }
 
     // Update is called once per frame
@@ -63,7 +64,7 @@ public class Life : MonoBehaviour
             fireDamageRate -= Time.deltaTime;
             if (fireDamageRate < 0)
             {
-                fireDamageRate = 2;
+                fireDamageRate = normalFireDamageRate;
                 canTakeDamage = true;
             }
         }
