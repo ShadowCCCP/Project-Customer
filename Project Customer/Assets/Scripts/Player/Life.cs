@@ -38,7 +38,7 @@ public class Life : MonoBehaviour
     {
         if (other.gameObject.tag == "Fire")
         {
-            if (canTakeDamage)
+            if (canTakeDamage && life >0)
             {
                 life -= fireDamage;
                 canTakeDamage = false;

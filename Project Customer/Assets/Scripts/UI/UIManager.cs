@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -98,7 +99,7 @@ public class UIManager : MonoBehaviour
             OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
         }
 
-
+        
 
     }
 
@@ -146,14 +147,21 @@ public class UIManager : MonoBehaviour
         if (Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, lookAtMask))
         {
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
-                if (rend)
-                {
-                    rend.material = shaderMaterialEmpty;
-                }
+                
+                //Debug.Log(rend.materials.Length);
+                    if (rend)
+                    {
+                        rend.material = shaderMaterialEmpty;
+                    }
+                
                 rend = hitInfo.collider.GetComponent<Renderer>();
+               // if (rend.materials.Length >= 2)
+                //{
 
                 rend.material = shaderMaterial;
-               /// rend.materials[1] = shaderMaterial;
+                    /// rend.materials[1] = shaderMaterial;
+                    /// 
+                //}
             }
             LookedAtItem.text = hitInfo.transform.name;
             LookedAtItemDesc.text = findLookAtDesc(hitInfo.transform.name);
@@ -166,9 +174,11 @@ public class UIManager : MonoBehaviour
             LookedAtItemDesc.text = null;
             if (rend && useOutline)
             {
-                rend.material = shaderMaterialEmpty;
-                //rend.materials[1] = shaderMaterialEmpty;
-               
+                //if (rend.materials.Length >= 2)
+                //{
+                    rend.material = shaderMaterialEmpty;
+                    //rend.materials[1] = shaderMaterialEmpty;
+                //}
             }
 
         }
