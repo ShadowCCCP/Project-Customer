@@ -82,7 +82,6 @@ public class Fire : MonoBehaviour
     {
         ParticleSystem.MainModule pSMain = fire.main;
         float lifeValue = (float)life / (float)maxLife;
-        Debug.Log(lifeValue);
         pSMain.startLifetime = Mathf.Lerp(1.1f, 2.1f, lifeValue);
     }
 
