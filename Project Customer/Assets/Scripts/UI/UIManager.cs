@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI LookedAtItem;
     public TextMeshProUGUI LookedAtItemDesc;
     public TextMeshProUGUI ExtraHint;
+    public TextMeshProUGUI Objective;
 
 
     [Serializable]
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
 
     private PhysicsPickup playerPhysicsPickup;
     private Life playerLife;
+    private ObjectivesScript objectivesScript;
 
     Camera _camera;
 
@@ -52,6 +54,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _camera = FindObjectOfType<Camera>();
+        objectivesScript = FindObjectOfType<ObjectivesScript>();
 
         ItemDescription.text = null;
         LookedAtItem.text = null;
@@ -99,7 +102,10 @@ public class UIManager : MonoBehaviour
             OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
         }
 
-        
+        if(Objective.text != objectivesScript.GetCurrentObjective().ToString())
+        {
+            Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
+        }
 
     }
 
