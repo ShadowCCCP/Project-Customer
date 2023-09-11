@@ -15,6 +15,7 @@ public class MoveAnimation : MonoBehaviour
     [SerializeField]
     Transform _camera;
 
+    bool stepWasUp = true;
     float toggleSpeed = 3;
     Vector3 startPos;
     Rigidbody rb;
@@ -54,6 +55,7 @@ public class MoveAnimation : MonoBehaviour
     private void PlayMotion(Vector3 motion)
     {
         _camera.localPosition += motion;
+        PlayStepSound();
     }
 
     private Vector3 StepMotion()
@@ -61,5 +63,18 @@ public class MoveAnimation : MonoBehaviour
         Vector3 pos = Vector3.zero;
         pos.y += Mathf.Sin(Time.time * frequency) * amplitude;
         return pos;
+    }
+
+    private void PlayStepSound()
+    {
+        if(_camera.localPosition.y <= Mathf.Sin((-Mathf.PI / 2) / frequency) * amplitude && stepWasUp)
+        {
+            stepWasUp = false;
+        }
+
+        if(_camera.localPosition.y >= 0)
+        {
+            stepWasUp = true;
+        }
     }
 }
