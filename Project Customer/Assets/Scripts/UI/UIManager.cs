@@ -146,6 +146,10 @@ public class UIManager : MonoBehaviour
         if (Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, lookAtMask))
         {
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
+                if (rend)
+                {
+                    rend.material = shaderMaterialEmpty;
+                }
                 rend = hitInfo.collider.GetComponent<Renderer>();
 
                 rend.material = shaderMaterial;
