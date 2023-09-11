@@ -15,6 +15,9 @@ public class ObjectivesScript : MonoBehaviour
 
     [SerializeField]
     GameObject[] placesToGo;
+
+    [SerializeField]
+    GameObject[] itemsToPickUp;
     //walk 
     //jump
     //crouch
@@ -41,7 +44,8 @@ public class ObjectivesScript : MonoBehaviour
         switch (index)
         {
             case 0:
-                walkObj();
+                pickUpSpecificItemObj();
+                //walkObj();
                 break;
             case 1:
                 jumpObj(); 
@@ -134,6 +138,23 @@ public class ObjectivesScript : MonoBehaviour
             index++;
         }
 
+    }
+
+    int itemToPickUpIndex = 0;
+
+    void pickUpSpecificItemObj()
+    {
+        if (physicsPickup.currentObject)
+        {
+            if (physicsPickup.currentObject.name == itemsToPickUp[itemToPickUpIndex].name)
+            {
+                if (itemToPickUpIndex <= itemsToPickUp.Length)
+                {
+                    itemToPickUpIndex++;
+                }
+                index++;
+            }
+        }
     }
 
 
