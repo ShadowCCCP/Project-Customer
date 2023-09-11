@@ -22,6 +22,9 @@ public class Fire : MonoBehaviour
 
     WaterInteractable waterInteractable;
 
+    ParticleSystem fire;
+    bool extinguished;
+
     // For firespreading...
     [SerializeField]
     Fire[] fireSpread;
@@ -46,6 +49,7 @@ public class Fire : MonoBehaviour
 
     void Start()
     {
+        fire = GetComponent<ParticleSystem>();
         waterInteractable = FindObjectOfType<WaterInteractable>();
     }
 
@@ -53,6 +57,7 @@ public class Fire : MonoBehaviour
     {
         FlameExtinguished();
         SpreadFire();
+
 
         //Testing();
     }
@@ -69,14 +74,13 @@ public class Fire : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnParticleCollision(GameObject other)
     {
         if (other.gameObject.tag == "FoamBullet")
         {
             Life--;
-            gameObject.SetActive(false);
         }
-        if (other.GetComponent<WaterInteractable>()) 
+        if (other.GetComponent<WaterInteractable>())
         {
             waterInteractable = other.GetComponent<WaterInteractable>();
             if (!waterInteractable.trueIfBlanket)
@@ -93,7 +97,7 @@ public class Fire : MonoBehaviour
                     //Debug.Log("filled extinguished");
                     //waterInteractable.Dry();
                 }
-                
+
             }
             else
             {
@@ -104,7 +108,7 @@ public class Fire : MonoBehaviour
                     Debug.Log("level failed");
                 }
                 else if (Life <= fireLifeWetBlanket && waterInteractable.GetWetStatus() && !electricFire) //wet blanket
-                { 
+                {
                     ElectricFireCheck();
                     //life = 0;
                     //waterInteractable.Dry();
@@ -148,6 +152,17 @@ public class Fire : MonoBehaviour
             {
                 smoke.SetActive(true);
             }
+            fire.Stop();
+            extinguished = true;
+        }
+        else if(life > 0 && extinguished)
+        {
+            fire.Play();
+            extinguished = false;
+        }
+
+        if(!fire.isPlaying)
+        {
             gameObject.SetActive(false);
         }
     }

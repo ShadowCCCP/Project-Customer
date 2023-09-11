@@ -83,6 +83,4 @@ public class WaterInteractable : MonoBehaviour
     {
         return wetBool;
     }
-
-    
 }
