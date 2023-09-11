@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.328
+    m_Value: 0.356
   response:
     m_OverrideState: 1
     m_Value: 1
@@ -40,10 +40,10 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.8990483, y: 1, z: 0.99006253, w: -0.015772872}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.0052575427}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.8855275, z: 0.88222045, w: 0}
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
   gain:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 1, w: 0}
@@ -63,10 +63,10 @@ MonoBehaviour:
   - {fileID: 5542615267875819204}
   - {fileID: 6869713049761567938}
   - {fileID: 2167770023168749630}
+  - {fileID: -1388082866848878471}
   - {fileID: 8125457759177144545}
   - {fileID: 2169886892337145272}
   - {fileID: -9094119226244031845}
-  - {fileID: -1388082866848878471}
 --- !u!114 &2167770023168749630
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -167,11 +167,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   postExposure:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -0.36
   contrast:
     m_OverrideState: 1
-    m_Value: 15
+    m_Value: 14.4
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -179,7 +179,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   saturation:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 17
 --- !u!114 &6869713049761567938
 MonoBehaviour:
@@ -249,7 +249,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.23
+    m_Value: 0.239
   smoothness:
     m_OverrideState: 1
     m_Value: 0.629
