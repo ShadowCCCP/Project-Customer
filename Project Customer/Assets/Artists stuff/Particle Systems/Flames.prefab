@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7011417756442653128
 Transform:
   m_ObjectHideFlags: 0
@@ -25,8 +25,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458364562188274944}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.292692, y: 3.2700005, z: 0.81000066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0.095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,8 +45,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.5896226, b: 0.27044016, a: 1}
-  m_Intensity: 1
-  m_Range: 38.7
+  m_Intensity: 1.2
+  m_Range: 1071.97
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2579174383610612512}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.67, y: 0.15, z: -1.99}
+  m_LocalPosition: {x: -0.904, y: 0.316, z: -3.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -168,7 +168,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -235,7 +235,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4.23
+      scalar: 2.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -342,7 +342,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -989,7 +989,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 14.82
+      scalar: 21.18
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1438,17 +1438,17 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0}
         key1: {r: 1, g: 0.80249107, b: 0.10062885, a: 0.1882353}
-        key2: {r: 1, g: 0.4414282, b: 0, a: 0.9137255}
+        key2: {r: 1, g: 0.4414282, b: 0, a: 1}
         key3: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0.07058824}
-        key4: {r: 0.2830189, g: 0.2611843, b: 0.24207903, a: 0.22352941}
-        key5: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
-        key6: {r: 0, g: 0, b: 0, a: 0.5176471}
-        key7: {r: 1, g: 0.2800839, b: 0, a: 0}
+        key4: {r: 0.22898793, g: 0.22799549, b: 0.22712708, a: 0.22352941}
+        key5: {r: 0, g: 0, b: 0, a: 1}
+        key6: {r: 0, g: 0, b: 0, a: 0.08627451}
+        key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 771
         ctime1: 7132
         ctime2: 13107
         ctime3: 20046
-        ctime4: 41249
+        ctime4: 21010
         ctime5: 43176
         ctime6: 65535
         ctime7: 65535
@@ -3921,7 +3921,7 @@ ParticleSystem:
     radiusScale: 0.67
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 1
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -3948,17 +3948,17 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 1
-    ratio: 0.1
+    enabled: 0
+    ratio: 1
     light: {fileID: 244996300013752583}
-    randomDistribution: 1
+    randomDistribution: 0
     color: 0
     range: 1
     intensity: 1
     rangeCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.06
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4011,7 +4011,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.89
       minScalar: 1
       maxCurve:
         serializedVersion: 2

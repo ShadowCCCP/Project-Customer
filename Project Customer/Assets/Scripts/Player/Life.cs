@@ -19,22 +19,26 @@ public class Life : MonoBehaviour
     bool canTakeDamage = true;
     bool triggerOnce;
 
+    public float Oxygen = 100;
+    public float OxygenRundownSpeed = 0.5f;
+
     //private float fireDamageRate = 0.5f;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         timer();
+        oxygenRundown();
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Fire")
         {
-            if (canTakeDamage)
+            if (canTakeDamage && life > 0)
             {
                 life -= fireDamage;
                 canTakeDamage = false;
@@ -42,7 +46,7 @@ public class Life : MonoBehaviour
 
             if (life <= 0)
             {
-                if(onDeath != null && !triggerOnce)
+                if (onDeath != null && !triggerOnce)
                 {
                     onDeath();
                     triggerOnce = true;
@@ -50,7 +54,7 @@ public class Life : MonoBehaviour
             }
         }
     }
-   
+
     void timer()
     {
         if (!canTakeDamage)
@@ -63,8 +67,23 @@ public class Life : MonoBehaviour
             }
         }
     }
+
+    void oxygenRundown()
+    {
+        Oxygen -= Time.deltaTime * OxygenRundownSpeed;
+        if (Oxygen <= 0)
+        {
+            life = 0;
+        }
+    }
+
     public int GetLife()
     {
         return life;
+    }
+
+    public int GetOxygen()
+    {
+        return (int)Oxygen;
     }
 }
