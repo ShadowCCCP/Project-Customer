@@ -18,6 +18,7 @@ public class ObjectivesScript : MonoBehaviour
 
     [SerializeField]
     GameObject[] itemsToPickUp;
+
     //walk 
     //jump
     //crouch
@@ -29,23 +30,27 @@ public class ObjectivesScript : MonoBehaviour
     //go to a place
     //pickup spec obj
 
-    int index = 0;
+    //capital sensitive
+
+    int objectiveIndex = 0;
+    int objectiveType;
 
     void Start()
     {
         physicsPickup = FindObjectOfType<PhysicsPickup>();
         inventoryManager = FindObjectOfType<InventoryManager>();
         collisionCheckForObjective = FindObjectOfType<CollisionCheckForObjective>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (index)
+        checkObjType();
+        switch (objectiveType)
         {
             case 0:
-                pickUpSpecificItemObj();
-                //walkObj();
+                walkObj();
                 break;
             case 1:
                 jumpObj(); 
@@ -68,29 +73,76 @@ public class ObjectivesScript : MonoBehaviour
             case 7:
                 goToPlaceObj();
                 break;
+            case 8:
+                pickUpSpecificItemObj();
+                break;
 
         }
 
     }
 
+    
+
+    void checkObjType()
+    {
+        if (Objectives[objectiveIndex].Contains("Walk") || Objectives[objectiveIndex].Contains("walk"))
+        {
+            objectiveType = 0;
+        }
+        if (Objectives[objectiveIndex].Contains("Jump") || Objectives[objectiveIndex].Contains("jump"))
+        {
+            objectiveType = 1;
+        }
+        if (Objectives[objectiveIndex].Contains("Crouch") || Objectives[objectiveIndex].Contains("crouch"))
+        {
+            objectiveType = 2;
+        }
+        if (Objectives[objectiveIndex].Contains("Pick up") || Objectives[objectiveIndex].Contains("pick up"))
+        {
+            objectiveType = 3;
+        }
+        if (Objectives[objectiveIndex].Contains("rotate") || Objectives[objectiveIndex].Contains("Rotate"))
+        {
+            objectiveType = 4;
+        }
+        if (Objectives[objectiveIndex].Contains("Throw") || Objectives[objectiveIndex].Contains("throw"))
+        {
+            objectiveType = 5;
+        }
+        if (Objectives[objectiveIndex].Contains("extinguish") || Objectives[objectiveIndex].Contains("Extinguish"))
+        {
+            objectiveType = 6;
+        }
+        if (Objectives[objectiveIndex].Contains("Go to") || Objectives[objectiveIndex].Contains("go to"))
+        {
+            objectiveType = 7;
+        }
+        if (Objectives[objectiveIndex].Contains("Pick up the") || Objectives[objectiveIndex].Contains("pick up the"))
+        {
+            objectiveType = 8;
+        }
+    }
+
+    
+
     void walkObj()
     {
         if (Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical")!= 0)
         {
-            index++;
+            objectiveIndex++;
         }
     }
 
     void jumpObj()
     {
         if (Input.GetKeyDown(KeyCode.Space)){
-            index++;
+            objectiveIndex++;
         }
     }
     void crouchObj()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl)){
-            index++;
+            objectiveIndex++;
         }
     }
 
@@ -98,7 +150,7 @@ public class ObjectivesScript : MonoBehaviour
     {
         if(physicsPickup.currentObject != null)
         {
-            index++;
+            objectiveIndex++;
         }
     }
 
@@ -106,15 +158,17 @@ public class ObjectivesScript : MonoBehaviour
     {
         if (physicsPickup.GetRotationState())
         {
-            index++;
+            objectiveIndex++;
         }
     }
 
     void throwItemObj()
     {
-        if(physicsPickup.currentObject != null && Input.GetMouseButtonDown(0))
+        //Debug.Log(physicsPickup.currentObject.name);
+        if(/*physicsPickup.currentObject != null && */Input.GetMouseButtonDown(0))
         {
-            index++;
+            Debug.Log("throw");
+            objectiveIndex++;
         }
     }
 
@@ -122,7 +176,7 @@ public class ObjectivesScript : MonoBehaviour
     {
         if(inventoryManager.GetFireExtinguisherHoldState() && Input.GetMouseButtonDown(0))
         {
-            index++;
+            objectiveIndex++;
         }
     }
     int placeIndex = 0;
@@ -135,7 +189,7 @@ public class ObjectivesScript : MonoBehaviour
             {
                 placeIndex++;
             }
-            index++;
+            objectiveIndex++;
         }
 
     }
@@ -152,7 +206,7 @@ public class ObjectivesScript : MonoBehaviour
                 {
                     itemToPickUpIndex++;
                 }
-                index++;
+                objectiveIndex++;
             }
         }
     }
@@ -163,6 +217,6 @@ public class ObjectivesScript : MonoBehaviour
 
     public string GetCurrentObjective()
     {
-        return Objectives[index];
+        return Objectives[objectiveIndex];
     }
 }

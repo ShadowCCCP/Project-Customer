@@ -637,7 +637,7 @@ PrefabInstance:
         type: 3}
       propertyPath: fireSpread.Array.data[0]
       value: 
-      objectReference: {fileID: 1575948829}
+      objectReference: {fileID: 0}
     - target: {fileID: 7701242707172146307, guid: b7970923cd49f984b81a9ee6797138b4,
         type: 3}
       propertyPath: m_Enabled
@@ -869,6 +869,111 @@ Transform:
   m_Children: []
   m_Father: {fileID: 697048684}
   m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &531862679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531862683}
+  - component: {fileID: 531862682}
+  - component: {fileID: 531862681}
+  - component: {fileID: 531862680}
+  m_Layer: 0
+  m_Name: PlaceToGoTO (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &531862680
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531862679}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &531862681
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531862679}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &531862682
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531862679}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &531862683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531862679}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.75, y: 3.3211937, z: -9.46}
+  m_LocalScale: {x: 4.2526, y: 5.4657, z: 7.4364}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &635399196
 GameObject:
@@ -1130,18 +1235,6 @@ Transform:
   m_Father: {fileID: 218406350}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &712841008 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5144223011239194447, guid: b7970923cd49f984b81a9ee6797138b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3047004479516726499}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0000c0c359ab24a408378fab7e6c4811, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &811528771 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1185900252338530153, guid: e7fc0d16171e9a24fb228a873b8a3d76,
@@ -1392,6 +1485,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7435458646036682235}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1302852425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1852501199635348904, guid: 1d50e86026b2dc34eb4a6fa8b66e11bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6149369386822723250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1403621735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,18 +1596,6 @@ Transform:
   m_Father: {fileID: 697048684}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1575948829 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5144223011239194447, guid: b7970923cd49f984b81a9ee6797138b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 236526243}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0000c0c359ab24a408378fab7e6c4811, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1630167451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,6 +1833,12 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &1770849594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3792505508781116023, guid: 5851dfe50e41a1f469125ad1ff20bcda,
+    type: 3}
+  m_PrefabInstance: {fileID: 1551018873669353658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1800531313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,7 +2396,7 @@ PrefabInstance:
         type: 3}
       propertyPath: fireSpread.Array.data[0]
       value: 
-      objectReference: {fileID: 712841008}
+      objectReference: {fileID: 0}
     - target: {fileID: 7701242707172146307, guid: b7970923cd49f984b81a9ee6797138b4,
         type: 3}
       propertyPath: m_Enabled
@@ -2395,23 +2488,98 @@ PrefabInstance:
     - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: Objectives.Array.size
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: placesToGo.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[0]
+      value: Throw the item by left clicking
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[1]
+      value: go to there
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[2]
+      value: go to other there
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[3]
+      value: Pick up the bucket
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[4]
+      value: Pick up the blanket
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[5]
+      value: Use the fire Extinguisher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[6]
+      value: Pick up item
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[7]
+      value: Walk using WASD or arrow keys
       objectReference: {fileID: 0}
     - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: Objectives.Array.data[8]
-      value: done
+      value: Jump using space
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[9]
+      value: Crouch using Left Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: itemsToPickUp.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: placesToGo.Array.data[0]
       value: 
       objectReference: {fileID: 1951476731}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: placesToGo.Array.data[1]
+      value: 
+      objectReference: {fileID: 531862679}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[10]
+      value: Rotate Item holding right click
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: Objectives.Array.data[11]
+      value: done
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: itemsToPickUp.Array.data[0]
+      value: 
+      objectReference: {fileID: 1770849594}
+    - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: itemsToPickUp.Array.data[1]
+      value: 
+      objectReference: {fileID: 1302852425}
     - target: {fileID: 7585445722787696598, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: m_RootOrder

@@ -64,7 +64,7 @@ Transform:
   m_Children:
   - {fileID: 8338304393428918563}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -40, y: 0, z: 0}
 --- !u!33 &7636304925443533855
 MeshFilter:
@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ed386415d67df4d96566bb4e8bd693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foamParticle: {fileID: 3628778702145002060, guid: ae1e8c14b3950d545a6ae014b9a79178,
+    type: 3}
   foamPrefab: {fileID: 8493266595725129645, guid: 5c12a1e8da93ec44791529383c2d9e15,
     type: 3}
   spawnPoint: {fileID: 8338304393428918563}
