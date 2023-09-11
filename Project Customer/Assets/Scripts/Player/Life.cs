@@ -34,11 +34,12 @@ public class Life : MonoBehaviour
         timer();
         oxygenRundown();
     }
-    private void OnTriggerStay(Collider other)
+    
+    private void OnParticleCollision(GameObject other)
     {
         if (other.gameObject.tag == "Fire")
         {
-            if (canTakeDamage && life >0)
+            if (canTakeDamage && life > 0)
             {
                 life -= fireDamage;
                 canTakeDamage = false;
@@ -46,7 +47,7 @@ public class Life : MonoBehaviour
 
             if (life <= 0)
             {
-                if(onDeath != null && !triggerOnce)
+                if (onDeath != null && !triggerOnce)
                 {
                     onDeath();
                     triggerOnce = true;
@@ -54,7 +55,7 @@ public class Life : MonoBehaviour
             }
         }
     }
-   
+
     void timer()
     {
         if (!canTakeDamage)

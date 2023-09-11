@@ -5,6 +5,9 @@ using UnityEngine;
 public class FireExtinguisher : MonoBehaviour
 {
     [SerializeField]
+    ParticleSystem foamParticle;
+
+    [SerializeField]
     FoamBullet foamPrefab;
 
     [SerializeField]
@@ -35,10 +38,16 @@ public class FireExtinguisher : MonoBehaviour
             Shoot();
             lastShot = Time.time;
         }
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            foamParticle.Stop();
+        }
     }
 
     private void Shoot()
     {
+        foamParticle.Play();
         currentFoam = Instantiate(foamPrefab, spawnPoint.position, spawnPoint.rotation);
         currentFoam.transform.SetParent(null);
         currentFoam.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower);
