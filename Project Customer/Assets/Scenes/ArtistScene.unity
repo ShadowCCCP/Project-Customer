@@ -5864,6 +5864,11 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.51
       objectReference: {fileID: 0}
+    - target: {fileID: 6869898518010677468, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: amplitude
+      value: 0.0069
+      objectReference: {fileID: 0}
     - target: {fileID: 7412038352788338129, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: movementSpeed
