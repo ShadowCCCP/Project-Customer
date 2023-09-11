@@ -13,7 +13,7 @@ public class Fire : MonoBehaviour
     [SerializeField]
     int fireLifeFilledBucket = 5;
     //[SerializeField]
-   // int fireLifeBlanket = 5;
+    // int fireLifeBlanket = 5;
     [SerializeField]
     int fireLifeWetBlanket = 5;
 
@@ -21,6 +21,27 @@ public class Fire : MonoBehaviour
     bool electricFire = false;
 
     WaterInteractable waterInteractable;
+
+    // For firespreading...
+    [SerializeField]
+    Fire[] fireSpread;
+
+    [SerializeField]
+    int maxLife = 5;
+
+    int lastLife;
+    List<Fire> spawnedFiresTracker = new List<Fire>();
+
+    // Use this Life property instead of the "life" variable...
+    public int Life
+    {
+        get { return life; }
+        set
+        {
+            lastLife = life;
+            life = value;
+        }
+    }
     
 
     void Start()
@@ -28,24 +49,32 @@ public class Fire : MonoBehaviour
         waterInteractable = FindObjectOfType<WaterInteractable>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(life <= 0)
-        {
-            if (smoke != null)
-            {
-                smoke.SetActive(true);
-            }
-            Destroy(gameObject);
-        }   
+        FlameExtinguished();
+        SpreadFire();
+
+        //Testing();
     }
+
+    private void Testing()
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            Life++;
+        }
+        else if(Input.GetKeyDown(KeyCode.O))
+        {
+            Life--;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "FoamBullet")
         {
-            life--;
-            Destroy(other.gameObject);
+            Life--;
+            gameObject.SetActive(false);
         }
         if (other.GetComponent<WaterInteractable>()) 
         {
@@ -57,9 +86,9 @@ public class Fire : MonoBehaviour
                     life = 0;
                     //Debug.Log("empty extinguished");
                 }*/
-                if (life <= fireLifeFilledBucket && waterInteractable.GetWetStatus() && !electricFire) //water bucket
+                if (Life <= fireLifeFilledBucket && waterInteractable.GetWetStatus() && !electricFire) //water bucket
                 {
-                    electricFireCheck();
+                    ElectricFireCheck();
                     //life = 0;
                     //Debug.Log("filled extinguished");
                     //waterInteractable.Dry();
@@ -71,12 +100,12 @@ public class Fire : MonoBehaviour
                 if (!waterInteractable.GetWetStatus()) // dry blanket
                 {
                     //destroy?
-                    Destroy(other.gameObject);
+                    gameObject.SetActive(false);
                     Debug.Log("level failed");
                 }
-                else if (life <= fireLifeWetBlanket && waterInteractable.GetWetStatus() && !electricFire) //wet blanket
+                else if (Life <= fireLifeWetBlanket && waterInteractable.GetWetStatus() && !electricFire) //wet blanket
                 { 
-                    electricFireCheck();
+                    ElectricFireCheck();
                     //life = 0;
                     //waterInteractable.Dry();
                     //Debug.Log("filled extinguished");
@@ -88,21 +117,21 @@ public class Fire : MonoBehaviour
         {
             if (electricFire)
             {
-                life = 0;
+                Life = 0;
             }
             else
             {
-                Destroy(other.gameObject);
+                gameObject.SetActive(false);
                 Debug.Log("level failed");
             }
         }
     }
 
-    void electricFireCheck()
+    private void ElectricFireCheck()
     {
         if (!electricFire)
         {
-            life = 0;
+            Life = 0;
             waterInteractable.Dry();
         }
         else
@@ -111,5 +140,41 @@ public class Fire : MonoBehaviour
         }
     }
 
+    private void FlameExtinguished()
+    {
+        if (Life <= 0)
+        {
+            if (smoke != null)
+            {
+                smoke.SetActive(true);
+            }
+            gameObject.SetActive(false);
+        }
+    }
 
+    private void SpreadFire()
+    {
+        KeepTrackOfInstances();
+        if (fireSpread.Length > 0 && Life == maxLife && lastLife < Life && spawnedFiresTracker.Count == 0)
+        {
+            for (int i = 0; i < fireSpread.Length; i++)
+            {
+                fireSpread[i].gameObject.SetActive(true);
+                spawnedFiresTracker.Add(fireSpread[i]);
+            }
+        }
+    }
+
+    private void KeepTrackOfInstances()
+    {
+        for (int i = 0; i < spawnedFiresTracker.Count; i++)
+        {
+            if (!spawnedFiresTracker[i].isActiveAndEnabled)
+            {
+                // Set back Life to 1 so that it has life in case it respawns...
+                spawnedFiresTracker[i].Life = 1;
+                spawnedFiresTracker.Remove(spawnedFiresTracker[i]);
+            }
+        }
+    }
 }
