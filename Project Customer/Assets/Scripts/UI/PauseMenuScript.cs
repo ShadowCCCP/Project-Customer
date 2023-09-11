@@ -59,11 +59,7 @@ public class PauseMenuScript : MonoBehaviour
 
     public void RestartLevel()
     {
-        playerRotateCamera.LockCursor();
-        playerModel.SetActive(true);
-        gamePaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
     }
     public void QuitGame()
     {

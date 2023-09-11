@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerDeath : MonoBehaviour
 {
     [SerializeField]
-    Transform playerModel;
+    GameObject playerModel;
 
     [SerializeField]
     Transform _camera;
@@ -36,6 +36,7 @@ public class PlayerDeath : MonoBehaviour
 
     void Start()
     {
+        playerModel.SetActive(true);
         animCam = cameraHolder.GetComponent<Animator>();
         animModel = playerModel.GetComponent<Animator>();
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
