@@ -54,6 +54,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flames
       objectReference: {fileID: 0}
+    - target: {fileID: 2579174383610612512, guid: 144fe6d91347d28478de84b8db6a86cd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fire
+      objectReference: {fileID: 0}
     - target: {fileID: 2682534514857000500, guid: 144fe6d91347d28478de84b8db6a86cd,
         type: 3}
       propertyPath: m_RootOrder
@@ -141,6 +146,8 @@ MonoBehaviour:
   fireLifeFilledBucket: 5
   fireLifeWetBlanket: 5
   electricFire: 0
+  cookingFire: 0
+  cooldown: 0.75
   fireSpread: []
   maxLife: 5
 --- !u!4 &1492286637214700528 stripped

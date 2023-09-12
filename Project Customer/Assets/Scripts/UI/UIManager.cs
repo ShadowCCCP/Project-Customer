@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -47,8 +48,14 @@ public class UIManager : MonoBehaviour
     Material shaderMaterial;
     [SerializeField]
     Material shaderMaterialEmpty;
-    //Shader shaderEmpty;
+
     Renderer rend;
+
+    [SerializeField]
+    Slider sliderOxygen;
+    [SerializeField]
+    Slider sliderHealth;
+
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +84,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetSliderValues();
         if(ItemName.text == null || ItemName.text == "")
         {
             lookAtObject();
@@ -196,5 +204,11 @@ public class UIManager : MonoBehaviour
             }
 
         }
+    }
+
+    private void SetSliderValues()
+    {
+        sliderOxygen.value = (float)playerLife.GetOxygen()/100;
+        sliderHealth.value = (float)playerLife.GetLife()/100;
     }
 }
