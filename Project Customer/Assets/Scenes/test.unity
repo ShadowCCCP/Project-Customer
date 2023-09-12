@@ -123,30 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &113761309 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2936946254549839577, guid: c062a3115abc4e349bdc119718d4074f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1284300848}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &113761315 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4285594919413973924, guid: c062a3115abc4e349bdc119718d4074f,
     type: 3}
   m_PrefabInstance: {fileID: 1284300848}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &113761317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113761309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b76b55c06232d84e9cdcff5bc7a08f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &207093754 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6129425856734489398, guid: e7fc0d16171e9a24fb228a873b8a3d76,
@@ -703,6 +685,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e7592fefe4a6104c82d15a1fa4be37d, type: 3}
+--- !u!4 &1253495309 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8792806387761632647, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+    type: 3}
+  m_PrefabInstance: {fileID: 5876158934365363255}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1284300848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -849,11 +837,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2936946254549839577, guid: c062a3115abc4e349bdc119718d4074f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 113761317}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c062a3115abc4e349bdc119718d4074f, type: 3}
 --- !u!4 &1491255385 stripped
 Transform:
@@ -1246,50 +1230,50 @@ MonoBehaviour:
   - name: NormalStep1
     clip: {fileID: 8300000, guid: 9d405a6648fa93342a10bc1472554dd3, type: 3}
     loop: 0
-    volume: 1
-    pitch: 0
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
   - name: NormalStep2
     clip: {fileID: 8300000, guid: e1ac7f3a1c7accd4ab9e82a905198f1d, type: 3}
     loop: 0
-    volume: 1
-    pitch: 0
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
   - name: NormalStep3
     clip: {fileID: 8300000, guid: dfe625dcb5d7eaa4b9345144569a20f5, type: 3}
     loop: 0
-    volume: 1
-    pitch: 0
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
   - name: NormalStep4
     clip: {fileID: 8300000, guid: 733d3a2fd24c6f448a04b8bc9f0190a7, type: 3}
     loop: 0
-    volume: 1
-    pitch: 0
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
   - name: CrouchStep1
     clip: {fileID: 8300000, guid: cf784d8d8e04a0b4aa1d7c8cebbb7ae8, type: 3}
     loop: 0
-    volume: 1
-    pitch: 0
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
   - name: CrouchStep2
     clip: {fileID: 8300000, guid: c55b92bf05986d346a85a8e3c4256820, type: 3}
     loop: 0
-    volume: 1
-    pitch: 0
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
   - name: CrouchStep3
     clip: {fileID: 8300000, guid: a3c55f999482f1b4eba12000235c2a55, type: 3}
     loop: 0
-    volume: 1
-    pitch: 0
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
   - name: CrouchStep4
     clip: {fileID: 8300000, guid: 89a56ce62416bf44eabe8023f330742c, type: 3}
     loop: 0
-    volume: 1
-    pitch: 0
+    volume: 0.2
+    pitch: 1
     source: {fileID: 0}
   - name: CrouchDown
     clip: {fileID: 8300000, guid: a5ce63b178eea68449c7afdb19bede26, type: 3}
@@ -1449,6 +1433,11 @@ PrefabInstance:
       propertyPath: foamParticle
       value: 
       objectReference: {fileID: 1491255387}
+    - target: {fileID: 6869898518010677468, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: cameraHolder
+      value: 
+      objectReference: {fileID: 1253495309}
     - target: {fileID: 7585445722787696598, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: m_RootOrder
