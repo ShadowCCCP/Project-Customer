@@ -44,7 +44,6 @@ public class PlayerDeath : MonoBehaviour
         physicsPickupScript = playerModel.GetComponent<PhysicsPickup>();
         pauseMenuScript = UI.GetComponent<PauseMenuScript>();
         Life.onDeath += Die;
-        Life.onDeath += test;
     }
     private void Update()
     {
@@ -54,11 +53,6 @@ public class PlayerDeath : MonoBehaviour
     void OnDestroy()
     {
         Life.onDeath -= Die;
-    }
-
-    void test()
-    {
-        Debug.Log("test");
     }
 
     private void Die()

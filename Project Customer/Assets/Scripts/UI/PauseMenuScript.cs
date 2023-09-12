@@ -71,8 +71,4 @@ public class PauseMenuScript : MonoBehaviour
     {
         SceneManager.LoadScene("StartScreen");
     }
-
-
-
-
 }
