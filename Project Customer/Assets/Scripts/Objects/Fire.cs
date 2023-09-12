@@ -38,6 +38,12 @@ public class Fire : MonoBehaviour
     [SerializeField]
     Fire[] fireSpread;
 
+    [SerializeField]
+    ParticleSystem smoke;
+
+    [SerializeField]
+    Transform lighting;
+
     int lastLife;
     List<Fire> spawnedFiresTracker = new List<Fire>();
 
@@ -65,7 +71,7 @@ public class Fire : MonoBehaviour
         SpreadFire();
         FireGrowth();
 
-        Testing();
+        //Testing();
     }
 
     private void Testing()
@@ -182,17 +188,24 @@ public class Fire : MonoBehaviour
         if (Life <= 0)
         {
             fire.Stop();
+            smoke.Stop();
             extinguished = true;
         }
         else if(life > 0 && extinguished)
         {
             fire.Play();
+            smoke.Play();
+            gameObject.SetActive(true);
+            smoke.gameObject.SetActive(true);
+            lighting.gameObject.SetActive(true);
             extinguished = false;
         }
 
         if(!fire.isPlaying)
         {
             gameObject.SetActive(false);
+            smoke.gameObject.SetActive(false);
+            lighting.gameObject.SetActive(false);
         }
     }
 
@@ -204,6 +217,8 @@ public class Fire : MonoBehaviour
             for (int i = 0; i < fireSpread.Length; i++)
             {
                 fireSpread[i].gameObject.SetActive(true);
+                fireSpread[i].smoke.gameObject.SetActive(true);
+                fireSpread[i].lighting.gameObject.SetActive(true);
                 spawnedFiresTracker.Add(fireSpread[i]);
             }
         }

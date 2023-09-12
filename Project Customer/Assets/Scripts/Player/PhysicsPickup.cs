@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PhysicsPickup : MonoBehaviour
 {
+    public static event Action onPickupFireExtinguisher;
+
     [SerializeField]
     LayerMask pickupMask;
 
@@ -32,6 +36,7 @@ public class PhysicsPickup : MonoBehaviour
 
     float objectNormalAngularDrag;
 
+
     // Mouse rotation control
     [SerializeField]
     float rotationSpeed = 2;
@@ -39,8 +44,9 @@ public class PhysicsPickup : MonoBehaviour
     bool isRotating = false;
     RotateCamera rotateCameraScript;
 
-    bool itemThrown; //for objecctive
+    bool itemThrown; //for objective
     bool rotationOnlyItem;
+
     void Start()
     {
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
@@ -89,6 +95,13 @@ public class PhysicsPickup : MonoBehaviour
                 //objectName = currentObject.name;
                 currentObject.useGravity = false;
                 rotationOnlyItem = false;
+
+                // If object is fire extinguisher, add to inventory...
+                if (currentObject.GetComponent<FireExtinguisher>() != null && onPickupFireExtinguisher != null)
+                {
+                    onPickupFireExtinguisher();
+                    Destroy(currentObject.gameObject);
+                }
 
             }
  

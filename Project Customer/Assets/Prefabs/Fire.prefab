@@ -133,6 +133,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1275155556640144936}
   m_SourcePrefab: {fileID: 100100000, guid: 5f4dec9bb35d5f04382360ce34608858, type: 3}
+--- !u!4 &2712221698648715408 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1960250409945243215, guid: 5f4dec9bb35d5f04382360ce34608858,
+    type: 3}
+  m_PrefabInstance: {fileID: 4510225419723189983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5379428167519566946 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8372221899898507965, guid: 5f4dec9bb35d5f04382360ce34608858,
+    type: 3}
+  m_PrefabInstance: {fileID: 4510225419723189983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7040806372274693398 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6855166961500081097, guid: 5f4dec9bb35d5f04382360ce34608858,
@@ -157,9 +169,11 @@ MonoBehaviour:
   fireLifeWetBlanket: 5
   electricFire: 0
   cookingFire: 0
-  cooldown: 0.75
+  cooldown: 0.25
   maxLifeTime: 1.48
   fireSpread: []
+  smoke: {fileID: 5379428167519566946}
+  lighting: {fileID: 2712221698648715408}
 --- !u!4 &7113010133498204445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6638859011617963970, guid: 5f4dec9bb35d5f04382360ce34608858,
