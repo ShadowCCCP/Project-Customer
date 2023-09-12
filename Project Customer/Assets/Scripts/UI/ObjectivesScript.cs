@@ -19,6 +19,9 @@ public class ObjectivesScript : MonoBehaviour
     [SerializeField]
     GameObject[] itemsToPickUp;
 
+    [SerializeField]    
+    SpecificCollisions objToCollideWithForThePutItemInPlace;
+
     //walk 
     //jump
     //crouch
@@ -76,6 +79,9 @@ public class ObjectivesScript : MonoBehaviour
             case 8:
                 pickUpSpecificItemObj();
                 break;
+            case 9:
+                putItemInPlace();
+                break;
 
         }
 
@@ -120,6 +126,10 @@ public class ObjectivesScript : MonoBehaviour
         if (Objectives[objectiveIndex].Contains("Pick up the") || Objectives[objectiveIndex].Contains("pick up the"))
         {
             objectiveType = 8;
+        }
+        if (Objectives[objectiveIndex].Contains("Put the") || Objectives[objectiveIndex].Contains("put the"))
+        {
+            objectiveType = 9;
         }
     }
 
@@ -211,6 +221,15 @@ public class ObjectivesScript : MonoBehaviour
         }
     }
 
+   
+
+    void putItemInPlace()
+    {
+        if (objToCollideWithForThePutItemInPlace.GetCollisionStatus())
+        {
+            objectiveIndex++;
+        }
+    }
 
 
 
