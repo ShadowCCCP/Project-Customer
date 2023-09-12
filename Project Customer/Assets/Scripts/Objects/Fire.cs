@@ -19,6 +19,8 @@ public class Fire : MonoBehaviour
 
     [SerializeField]
     bool electricFire = false;
+    [SerializeField]
+    bool cookingFire = false;
 
     [SerializeField]
     float cooldown = 0.75f;
@@ -103,9 +105,10 @@ public class Fire : MonoBehaviour
                         life = 0;
                         //Debug.Log("empty extinguished");
                     }*/
-                    if (Life <= fireLifeFilledBucket && waterInteractable.GetWetStatus() && !electricFire) //water bucket
+                    if (Life <= fireLifeFilledBucket && waterInteractable.GetWetStatus() ) //water bucket
                     {
                         ElectricFireCheck();
+                        CookingFireCheck();
                         //life = 0;
                         //Debug.Log("filled extinguished");
                         //waterInteractable.Dry();
@@ -120,9 +123,10 @@ public class Fire : MonoBehaviour
                         gameObject.SetActive(false);
                         Debug.Log("level failed");
                     }
-                    else if (Life <= fireLifeWetBlanket && waterInteractable.GetWetStatus() && !electricFire) //wet blanket
+                    else if (Life <= fireLifeWetBlanket && waterInteractable.GetWetStatus()  ) //wet blanket
                     {
                         ElectricFireCheck();
+                        CookingFireCheck();
                         //life = 0;
                         //waterInteractable.Dry();
                         //Debug.Log("filled extinguished");
@@ -150,6 +154,19 @@ public class Fire : MonoBehaviour
     private void ElectricFireCheck()
     {
         if (!electricFire)
+        {
+            Life = 0;
+            waterInteractable.Dry();
+        }
+        else
+        {
+            Debug.Log("explosion");
+        }
+    }
+
+    private void CookingFireCheck()
+    {
+        if (!cookingFire)
         {
             Life = 0;
             waterInteractable.Dry();
