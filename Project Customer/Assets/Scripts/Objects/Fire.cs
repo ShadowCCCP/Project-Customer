@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField]
-    GameObject smoke;
     [SerializeField]
     int maxLife = 5;
     [SerializeField]
@@ -92,8 +89,6 @@ public class Fire : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        //Debug.Log("Gawk");
-
         if(Time.time - lastHit > cooldown)
         {
             if (other.gameObject.tag == "FoamBullet")
@@ -186,10 +181,6 @@ public class Fire : MonoBehaviour
     {
         if (Life <= 0)
         {
-            if (smoke != null)
-            {
-                smoke.SetActive(true);
-            }
             fire.Stop();
             extinguished = true;
         }
