@@ -92,7 +92,7 @@ public class Fire : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Gawk");
+        //Debug.Log("Gawk");
 
         if(Time.time - lastHit > cooldown)
         {

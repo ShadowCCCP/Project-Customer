@@ -21,7 +21,7 @@ public class Key : MonoBehaviour
     {
         if(other.tag == "Unlockable")
         {
-            player.objectName = null;
+            //player.objectName = null;
             player.currentObject = null;
             Destroy(other.gameObject);
             Destroy(gameObject);
