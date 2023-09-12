@@ -98,7 +98,7 @@ public class Fire : MonoBehaviour
             if (other.GetComponent<WaterInteractable>())
             {
                 waterInteractable = other.GetComponent<WaterInteractable>();
-                if (!waterInteractable.trueIfBlanket)
+                if (!waterInteractable.trueIfPotion)
                 {
                     /*if (life <= fireLifeEmptyBucket && !waterInteractable.GetWetStatus()) //empty bucket
                     {

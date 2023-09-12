@@ -8,6 +8,9 @@ public class PhysicsPickup : MonoBehaviour
     LayerMask pickupMask;
 
     [SerializeField]
+    LayerMask rotateMask;
+
+    [SerializeField]
     Camera _camera;
     
     [SerializeField]
@@ -26,7 +29,6 @@ public class PhysicsPickup : MonoBehaviour
     float throwPower = 6;
 
     public Rigidbody currentObject;
-    public string objectName;
 
     float objectNormalAngularDrag;
 
@@ -38,6 +40,7 @@ public class PhysicsPickup : MonoBehaviour
     RotateCamera rotateCameraScript;
 
     bool itemThrown; //for objecctive
+    bool rotationOnlyItem;
     void Start()
     {
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
@@ -47,12 +50,14 @@ public class PhysicsPickup : MonoBehaviour
     {
         PickupItem();
         RotateItem();
+        ItemRotation();
         ThrowItem();
+
     }
 
     void FixedUpdate()
     {
-        if(currentObject != null)
+        if(currentObject != null && !rotationOnlyItem)
         {
             // Move currentObject to the pickupTarget...
             Vector3 directionToPoint = pickupTarget.position - currentObject.position;
@@ -76,39 +81,60 @@ public class PhysicsPickup : MonoBehaviour
 
             // If you're looking at a pickable item, pick it up...
             Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
             if (Physics.Raycast(cameraRay, out RaycastHit hitInfo, pickupRange, pickupMask))
             {
                 currentObject = hitInfo.rigidbody;
                 objectNormalAngularDrag = currentObject.angularDrag;
-                objectName = currentObject.name;
+                //objectName = currentObject.name;
                 currentObject.useGravity = false;
+                rotationOnlyItem = false;
+
             }
+ 
+            else if (Physics.Raycast(cameraRay, out RaycastHit hitInfoRotation, pickupRange, rotateMask))
+            {
+                currentObject = hitInfoRotation.rigidbody;
+                isRotating = true;
+                rotationOnlyItem = true;
+            }
+
         }
     }
 
     private void RotateItem()
     {
-        if (currentObject != null && currentObject.tag != "Bucket")
+        if (currentObject != null && currentObject.tag != "Bucket" && !rotationOnlyItem)
         {
             if (Input.GetMouseButtonDown(1))
             {
-                rotateCameraScript.enabled = false;
+                //rotateCameraScript.enabled = false;
                 isRotating = true;
             }
             else if (Input.GetMouseButtonUp(1))
             {
-                rotateCameraScript.enabled = true;
+                //rotateCameraScript.enabled = true;
                 isRotating = false;
             }
 
-            if (isRotating)
-            {
-                float xRotation = Input.GetAxisRaw("Mouse X") * rotationSpeed;
-                float yRotation = Input.GetAxisRaw("Mouse Y") * rotationSpeed;
+            //ItemRotation();
+        }
+    }
 
-                currentObject.transform.Rotate(Vector3.down, xRotation);
-                currentObject.transform.Rotate(Vector3.right, yRotation);
-            }
+    private void ItemRotation()
+    {
+        if (isRotating)
+        {
+            rotateCameraScript.enabled = false;
+            float xRotation = Input.GetAxisRaw("Mouse X") * rotationSpeed;
+            float yRotation = Input.GetAxisRaw("Mouse Y") * rotationSpeed;
+
+            currentObject.transform.Rotate(Vector3.down, xRotation);
+            currentObject.transform.Rotate(Vector3.right, yRotation);
+        }
+        else
+        {
+            rotateCameraScript.enabled = true;
         }
     }
 
@@ -116,12 +142,13 @@ public class PhysicsPickup : MonoBehaviour
 
     private void ThrowItem()
     {
-        if (currentObject != null && Input.GetMouseButtonDown(0))
+        if (currentObject != null && Input.GetMouseButtonDown(0) && !rotationOnlyItem)
         {
             itemThrown = true;
             Rigidbody rb = currentObject.GetComponent<Rigidbody>();
             DropObject();
             rb.AddForce(_camera.transform.forward * throwPower, ForceMode.Impulse);
+
 
         }
         else itemThrown = false;
@@ -129,10 +156,14 @@ public class PhysicsPickup : MonoBehaviour
 
     private void DropObject()
     {
-        currentObject.angularDrag = objectNormalAngularDrag;
-        currentObject.useGravity = true;
+        if (!rotationOnlyItem)
+        {
+            currentObject.angularDrag = objectNormalAngularDrag;
+            currentObject.useGravity = true;
+        }
         currentObject = null;
-        objectName = null;
+        isRotating = false;
+       // objectName = null;
     }
 
     public bool GetRotationState()
