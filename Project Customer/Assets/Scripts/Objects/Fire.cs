@@ -9,6 +9,8 @@ public class Fire : MonoBehaviour
     [SerializeField]
     GameObject smoke;
     [SerializeField]
+    int maxLife = 5;
+    [SerializeField]
     int life = 5;
     [SerializeField]
     int fireLifeFilledBucket = 5;
@@ -26,6 +28,10 @@ public class Fire : MonoBehaviour
     float cooldown = 0.75f;
     float lastHit;
 
+    // Higher values make the flames bigger...
+    [SerializeField]
+    float maxLifeTime = 1.48f;
+
     WaterInteractable waterInteractable;
 
     ParticleSystem fire;
@@ -34,9 +40,6 @@ public class Fire : MonoBehaviour
     // For firespreading...
     [SerializeField]
     Fire[] fireSpread;
-
-    [SerializeField]
-    int maxLife = 5;
 
     int lastLife;
     List<Fire> spawnedFiresTracker = new List<Fire>();
@@ -84,11 +87,13 @@ public class Fire : MonoBehaviour
     {
         ParticleSystem.MainModule pSMain = fire.main;
         float lifeValue = (float)life / (float)maxLife;
-        pSMain.startLifetime = Mathf.Lerp(1.1f, 2.1f, lifeValue);
+        pSMain.startLifetime = Mathf.Lerp(1.1f, maxLifeTime, lifeValue);
     }
 
     private void OnParticleCollision(GameObject other)
     {
+        Debug.Log("Gawk");
+
         if(Time.time - lastHit > cooldown)
         {
             if (other.gameObject.tag == "FoamBullet")
