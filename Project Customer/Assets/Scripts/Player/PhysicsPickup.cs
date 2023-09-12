@@ -38,6 +38,7 @@ public class PhysicsPickup : MonoBehaviour
     bool isRotating = false;
     RotateCamera rotateCameraScript;
 
+    bool itemThrown; //for objecctive
     void Start()
     {
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
@@ -112,14 +113,19 @@ public class PhysicsPickup : MonoBehaviour
         }
     }
 
+
+
     private void ThrowItem()
     {
         if (currentObject != null && Input.GetMouseButtonDown(0))
         {
+            itemThrown = true;
             Rigidbody rb = currentObject.GetComponent<Rigidbody>();
             DropObject();
             rb.AddForce(_camera.transform.forward * throwPower, ForceMode.Impulse);
+
         }
+        else itemThrown = false;
     }
 
     private void DropObject()
@@ -133,5 +139,10 @@ public class PhysicsPickup : MonoBehaviour
     public bool GetRotationState()
     {
         return isRotating;
+    }
+
+    public bool GetThrownStatus()
+    {
+        return itemThrown;
     }
 }

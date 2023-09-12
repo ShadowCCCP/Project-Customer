@@ -87,10 +87,18 @@ public class UIManager : MonoBehaviour
             LookedAtItemDesc.text = null;
         }
 
-        if (ItemName.text != playerPhysicsPickup.objectName)
+        if (playerPhysicsPickup.currentObject != null)
         {
-            ItemName.text = playerPhysicsPickup.objectName;
-            descriptionCheck();
+            if (ItemName.text != playerPhysicsPickup.currentObject.name)
+            {
+                ItemName.text = playerPhysicsPickup.currentObject.name;
+                descriptionCheck();
+            }
+        }
+        else
+        {
+            ItemName.text = null;
+            ItemDescription.text = null;
         }
 
         if(LifeText.text != playerLife.GetLife().ToString())

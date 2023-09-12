@@ -164,12 +164,12 @@ public class ObjectivesScript : MonoBehaviour
 
     void throwItemObj()
     {
-        //Debug.Log(physicsPickup.currentObject.name);
-        if(/*physicsPickup.currentObject != null && */Input.GetMouseButtonDown(0))
+        if(physicsPickup.GetThrownStatus())
         {
-            Debug.Log("throw");
+ 
             objectiveIndex++;
         }
+
     }
 
     void useFireExtinguisher()

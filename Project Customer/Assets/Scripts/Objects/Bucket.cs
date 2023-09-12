@@ -31,10 +31,19 @@ public class WaterInteractable : MonoBehaviour
     {
         if ( onWaterSource)
         {
-            Debug.Log("water in");
+            //Debug.Log("water in");
             wet.SetActive(true);
             wetBool = true;
+            if (!trueIfBlanket)
+            {
+               name = "Water Bucket";
+            }
+            else
+            {
+                name = "Wet Blanket";
+            }
         }
+       
     }
 
     private void FixedUpdate()
@@ -74,9 +83,17 @@ public class WaterInteractable : MonoBehaviour
 
     public void Dry()
     {
-        Debug.Log("dry");
+        //Debug.Log("dry");
         wetBool=false;
         wet.gameObject.SetActive(false);
+        if (!trueIfBlanket)
+        {
+            name = "Bucket";
+        }
+        else
+        {
+            name = "Blanket";
+        }
     }
 
     public bool GetWetStatus()

@@ -856,6 +856,12 @@ MonoBehaviour:
   - Name: Lock
     Description: 
     LookAtDescription: Maybe it needs a key
+  - Name: Water Bucket
+    Description: wa'ah
+    LookAtDescription: wet water
+  - Name: Lock
+    Description: 
+    LookAtDescription: Maybe it needs a key
   lookAtDistance: 10
   pickupMask:
     serializedVersion: 2
