@@ -7,11 +7,13 @@ public class WaterInteractable : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private GameObject wet;
+    [SerializeField]
+    private GameObject potion;
 
 
     bool wetBool = false;
 
-    public bool trueIfBlanket = false;
+    public bool trueIfPotion = false;
 
     void Start()
     {
@@ -34,14 +36,11 @@ public class WaterInteractable : MonoBehaviour
             //Debug.Log("water in");
             wet.SetActive(true);
             wetBool = true;
-            if (!trueIfBlanket)
+            if (!trueIfPotion)
             {
                name = "Water Bucket";
             }
-            else
-            {
-                name = "Wet Blanket";
-            }
+
         }
        
     }
@@ -51,10 +50,20 @@ public class WaterInteractable : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(targetRotationEulerAngles);
         Quaternion currentRotation = transform.rotation;
 
-        if (!trueIfBlanket && Quaternion.Angle(currentRotation, targetRotation) > rotationTolerance)
+        if ( Quaternion.Angle(currentRotation, targetRotation) > rotationTolerance)
         {
             Quaternion newRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxDegreesPerSecond * Time.deltaTime);
             transform.rotation = newRotation;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "FireRepelantPowder" && wetBool)
+        {
+            name = "Spirit Repelant";
+            potion.gameObject.SetActive(true);
+            Destroy(collision.gameObject);
         }
     }
 
@@ -86,14 +95,10 @@ public class WaterInteractable : MonoBehaviour
         //Debug.Log("dry");
         wetBool=false;
         wet.gameObject.SetActive(false);
-        if (!trueIfBlanket)
-        {
-            name = "Bucket";
-        }
-        else
-        {
-            name = "Blanket";
-        }
+        potion.gameObject.SetActive(false);
+
+        name = "Bucket";
+
     }
 
     public bool GetWetStatus()

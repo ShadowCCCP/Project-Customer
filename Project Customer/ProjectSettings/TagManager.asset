@@ -11,6 +11,7 @@ TagManager:
   - Fire
   - ElectricFireStop
   - Bucket
+  - FireRepelantPowder
   layers:
   - Default
   - TransparentFX
