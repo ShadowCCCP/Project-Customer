@@ -65,7 +65,7 @@ MonoBehaviour:
   - {fileID: 2167770023168749630}
   - {fileID: -1388082866848878471}
   - {fileID: 8125457759177144545}
-  - {fileID: 2169886892337145272}
+  - {fileID: 5312633262511849013}
   - {fileID: -9094119226244031845}
 --- !u!114 &2167770023168749630
 MonoBehaviour:
@@ -107,7 +107,7 @@ MonoBehaviour:
   maxNits:
     m_OverrideState: 0
     m_Value: 1000
---- !u!114 &2169886892337145272
+--- !u!114 &5312633262511849013
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,34 +124,34 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 2
   gaussianStart:
-    m_OverrideState: 1
-    m_Value: 11.25
+    m_OverrideState: 0
+    m_Value: 10
   gaussianEnd:
-    m_OverrideState: 1
-    m_Value: 33.98
+    m_OverrideState: 0
+    m_Value: 30
   gaussianMaxRadius:
-    m_OverrideState: 1
-    m_Value: 0.826
+    m_OverrideState: 0
+    m_Value: 1
   highQualitySampling:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 20
   aperture:
     m_OverrideState: 1
     m_Value: 25.5
   focalLength:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 101
   bladeCount:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 5
   bladeCurvature:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   bladeRotation:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
 --- !u!114 &5542615267875819204
 MonoBehaviour:
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   postExposure:
-    m_OverrideState: 1
-    m_Value: -0.36
+    m_OverrideState: 0
+    m_Value: 1
   contrast:
     m_OverrideState: 1
     m_Value: 14.4
