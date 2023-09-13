@@ -13,7 +13,11 @@ public class SpecificCollisions : MonoBehaviour
     GameObject objectBeforeCollision;
     [SerializeField]
     GameObject objectAfterCollision;
-    
+
+    [SerializeField]
+    bool destroyUsedObject = false;
+
+
 
     void Start()
     {
@@ -38,10 +42,17 @@ public class SpecificCollisions : MonoBehaviour
                     objectBeforeCollision.SetActive(false);
                 }
             }
+            if (destroyUsedObject)
+            {
+                Destroy(other.gameObject);
+            }
         }
         else
         {
-            collsionHappened = false;
+            if (!destroyUsedObject)
+            {
+                collsionHappened = false;
+            }
         }
     }
 
