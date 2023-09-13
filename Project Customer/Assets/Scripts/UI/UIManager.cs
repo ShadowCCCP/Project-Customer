@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.TimeZoneInfo;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,6 +21,18 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Color objectiveFinishedColor = Color.green;
     Color objectiveNormalColor;
+    Color currentColor;
+
+    [SerializeField]
+    float colorTransitionDuration = 3;
+    float colorTransitionTimer = 0;
+    bool transition;
+    bool doOnce;
+
+    [SerializeField]
+    float cooldown = 1;
+    float activatedAt;
+
 
 
     [Serializable]
@@ -90,7 +103,10 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TransitionText();
+
         SetSliderValues();
+
         if(ItemName.text == null || ItemName.text == "")
         {
             lookAtObject();
@@ -123,17 +139,38 @@ public class UIManager : MonoBehaviour
         {
             OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
         }
-        if(Objective.text.Substring(Objective.text.IndexOf(':') + 2) != objectivesScript.GetCurrentObjective().ToString())
+        if(Objective.text.Substring(Objective.text.IndexOf(':') + 2) != objectivesScript.GetCurrentObjective().ToString() && !doOnce)
         {
-            Objective.color = objectiveFinishedColor;
-            Invoke("ReplaceObjectiveText", 2);
+            transition = true;
         }
     }
 
-    void ReplaceObjectiveText()
+    void TransitionText()
     {
-        Objective.color = objectiveNormalColor;
-        Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
+        if(transition)
+        {
+            if (colorTransitionTimer < colorTransitionDuration)
+            {
+                currentColor = Color.Lerp(objectiveNormalColor, objectiveFinishedColor, colorTransitionTimer / colorTransitionDuration);
+                Objective.color = currentColor;
+                colorTransitionTimer += Time.deltaTime;
+            }
+            else
+            {
+                Objective.color = objectiveFinishedColor;
+                transition = false;
+                doOnce = true;
+                activatedAt = Time.time;
+            }
+        }
+
+        if (Time.time - activatedAt > cooldown && doOnce)
+        {
+            Objective.color = objectiveNormalColor;
+            colorTransitionTimer = 0;
+            Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
+            doOnce = false;
+        }
     }
 
     void descriptionCheck()
