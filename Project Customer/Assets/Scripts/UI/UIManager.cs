@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI Objective;
 
     PhysicsPickup pPickup;
+    [SerializeField]
+    Color objectiveFinishedColor = Color.green;
+    Color objectiveNormalColor;
 
 
     [Serializable]
@@ -61,6 +64,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         pPickup = FindObjectOfType<PhysicsPickup>();
+        objectiveNormalColor = Objective.color;
 
         _camera = FindObjectOfType<Camera>();
         objectivesScript = FindObjectOfType<ObjectivesScript>();
@@ -111,20 +115,25 @@ public class UIManager : MonoBehaviour
             ItemDescription.text = null;
         }
 
-        if(LifeText.text != playerLife.GetLife().ToString())
+        if(LifeText.text.Substring(LifeText.text.IndexOf(':') + 2) != playerLife.GetLife().ToString())
         {
             LifeText.text = "Life: " + playerLife.GetLife().ToString();
         }
-        if (OxygenLeftText.text != playerLife.GetOxygen().ToString())
+        if (OxygenLeftText.text.Substring(OxygenLeftText.text.IndexOf(':') + 2) != playerLife.GetOxygen().ToString())
         {
             OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
         }
-
-        if(Objective.text != objectivesScript.GetCurrentObjective().ToString())
+        if(Objective.text.Substring(Objective.text.IndexOf(':') + 2) != objectivesScript.GetCurrentObjective().ToString())
         {
-            Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
+            Objective.color = objectiveFinishedColor;
+            Invoke("ReplaceObjectiveText", 2);
         }
-        
+    }
+
+    void ReplaceObjectiveText()
+    {
+        Objective.color = objectiveNormalColor;
+        Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
     }
 
     void descriptionCheck()
