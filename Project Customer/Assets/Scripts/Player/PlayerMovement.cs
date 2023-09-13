@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     Transform playerObject;
 
+    [SerializeField]
+    float jumpPowerMultiplier = 100f;
+
+
     Rigidbody rb;
     MoveCamera moveCamera;
 
@@ -143,5 +147,21 @@ public class PlayerMovement : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "JumpBoost")
+        {
+            
+            jumpPower  *= jumpPowerMultiplier;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "JumpBoost")
+        {
+            jumpPower /= jumpPowerMultiplier;
+        }
     }
 }

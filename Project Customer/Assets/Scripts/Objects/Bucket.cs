@@ -101,8 +101,5 @@ public class WaterInteractable : MonoBehaviour
 
     }
 
-    public bool GetWetStatus()
-    {
-        return wetBool;
-    }
+    
 }

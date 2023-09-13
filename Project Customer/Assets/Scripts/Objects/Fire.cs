@@ -11,15 +11,16 @@ public class Fire : MonoBehaviour
     int life = 5;
     [SerializeField]
     int fireLifeFilledBucket = 5;
-    //[SerializeField]
-    // int fireLifeBlanket = 5;
-    [SerializeField]
-    int fireLifeWetBlanket = 5;
+
+    [SerializeField] //max life the specific item can extinguish
+    int fireLifePotion = 5;
 
     [SerializeField]
     bool electricFire = false;
     [SerializeField]
     bool cookingFire = false;
+    [SerializeField]
+    bool solidFire = false;
 
     [SerializeField]
     float cooldown = 0.75f;
@@ -106,36 +107,28 @@ public class Fire : MonoBehaviour
                 waterInteractable = other.GetComponent<WaterInteractable>();
                 if (!waterInteractable.trueIfPotion)
                 {
-                    /*if (life <= fireLifeEmptyBucket && !waterInteractable.GetWetStatus()) //empty bucket
+                    if (Life <= fireLifeFilledBucket ) //water bucket
                     {
-                        life = 0;
-                        //Debug.Log("empty extinguished");
-                    }*/
-                    if (Life <= fireLifeFilledBucket && waterInteractable.GetWetStatus() ) //water bucket
-                    {
-                        ElectricFireCheck();
-                        CookingFireCheck();
-                        //life = 0;
-                        //Debug.Log("filled extinguished");
-                        //waterInteractable.Dry();
+                        DifferentFireCheck();
+
                     }
 
                 }
                 else
                 {
-                    if (!waterInteractable.GetWetStatus()) // dry blanket
+                    if (Life <= fireLifePotion  ) //potion
                     {
-                        //destroy?
-                        gameObject.SetActive(false);
-                        Debug.Log("level failed");
-                    }
-                    else if (Life <= fireLifeWetBlanket && waterInteractable.GetWetStatus()  ) //wet blanket
-                    {
-                        ElectricFireCheck();
-                        CookingFireCheck();
-                        //life = 0;
-                        //waterInteractable.Dry();
-                        //Debug.Log("filled extinguished");
+                        DifferentFireCheck();
+                        if (solidFire)
+                        {
+                            Life = 0;
+                            waterInteractable.Dry();
+                        }
+                        else
+                        {
+                            Debug.Log("level failed");
+                        }
+
                     }
                 }
             }
@@ -157,9 +150,9 @@ public class Fire : MonoBehaviour
         }
     }
 
-    private void ElectricFireCheck()
+    private void DifferentFireCheck()
     {
-        if (!electricFire)
+        if (!electricFire && !cookingFire)
         {
             Life = 0;
             waterInteractable.Dry();
@@ -170,18 +163,8 @@ public class Fire : MonoBehaviour
         }
     }
 
-    private void CookingFireCheck()
-    {
-        if (!cookingFire)
-        {
-            Life = 0;
-            waterInteractable.Dry();
-        }
-        else
-        {
-            Debug.Log("explosion");
-        }
-    }
+
+
 
     private void FlameExtinguished()
     {

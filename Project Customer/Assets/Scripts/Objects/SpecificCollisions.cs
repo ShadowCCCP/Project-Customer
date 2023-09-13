@@ -9,6 +9,12 @@ public class SpecificCollisions : MonoBehaviour
     GameObject objectToCollideWith;
     bool collsionHappened;
 
+    [SerializeField]
+    GameObject objectBeforeCollision;
+    [SerializeField]
+    GameObject objectAfterCollision;
+    
+
     void Start()
     {
         
@@ -24,6 +30,14 @@ public class SpecificCollisions : MonoBehaviour
         if(other.gameObject == objectToCollideWith)
         {
             collsionHappened = true;
+            if (objectAfterCollision != null)
+            {
+                objectAfterCollision.SetActive(true);
+                if (objectBeforeCollision)
+                {
+                    objectBeforeCollision.SetActive(false);
+                }
+            }
         }
         else
         {
