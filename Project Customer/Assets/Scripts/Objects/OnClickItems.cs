@@ -13,47 +13,68 @@ public class OnClickItems : MonoBehaviour
     [SerializeField]
     GameObject beforeClickObject;
 
+    Animator anim;
+
     [SerializeField]
     bool canBeClickedAgain = false;
 
     bool clicked = false;
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        anim = GetComponent<Animator>();
     }
 
     public void Cliked()
     {
-        
-        if (clicked == false)
+        ReplaceObject();
+        PlayAnimation();
+    }
+
+    private void ReplaceObject()
+    {
+        if(beforeClickObject != null && afterClickObject != null)
         {
-            clicked = true;
-            if (afterClickObject)
+            if (clicked == false)
             {
-                afterClickObject.SetActive(true);
-                if (beforeClickObject)
+                clicked = true;
+                if (afterClickObject)
                 {
-                    beforeClickObject.SetActive(false);
+                    afterClickObject.SetActive(true);
+                    if (beforeClickObject)
+                    {
+                        beforeClickObject.SetActive(false);
+                    }
                 }
             }
+<<<<<<< Updated upstream
         }
         else if (canBeClickedAgain)
         {
             clicked = false;
             if (afterClickObject)
+=======
+            else if (canbeClickedAgain)
+>>>>>>> Stashed changes
             {
-                afterClickObject.SetActive(false);
-                if (beforeClickObject)
+                clicked = false;
+                if (afterClickObject)
                 {
-                    beforeClickObject.SetActive(true);
+                    afterClickObject.SetActive(false);
+                    if (beforeClickObject)
+                    {
+                        beforeClickObject.SetActive(true);
+                    }
                 }
             }
+        }
+    }
+
+    private void PlayAnimation()
+    {
+        if(anim != null)
+        {
+            Debug.Log("gawk");
+            anim.SetTrigger("PlayAnimation");
         }
     }
 }
