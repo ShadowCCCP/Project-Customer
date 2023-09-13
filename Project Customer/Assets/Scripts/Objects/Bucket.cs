@@ -13,7 +13,7 @@ public class WaterInteractable : MonoBehaviour
 
     bool wetBool = false;
 
-    public bool trueIfPotion = false;
+    bool trueIfPotion = false;
 
     void Start()
     {
@@ -99,6 +99,11 @@ public class WaterInteractable : MonoBehaviour
 
         name = "Bucket";
 
+    }
+
+    public bool GetPotionStatus()
+    {
+        return trueIfPotion;
     }
 
     
