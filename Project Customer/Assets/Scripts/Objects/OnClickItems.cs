@@ -5,13 +5,16 @@ using UnityEngine;
 public class OnClickItems : MonoBehaviour
 {
     // Start is called before the first frame update
+
+
+    //DO NOT ADD THIS TO PICKEABLEUP OBJECTS
     [SerializeField]
     GameObject afterClickObject;
     [SerializeField]
     GameObject beforeClickObject;
 
     [SerializeField]
-    bool canbeClickedAgain = false;
+    bool canBeClickedAgain = false;
 
     bool clicked = false;
     void Start()
@@ -40,7 +43,7 @@ public class OnClickItems : MonoBehaviour
                 }
             }
         }
-        else if (canbeClickedAgain)
+        else if (canBeClickedAgain)
         {
             clicked = false;
             if (afterClickObject)

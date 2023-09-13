@@ -122,7 +122,7 @@ public class UIManager : MonoBehaviour
         {
             Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
         }
-
+        
     }
 
     void descriptionCheck()
