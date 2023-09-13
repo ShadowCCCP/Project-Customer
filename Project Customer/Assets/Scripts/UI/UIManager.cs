@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ExtraHint;
     public TextMeshProUGUI Objective;
 
+    PhysicsPickup pPickup;
+
 
     [Serializable]
     public struct ObjectNamesAndDescriptions
@@ -34,8 +36,6 @@ public class UIManager : MonoBehaviour
 
     Camera _camera;
 
-    [SerializeField]
-    int lookAtDistance = 10;
     [SerializeField]
     LayerMask pickupMask;
     [SerializeField]
@@ -60,6 +60,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pPickup = FindObjectOfType<PhysicsPickup>();
+
         _camera = FindObjectOfType<Camera>();
         objectivesScript = FindObjectOfType<ObjectivesScript>();
 
@@ -166,7 +168,7 @@ public class UIManager : MonoBehaviour
     {
         Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hitInfo;
-        if (Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, lookAtMask))
+        if (Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), lookAtMask))
         {
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
                 
