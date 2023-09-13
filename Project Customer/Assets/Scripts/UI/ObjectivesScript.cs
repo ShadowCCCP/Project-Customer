@@ -245,7 +245,6 @@ public class ObjectivesScript : MonoBehaviour
         if (objectiveIndex < Objectives.Length)
         {
             return Objectives[objectiveIndex].TaskThePlayerSees;
-           // return " ";
         }
         else
         {
