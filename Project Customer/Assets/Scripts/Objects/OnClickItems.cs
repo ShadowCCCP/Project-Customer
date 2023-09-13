@@ -46,16 +46,11 @@ public class OnClickItems : MonoBehaviour
                     }
                 }
             }
-<<<<<<< Updated upstream
         }
         else if (canBeClickedAgain)
         {
             clicked = false;
             if (afterClickObject)
-=======
-            else if (canbeClickedAgain)
->>>>>>> Stashed changes
-            {
                 clicked = false;
                 if (afterClickObject)
                 {
@@ -65,16 +60,16 @@ public class OnClickItems : MonoBehaviour
                         beforeClickObject.SetActive(true);
                     }
                 }
-            }
         }
     }
 
     private void PlayAnimation()
     {
-        if(anim != null)
+        if (anim != null)
         {
             Debug.Log("gawk");
             anim.SetTrigger("PlayAnimation");
         }
     }
+
 }
