@@ -44,6 +44,9 @@ public class PhysicsPickup : MonoBehaviour
     bool itemThrown; //for objective
     bool rotationOnlyItem;
 
+    [SerializeField]
+    float throwPower = 6;
+
     void Start()
     {
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
