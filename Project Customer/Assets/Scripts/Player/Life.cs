@@ -14,7 +14,8 @@ public class Life : MonoBehaviour
     private int fireDamage = 20;
 
     [SerializeField]
-    float fireDamageRate = 1;
+    float fireDamageRate = 2;
+    float normalFireDamageRate;
 
     bool canTakeDamage = true;
     bool triggerOnce;
@@ -25,7 +26,7 @@ public class Life : MonoBehaviour
     //private float fireDamageRate = 0.5f;
     void Start()
     {
-
+        normalFireDamageRate = fireDamageRate;
     }
 
     // Update is called once per frame
@@ -33,8 +34,18 @@ public class Life : MonoBehaviour
     {
         timer();
         oxygenRundown();
+
+        if (life <= 0)
+        {
+            if (onDeath != null && !triggerOnce)
+            {
+                onDeath();
+                triggerOnce = true;
+            }
+        }
     }
-    private void OnTriggerStay(Collider other)
+    
+    private void OnParticleCollision(GameObject other)
     {
         if (other.gameObject.tag == "Fire")
         {
@@ -44,14 +55,7 @@ public class Life : MonoBehaviour
                 canTakeDamage = false;
             }
 
-            if (life <= 0)
-            {
-                if (onDeath != null && !triggerOnce)
-                {
-                    onDeath();
-                    triggerOnce = true;
-                }
-            }
+
         }
     }
 
@@ -62,7 +66,7 @@ public class Life : MonoBehaviour
             fireDamageRate -= Time.deltaTime;
             if (fireDamageRate < 0)
             {
-                fireDamageRate = 2;
+                fireDamageRate = normalFireDamageRate;
                 canTakeDamage = true;
             }
         }

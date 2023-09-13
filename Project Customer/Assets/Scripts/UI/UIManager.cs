@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI LookedAtItem;
     public TextMeshProUGUI LookedAtItemDesc;
     public TextMeshProUGUI ExtraHint;
+    public TextMeshProUGUI Objective;
 
 
     [Serializable]
@@ -27,6 +30,7 @@ public class UIManager : MonoBehaviour
 
     private PhysicsPickup playerPhysicsPickup;
     private Life playerLife;
+    private ObjectivesScript objectivesScript;
 
     Camera _camera;
 
@@ -44,13 +48,20 @@ public class UIManager : MonoBehaviour
     Material shaderMaterial;
     [SerializeField]
     Material shaderMaterialEmpty;
-    //Shader shaderEmpty;
+
     Renderer rend;
+
+    [SerializeField]
+    Slider sliderOxygen;
+    [SerializeField]
+    Slider sliderHealth;
+
 
     // Start is called before the first frame update
     void Start()
     {
         _camera = FindObjectOfType<Camera>();
+        objectivesScript = FindObjectOfType<ObjectivesScript>();
 
         ItemDescription.text = null;
         LookedAtItem.text = null;
@@ -73,6 +84,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetSliderValues();
         if(ItemName.text == null || ItemName.text == "")
         {
             lookAtObject();
@@ -83,10 +95,18 @@ public class UIManager : MonoBehaviour
             LookedAtItemDesc.text = null;
         }
 
-        if (ItemName.text != playerPhysicsPickup.objectName)
+        if (playerPhysicsPickup.currentObject != null)
         {
-            ItemName.text = playerPhysicsPickup.objectName;
-            descriptionCheck();
+            if (ItemName.text != playerPhysicsPickup.currentObject.name)
+            {
+                ItemName.text = playerPhysicsPickup.currentObject.name;
+                descriptionCheck();
+            }
+        }
+        else
+        {
+            ItemName.text = null;
+            ItemDescription.text = null;
         }
 
         if(LifeText.text != playerLife.GetLife().ToString())
@@ -98,7 +118,10 @@ public class UIManager : MonoBehaviour
             OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
         }
 
-
+        if(Objective.text != objectivesScript.GetCurrentObjective().ToString())
+        {
+            Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
+        }
 
     }
 
@@ -146,14 +169,21 @@ public class UIManager : MonoBehaviour
         if (Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, lookAtMask))
         {
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
-                if (rend)
-                {
-                    rend.material = shaderMaterialEmpty;
-                }
+                
+                //Debug.Log(rend.materials.Length);
+                    if (rend)
+                    {
+                        rend.material = shaderMaterialEmpty;
+                    }
+                
                 rend = hitInfo.collider.GetComponent<Renderer>();
+               // if (rend.materials.Length >= 2)
+                //{
 
                 rend.material = shaderMaterial;
-               /// rend.materials[1] = shaderMaterial;
+                    /// rend.materials[1] = shaderMaterial;
+                    /// 
+                //}
             }
             LookedAtItem.text = hitInfo.transform.name;
             LookedAtItemDesc.text = findLookAtDesc(hitInfo.transform.name);
@@ -166,11 +196,19 @@ public class UIManager : MonoBehaviour
             LookedAtItemDesc.text = null;
             if (rend && useOutline)
             {
-                rend.material = shaderMaterialEmpty;
-                //rend.materials[1] = shaderMaterialEmpty;
-               
+                //if (rend.materials.Length >= 2)
+                //{
+                    rend.material = shaderMaterialEmpty;
+                    //rend.materials[1] = shaderMaterialEmpty;
+                //}
             }
 
         }
+    }
+
+    private void SetSliderValues()
+    {
+        sliderOxygen.value = (float)playerLife.GetOxygen()/100;
+        sliderHealth.value = (float)playerLife.GetLife()/100;
     }
 }

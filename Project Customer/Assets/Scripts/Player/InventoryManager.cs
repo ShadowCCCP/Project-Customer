@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    // Gather things by listening to events
-
     [SerializeField]
     Transform fireExtinguisher;
 
-    bool hasFireExtinguisher = true;
+    bool hasFireExtinguisher = false;
 
     void Start()
     {
-        // Subscribe to events here...
-
+        PhysicsPickup.onPickupFireExtinguisher += GatheredFireExtinguisher;
     }
 
     void OnDestroy()
     {
-        // Unsubscribe from events here...
+        PhysicsPickup.onPickupFireExtinguisher -= GatheredFireExtinguisher;
 
     }
 
@@ -39,5 +36,10 @@ public class InventoryManager : MonoBehaviour
     private void GatheredFireExtinguisher()
     {
         hasFireExtinguisher = true;
+    }
+
+    public bool GetFireExtinguisherHoldState()
+    {
+        return hasFireExtinguisher;
     }
 }

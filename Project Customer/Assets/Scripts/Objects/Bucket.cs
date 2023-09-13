@@ -7,11 +7,13 @@ public class WaterInteractable : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private GameObject wet;
+    [SerializeField]
+    private GameObject potion;
 
 
     bool wetBool = false;
 
-    public bool trueIfBlanket = false;
+    public bool trueIfPotion = false;
 
     void Start()
     {
@@ -31,10 +33,16 @@ public class WaterInteractable : MonoBehaviour
     {
         if ( onWaterSource)
         {
-            Debug.Log("water in");
+            //Debug.Log("water in");
             wet.SetActive(true);
             wetBool = true;
+            if (!trueIfPotion)
+            {
+               name = "Water Bucket";
+            }
+
         }
+       
     }
 
     private void FixedUpdate()
@@ -42,10 +50,20 @@ public class WaterInteractable : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(targetRotationEulerAngles);
         Quaternion currentRotation = transform.rotation;
 
-        if (!trueIfBlanket && Quaternion.Angle(currentRotation, targetRotation) > rotationTolerance)
+        if ( Quaternion.Angle(currentRotation, targetRotation) > rotationTolerance)
         {
             Quaternion newRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxDegreesPerSecond * Time.deltaTime);
             transform.rotation = newRotation;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "FireRepelantPowder" && wetBool)
+        {
+            name = "Spirit Repelant";
+            potion.gameObject.SetActive(true);
+            Destroy(collision.gameObject);
         }
     }
 
@@ -74,15 +92,17 @@ public class WaterInteractable : MonoBehaviour
 
     public void Dry()
     {
-        Debug.Log("dry");
+        //Debug.Log("dry");
         wetBool=false;
         wet.gameObject.SetActive(false);
+        potion.gameObject.SetActive(false);
+
+        name = "Bucket";
+
     }
 
     public bool GetWetStatus()
     {
         return wetBool;
     }
-
-    
 }

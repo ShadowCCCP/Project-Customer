@@ -15,14 +15,25 @@ public class MoveAnimation : MonoBehaviour
     [SerializeField]
     Transform _camera;
 
+    [SerializeField]
+    Transform cameraHolder;
+    MoveCamera moveCameraScript;
+
+    AudioManager audioManager;
+
+    string[] normalStepSounds = { "NormalStep1", "NormalStep2", "NormalStep3", "NormalStep4" };
+    string[] crouchStepSounds = { "CrouchStep1", "CrouchStep2", "CrouchStep3", "CrouchStep4" };
+
     bool stepWasUp = true;
-    float toggleSpeed = 3;
+    float toggleSpeed = 2;
     Vector3 startPos;
     Rigidbody rb;
     PlayerMovement pMoveScript;
 
     void Start()
     {
+        moveCameraScript = cameraHolder.GetComponent<MoveCamera>();
+        audioManager = FindObjectOfType<AudioManager>();
         rb = GetComponent<Rigidbody>();
         pMoveScript = GetComponent<PlayerMovement>();
         startPos = _camera.localPosition;
@@ -37,8 +48,7 @@ public class MoveAnimation : MonoBehaviour
     private void CheckMotion()
     {
         float speed = new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude;
-
-        if(speed >= toggleSpeed && pMoveScript.IsGrounded())
+        if (speed >= toggleSpeed && pMoveScript.IsGrounded())
         {
             PlayMotion(StepMotion());
         }
@@ -67,14 +77,23 @@ public class MoveAnimation : MonoBehaviour
 
     private void PlayStepSound()
     {
-        if(_camera.localPosition.y <= Mathf.Sin((-Mathf.PI / 2) / frequency) * amplitude && stepWasUp)
+        if (audioManager != null)
         {
-            stepWasUp = false;
-        }
+            if (_camera.localPosition.y <= Mathf.Sin((-Mathf.PI / 2) / frequency) * amplitude && stepWasUp)
+            {
+                int randomNumber = Random.Range(0, 4);
+                if (!moveCameraScript.IsCrouching())
+                {
+                    audioManager.Play(normalStepSounds[randomNumber]);
+                }
+                else audioManager.Play(crouchStepSounds[randomNumber]);
+                stepWasUp = false;
+            }
 
-        if(_camera.localPosition.y >= 0)
-        {
-            stepWasUp = true;
+            if (_camera.localPosition.y >= 0)
+            {
+                stepWasUp = true;
+            }
         }
     }
 }

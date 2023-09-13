@@ -23,7 +23,7 @@ public class PauseMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && playerRotateCamera)
         {
             if (!gamePaused)
             {
@@ -56,11 +56,21 @@ public class PauseMenuScript : MonoBehaviour
         gameUI.SetActive(true);
         Time.timeScale = 1;
     }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit");
+    }
+
+
     public void LoadStart()
     {
         SceneManager.LoadScene("StartScreen");
     }
-
-
 
 }
