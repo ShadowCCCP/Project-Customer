@@ -9,7 +9,6 @@ public class VolumeSlider : MonoBehaviour
     [SerializeField]
     Slider volumeSlider;
 
-    //AudioSource audioSource; // Reference to the AudioSource you want to control
     AudioManager audioManager;
 
     // Start is called before the first frame update
