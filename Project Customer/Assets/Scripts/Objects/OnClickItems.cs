@@ -67,7 +67,7 @@ public class OnClickItems : MonoBehaviour
     {
         if (anim != null)
         {
-            Debug.Log("oooo");
+            //Debug.Log("oooo");
             anim.SetTrigger("PlayAnimation");
         }
     }
