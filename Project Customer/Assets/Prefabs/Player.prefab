@@ -264,7 +264,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amplitude: 0.0015
   frequency: 16.5
-  _camera: {fileID: 538332708390056252}
   cameraHolder: {fileID: 8792806387761632647}
 --- !u!114 &8933084389087054572
 MonoBehaviour:
@@ -289,9 +288,9 @@ MonoBehaviour:
   pickupRange: 10
   angularDrag: 5
   pickupMoveSpeed: 12
-  throwPower: 6
   currentObject: {fileID: 0}
   rotationSpeed: 2
+  throwPower: 6
 --- !u!114 &8295852779483972955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,8 +423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98af990c41f33943b49eabba9be9d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerModel: {fileID: 1185900252338530153}
-  _camera: {fileID: 538332708390056252}
   cameraHolder: {fileID: 8792806387761632647}
   UI: {fileID: 0}
   deathMenu: {fileID: 0}
