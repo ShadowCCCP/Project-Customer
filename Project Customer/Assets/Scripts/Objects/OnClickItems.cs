@@ -67,7 +67,6 @@ public class OnClickItems : MonoBehaviour
     {
         if (anim != null)
         {
-            Debug.Log("gawk");
             anim.SetTrigger("PlayAnimation");
         }
     }

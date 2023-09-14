@@ -167,7 +167,7 @@ public class PhysicsPickup : MonoBehaviour
         else itemThrown = false;
     }
 
-    private void DropObject()
+    public void DropObject()
     {
         if (!rotationOnlyItem)
         {
