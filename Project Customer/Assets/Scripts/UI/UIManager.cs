@@ -56,6 +56,8 @@ public class UIManager : MonoBehaviour
     LayerMask pickupMask;
     [SerializeField]
     LayerMask lookAtMask;
+    [SerializeField]
+    LayerMask rotatebleOnlyMask;
 
     [SerializeField]
     bool useOutline = false;
@@ -214,7 +216,7 @@ public class UIManager : MonoBehaviour
     {
         Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hitInfo;
-        if (Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), lookAtMask))
+        if (Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), lookAtMask) || Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), rotatebleOnlyMask))
         {
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
                 

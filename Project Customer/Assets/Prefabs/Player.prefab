@@ -264,7 +264,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amplitude: 0.0015
   frequency: 16.5
-  _camera: {fileID: 538332708390056252}
   cameraHolder: {fileID: 8792806387761632647}
 --- !u!114 &8933084389087054572
 MonoBehaviour:
@@ -410,7 +409,7 @@ Transform:
   - {fileID: 8792806387761632647}
   - {fileID: 4118787682970257077}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1784074159388247133
 MonoBehaviour:
@@ -424,8 +423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98af990c41f33943b49eabba9be9d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerModel: {fileID: 1185900252338530153}
-  _camera: {fileID: 538332708390056252}
   cameraHolder: {fileID: 8792806387761632647}
   UI: {fileID: 0}
   deathMenu: {fileID: 0}

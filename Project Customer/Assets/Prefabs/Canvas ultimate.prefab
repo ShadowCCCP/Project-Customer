@@ -837,6 +837,9 @@ MonoBehaviour:
   LookedAtItemDesc: {fileID: 7925089906945108704}
   ExtraHint: {fileID: 4670674418275386678}
   Objective: {fileID: 5068970006955109062}
+  objectiveFinishedColor: {r: 0, g: 1, b: 0, a: 1}
+  colorTransitionDuration: 3
+  cooldown: 1
   Objects:
   - Name: Bucket
     Description: this a bucket
@@ -865,14 +868,16 @@ MonoBehaviour:
   - Name: Lock
     Description: 
     LookAtDescription: Maybe it needs a key
-  lookAtDistance: 10
   pickupMask:
     serializedVersion: 2
     m_Bits: 64
   lookAtMask:
     serializedVersion: 2
     m_Bits: 256
-  useOutline: 0
+  rotatebleOnlyMask:
+    serializedVersion: 2
+    m_Bits: 512
+  useOutline: 1
   shaderMaterial: {fileID: 2100000, guid: 93ef7d6b2245cdf4ea680996ef104f61, type: 2}
   shaderMaterialEmpty: {fileID: 2100000, guid: 38069117300dbfa40b804732be4675e6, type: 2}
   sliderOxygen: {fileID: 7458520888638912094}
@@ -891,7 +896,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 6240415692881334145}
   gameUI: {fileID: 4462972222925009081}
-  playerModel: {fileID: 0}
 --- !u!95 &4422161059977345095
 Animator:
   serializedVersion: 5
