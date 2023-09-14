@@ -10,7 +10,6 @@ public class Sink : MonoBehaviour
     [SerializeField]
     GameObject water;
 
-    //[SerializeField]
     Camera _camera;
 
     [SerializeField]

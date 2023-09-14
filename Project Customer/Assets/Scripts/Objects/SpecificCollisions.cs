@@ -9,6 +9,16 @@ public class SpecificCollisions : MonoBehaviour
     GameObject objectToCollideWith;
     bool collsionHappened;
 
+    [SerializeField]
+    GameObject objectBeforeCollision;
+    [SerializeField]
+    GameObject objectAfterCollision;
+
+    [SerializeField]
+    bool destroyUsedObject = false;
+
+
+
     void Start()
     {
         
@@ -24,10 +34,25 @@ public class SpecificCollisions : MonoBehaviour
         if(other.gameObject == objectToCollideWith)
         {
             collsionHappened = true;
+            if (objectAfterCollision != null)
+            {
+                objectAfterCollision.SetActive(true);
+                if (objectBeforeCollision)
+                {
+                    objectBeforeCollision.SetActive(false);
+                }
+            }
+            if (destroyUsedObject)
+            {
+                Destroy(other.gameObject);
+            }
         }
         else
         {
-            collsionHappened = false;
+            if (!destroyUsedObject)
+            {
+                collsionHappened = false;
+            }
         }
     }
 

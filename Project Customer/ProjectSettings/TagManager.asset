@@ -12,6 +12,7 @@ TagManager:
   - ElectricFireStop
   - Bucket
   - FireRepelantPowder
+  - JumpBoost
   layers:
   - Default
   - TransparentFX

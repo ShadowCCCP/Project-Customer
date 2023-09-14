@@ -6,8 +6,11 @@ using UnityEngine;
 public class ObjectivesScript : MonoBehaviour
 {
     // Start is called before the first frame update
+  //[SerializeField]
+  //  string[] ObjectivesOld;
+
     [SerializeField]
-    string[] Objectives;
+    ObjectiveClass[] Objectives;
 
     PhysicsPickup physicsPickup;
     InventoryManager inventoryManager;
@@ -91,45 +94,48 @@ public class ObjectivesScript : MonoBehaviour
 
     void checkObjType()
     {
-        if (Objectives[objectiveIndex].Contains("Walk") || Objectives[objectiveIndex].Contains("walk"))
+        if (objectiveIndex < Objectives.Length)
         {
-            objectiveType = 0;
-        }
-        if (Objectives[objectiveIndex].Contains("Jump") || Objectives[objectiveIndex].Contains("jump"))
-        {
-            objectiveType = 1;
-        }
-        if (Objectives[objectiveIndex].Contains("Crouch") || Objectives[objectiveIndex].Contains("crouch"))
-        {
-            objectiveType = 2;
-        }
-        if (Objectives[objectiveIndex].Contains("Pick up") || Objectives[objectiveIndex].Contains("pick up"))
-        {
-            objectiveType = 3;
-        }
-        if (Objectives[objectiveIndex].Contains("rotate") || Objectives[objectiveIndex].Contains("Rotate"))
-        {
-            objectiveType = 4;
-        }
-        if (Objectives[objectiveIndex].Contains("Throw") || Objectives[objectiveIndex].Contains("throw"))
-        {
-            objectiveType = 5;
-        }
-        if (Objectives[objectiveIndex].Contains("extinguish") || Objectives[objectiveIndex].Contains("Extinguish"))
-        {
-            objectiveType = 6;
-        }
-        if (Objectives[objectiveIndex].Contains("Go to") || Objectives[objectiveIndex].Contains("go to"))
-        {
-            objectiveType = 7;
-        }
-        if (Objectives[objectiveIndex].Contains("Pick up the") || Objectives[objectiveIndex].Contains("pick up the"))
-        {
-            objectiveType = 8;
-        }
-        if (Objectives[objectiveIndex].Contains("Put the") || Objectives[objectiveIndex].Contains("put the"))
-        {
-            objectiveType = 9;
+            if (Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("Walk") || Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("walk"))
+            {
+                objectiveType = 0;
+            }
+            if (Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("Jump") || Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("jump"))
+            {
+                objectiveType = 1;
+            }
+            if (Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("Crouch") || Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("crouch"))
+            {
+                objectiveType = 2;
+            }
+            if (Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("Pick up") || Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("pick up"))
+            {
+                objectiveType = 3;
+            }
+            if (Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("rotate") || Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("Rotate"))
+            {
+                objectiveType = 4;
+            }
+            if (Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("Throw") || Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("throw"))
+            {
+                objectiveType = 5;
+            }
+            if (Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("extinguish") || Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("Extinguish"))
+            {
+                objectiveType = 6;
+            }
+            if (Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("Go to") || Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("go to"))
+            {
+                objectiveType = 7;
+            }
+            if (Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("Pick up the") || Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("pick up the"))
+            {
+                objectiveType = 8;
+            }
+            if (Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("Put the") || Objectives[objectiveIndex].TaskUnderstoodByCode.Contains("put the"))
+            {
+                objectiveType = 9;
+            }
         }
     }
 
@@ -176,7 +182,6 @@ public class ObjectivesScript : MonoBehaviour
     {
         if(physicsPickup.GetThrownStatus())
         {
- 
             objectiveIndex++;
         }
 
@@ -236,6 +241,14 @@ public class ObjectivesScript : MonoBehaviour
 
     public string GetCurrentObjective()
     {
-        return Objectives[objectiveIndex];
+        if (objectiveIndex < Objectives.Length)
+        {
+            return Objectives[objectiveIndex].TaskThePlayerSees;
+           // return " ";
+        }
+        else
+        {
+            return " ";
+        }
     }
 }

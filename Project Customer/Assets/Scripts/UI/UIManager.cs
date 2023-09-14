@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.TimeZoneInfo;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,6 +16,23 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI LookedAtItemDesc;
     public TextMeshProUGUI ExtraHint;
     public TextMeshProUGUI Objective;
+
+    PhysicsPickup pPickup;
+    [SerializeField]
+    Color objectiveFinishedColor = Color.green;
+    Color objectiveNormalColor;
+    Color currentColor;
+
+    [SerializeField]
+    float colorTransitionDuration = 3;
+    float colorTransitionTimer = 0;
+    bool transition;
+    bool doOnce;
+
+    [SerializeField]
+    float cooldown = 1;
+    float activatedAt;
+
 
 
     [Serializable]
@@ -35,11 +53,11 @@ public class UIManager : MonoBehaviour
     Camera _camera;
 
     [SerializeField]
-    int lookAtDistance = 10;
-    [SerializeField]
     LayerMask pickupMask;
     [SerializeField]
     LayerMask lookAtMask;
+    [SerializeField]
+    LayerMask rotatebleOnlyMask;
 
     [SerializeField]
     bool useOutline = false;
@@ -60,6 +78,9 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pPickup = FindObjectOfType<PhysicsPickup>();
+        objectiveNormalColor = Objective.color;
+
         _camera = FindObjectOfType<Camera>();
         objectivesScript = FindObjectOfType<ObjectivesScript>();
 
@@ -84,7 +105,10 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TransitionText();
+
         SetSliderValues();
+
         if(ItemName.text == null || ItemName.text == "")
         {
             lookAtObject();
@@ -109,20 +133,46 @@ public class UIManager : MonoBehaviour
             ItemDescription.text = null;
         }
 
-        if(LifeText.text != playerLife.GetLife().ToString())
+        if(LifeText.text.Substring(LifeText.text.IndexOf(':') + 2) != playerLife.GetLife().ToString())
         {
             LifeText.text = "Life: " + playerLife.GetLife().ToString();
         }
-        if (OxygenLeftText.text != playerLife.GetOxygen().ToString())
+        if (OxygenLeftText.text.Substring(OxygenLeftText.text.IndexOf(':') + 2) != playerLife.GetOxygen().ToString())
         {
             OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
         }
-
-        if(Objective.text != objectivesScript.GetCurrentObjective().ToString())
+        if(Objective.text.Substring(Objective.text.IndexOf(':') + 2) != objectivesScript.GetCurrentObjective().ToString() && !doOnce)
         {
-            Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
+            transition = true;
+        }
+    }
+
+    void TransitionText()
+    {
+        if(transition)
+        {
+            if (colorTransitionTimer < colorTransitionDuration)
+            {
+                currentColor = Color.Lerp(objectiveNormalColor, objectiveFinishedColor, colorTransitionTimer / colorTransitionDuration);
+                Objective.color = currentColor;
+                colorTransitionTimer += Time.deltaTime;
+            }
+            else
+            {
+                Objective.color = objectiveFinishedColor;
+                transition = false;
+                doOnce = true;
+                activatedAt = Time.time;
+            }
         }
 
+        if (Time.time - activatedAt > cooldown && doOnce)
+        {
+            Objective.color = objectiveNormalColor;
+            colorTransitionTimer = 0;
+            Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
+            doOnce = false;
+        }
     }
 
     void descriptionCheck()
@@ -166,7 +216,7 @@ public class UIManager : MonoBehaviour
     {
         Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hitInfo;
-        if (Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, lookAtDistance, lookAtMask))
+        if (Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), lookAtMask) || Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), rotatebleOnlyMask))
         {
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
                 
@@ -187,6 +237,11 @@ public class UIManager : MonoBehaviour
             }
             LookedAtItem.text = hitInfo.transform.name;
             LookedAtItemDesc.text = findLookAtDesc(hitInfo.transform.name);
+            OnClickItems onClickItems = hitInfo.collider.GetComponent<OnClickItems>();
+            if (onClickItems && Input.GetMouseButtonDown(0))
+            {
+                onClickItems.Cliked();
+            }
             
 
         }

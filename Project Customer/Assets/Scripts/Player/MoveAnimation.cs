@@ -12,8 +12,7 @@ public class MoveAnimation : MonoBehaviour
     [SerializeField, Range(0, 30)]
     float frequency = 10;
 
-    [SerializeField]
-    Transform _camera;
+    Camera _camera;
 
     [SerializeField]
     Transform cameraHolder;
@@ -32,11 +31,12 @@ public class MoveAnimation : MonoBehaviour
 
     void Start()
     {
+        _camera = FindObjectOfType<Camera>();
         moveCameraScript = cameraHolder.GetComponent<MoveCamera>();
         audioManager = FindObjectOfType<AudioManager>();
         rb = GetComponent<Rigidbody>();
         pMoveScript = GetComponent<PlayerMovement>();
-        startPos = _camera.localPosition;
+        startPos = _camera.transform.localPosition;
     }
 
     void Update()
@@ -56,15 +56,15 @@ public class MoveAnimation : MonoBehaviour
 
     private void ResetPosition()
     {
-        if(_camera.localPosition != startPos)
+        if(_camera.transform.localPosition != startPos)
         {
-            _camera.localPosition = Vector3.Lerp(_camera.localPosition, startPos, frequency * Time.deltaTime);
+            _camera.transform.localPosition = Vector3.Lerp(_camera.transform.localPosition, startPos, frequency * Time.deltaTime);
         }
     }
 
     private void PlayMotion(Vector3 motion)
     {
-        _camera.localPosition += motion;
+        _camera.transform.localPosition += motion;
         PlayStepSound();
     }
 
@@ -79,7 +79,7 @@ public class MoveAnimation : MonoBehaviour
     {
         if (audioManager != null)
         {
-            if (_camera.localPosition.y <= Mathf.Sin((-Mathf.PI / 2) / frequency) * amplitude && stepWasUp)
+            if (_camera.transform.localPosition.y <= Mathf.Sin((-Mathf.PI / 2) / frequency) * amplitude && stepWasUp)
             {
                 int randomNumber = Random.Range(0, 4);
                 if (!moveCameraScript.IsCrouching())
@@ -90,7 +90,7 @@ public class MoveAnimation : MonoBehaviour
                 stepWasUp = false;
             }
 
-            if (_camera.localPosition.y >= 0)
+            if (_camera.transform.localPosition.y >= 0)
             {
                 stepWasUp = true;
             }

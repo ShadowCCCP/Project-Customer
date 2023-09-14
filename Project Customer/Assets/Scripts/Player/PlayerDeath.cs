@@ -5,11 +5,7 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    [SerializeField]
-    GameObject playerModel;
 
-    [SerializeField]
-    Transform _camera;
 
     [SerializeField]
     Transform cameraHolder;
@@ -36,12 +32,13 @@ public class PlayerDeath : MonoBehaviour
 
     void Start()
     {
-        playerModel.SetActive(true);
+        physicsPickupScript = FindObjectOfType<PhysicsPickup>();
+
+        physicsPickupScript.gameObject.SetActive(true);
         animCam = cameraHolder.GetComponent<Animator>();
-        animModel = playerModel.GetComponent<Animator>();
-        rotateCameraScript = _camera.GetComponent<RotateCamera>();
-        playerMovementScript = playerModel.GetComponent<PlayerMovement>();
-        physicsPickupScript = playerModel.GetComponent<PhysicsPickup>();
+        animModel = physicsPickupScript.gameObject.GetComponent<Animator>();
+        rotateCameraScript = FindObjectOfType<RotateCamera>();
+        playerMovementScript = physicsPickupScript.gameObject.GetComponent<PlayerMovement>();
         pauseMenuScript = UI.GetComponent<PauseMenuScript>();
         Life.onDeath += Die;
     }

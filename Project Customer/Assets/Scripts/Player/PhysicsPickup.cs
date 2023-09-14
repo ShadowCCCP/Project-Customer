@@ -167,7 +167,7 @@ public class PhysicsPickup : MonoBehaviour
         else itemThrown = false;
     }
 
-    private void DropObject()
+    public void DropObject()
     {
         if (!rotationOnlyItem)
         {
@@ -187,5 +187,10 @@ public class PhysicsPickup : MonoBehaviour
     public bool GetThrownStatus()
     {
         return itemThrown;
+    }
+
+    public float GetPickupDistance()
+    {
+        return pickupRange;
     }
 }
