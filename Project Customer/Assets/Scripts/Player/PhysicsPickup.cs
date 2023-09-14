@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class PhysicsPickup : MonoBehaviour
@@ -47,8 +48,13 @@ public class PhysicsPickup : MonoBehaviour
     bool itemThrown; //for objective
     bool rotationOnlyItem;
 
+    AudioManager audioManager;
+    string[] throwSounds = { "Throw1", "Throw2", "Throw3" };
+    string pickupSound = "Pickup";
+
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
     }
 
@@ -90,6 +96,7 @@ public class PhysicsPickup : MonoBehaviour
 
             if (Physics.Raycast(cameraRay, out RaycastHit hitInfo, pickupRange, pickupMask))
             {
+                audioManager.Play(pickupSound);
                 currentObject = hitInfo.rigidbody;
                 objectNormalAngularDrag = currentObject.angularDrag;
                 //objectName = currentObject.name;
@@ -157,12 +164,13 @@ public class PhysicsPickup : MonoBehaviour
     {
         if (currentObject != null && Input.GetMouseButtonDown(0) && !rotationOnlyItem)
         {
+            int randomNumber = UnityEngine.Random.Range(0, 3);
+            audioManager.Play(throwSounds[randomNumber]);
+
             itemThrown = true;
             Rigidbody rb = currentObject.GetComponent<Rigidbody>();
             DropObject();
             rb.AddForce(_camera.transform.forward * throwPower, ForceMode.Impulse);
-
-
         }
         else itemThrown = false;
     }

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class ParticleBurstSound : MonoBehaviour
 {
+    [SerializeField]
+    AudioClip[] sparkSounds;
+
     private ParticleSystem pSystem;
     private ParticleSystem.EmissionModule emmisionModule;
     private AudioSource audioSource;
@@ -34,6 +37,8 @@ public class ParticleBurstSound : MonoBehaviour
                 // Play the sound.
                 if(!playOnce)
                 {
+                    int randomNumber = UnityEngine.Random.Range(0, 4);
+                    audioSource.clip = sparkSounds[randomNumber];
                     audioSource.Play();
                     playOnce = true;
                 }
