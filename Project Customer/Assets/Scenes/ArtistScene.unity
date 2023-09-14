@@ -1841,7 +1841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &488722424
 Transform:
   m_ObjectHideFlags: 0
@@ -5397,6 +5397,11 @@ PrefabInstance:
       value: FlamesV3
       objectReference: {fileID: 0}
     - target: {fileID: 149913582785798979, guid: 5f4dec9bb35d5f04382360ce34608858,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798279829823276787, guid: 5f4dec9bb35d5f04382360ce34608858,
         type: 3}
       propertyPath: m_IsActive
       value: 1
