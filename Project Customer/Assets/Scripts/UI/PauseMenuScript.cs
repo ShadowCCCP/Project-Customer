@@ -12,12 +12,13 @@ public class PauseMenuScript : MonoBehaviour
     private GameObject pauseMenu;
     [SerializeField]
     private GameObject gameUI;
-    [SerializeField]
-    private GameObject playerModel;
+
+    private PhysicsPickup playerModel;
     private RotateCamera playerRotateCamera;
     void Start()
     {
         playerRotateCamera = FindObjectOfType<RotateCamera>();
+        playerModel = FindObjectOfType<PhysicsPickup>();
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public class PauseMenuScript : MonoBehaviour
     void pause()
     {
         playerRotateCamera.UnlockCursor();
-        playerModel.SetActive(false);
+        playerModel.gameObject.SetActive(false);
         gamePaused = true; 
         pauseMenu.SetActive(true);
         gameUI.SetActive(false);
@@ -50,7 +51,7 @@ public class PauseMenuScript : MonoBehaviour
     public void resume()
     {
         playerRotateCamera.LockCursor();
-        playerModel.SetActive(true);
+        playerModel.gameObject.SetActive(true);
         gamePaused = false;
         pauseMenu.SetActive(false);
         gameUI.SetActive(true);

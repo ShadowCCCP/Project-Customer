@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 7113010133498204445}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3704147449513764046
 MeshFilter:
@@ -57,6 +57,11 @@ PrefabInstance:
     - target: {fileID: 4437978657622527361, guid: 5f4dec9bb35d5f04382360ce34608858,
         type: 3}
       propertyPath: CollisionModule.m_Dampen.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437978657622527361, guid: 5f4dec9bb35d5f04382360ce34608858,
+        type: 3}
+      propertyPath: CollisionModule.collisionMessages
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4437978657622527361, guid: 5f4dec9bb35d5f04382360ce34608858,
@@ -166,9 +171,10 @@ MonoBehaviour:
   maxLife: 5
   life: 5
   fireLifeFilledBucket: 5
-  fireLifeWetBlanket: 5
+  fireLifePotion: 5
   electricFire: 0
   cookingFire: 0
+  solidFire: 0
   cooldown: 0.25
   maxLifeTime: 1.48
   fireSpread: []
