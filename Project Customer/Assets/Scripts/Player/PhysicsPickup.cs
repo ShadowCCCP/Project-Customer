@@ -188,4 +188,9 @@ public class PhysicsPickup : MonoBehaviour
     {
         return itemThrown;
     }
+
+    public float GetPickupDistance()
+    {
+        return pickupRange;
+    }
 }

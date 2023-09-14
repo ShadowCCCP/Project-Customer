@@ -13,7 +13,7 @@ public class WaterInteractable : MonoBehaviour
 
     bool wetBool = false;
 
-    public bool trueIfPotion = false;
+    bool trueIfPotion = false;
 
     void Start()
     {
@@ -101,8 +101,10 @@ public class WaterInteractable : MonoBehaviour
 
     }
 
-    public bool GetWetStatus()
+    public bool GetPotionStatus()
     {
-        return wetBool;
+        return trueIfPotion;
     }
+
+    
 }

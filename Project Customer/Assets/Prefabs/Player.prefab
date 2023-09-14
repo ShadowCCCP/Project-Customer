@@ -249,6 +249,7 @@ MonoBehaviour:
   orientation: {fileID: 8468605232415040404}
   cameraHolder: {fileID: 8792806387761632647}
   playerObject: {fileID: 625623169930612923}
+  jumpPowerMultiplier: 100
 --- !u!114 &6869898518010677468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +265,7 @@ MonoBehaviour:
   amplitude: 0.0015
   frequency: 16.5
   _camera: {fileID: 538332708390056252}
+  cameraHolder: {fileID: 8792806387761632647}
 --- !u!114 &8933084389087054572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +281,9 @@ MonoBehaviour:
   pickupMask:
     serializedVersion: 2
     m_Bits: 64
+  rotateMask:
+    serializedVersion: 2
+    m_Bits: 512
   _camera: {fileID: 2611464451652168929}
   pickupTarget: {fileID: 3680350114293827758}
   pickupRange: 10
@@ -286,7 +291,6 @@ MonoBehaviour:
   pickupMoveSpeed: 12
   throwPower: 6
   currentObject: {fileID: 0}
-  objectName: 
   rotationSpeed: 2
 --- !u!114 &8295852779483972955
 MonoBehaviour:
@@ -304,7 +308,7 @@ MonoBehaviour:
   fireDamage: 20
   fireDamageRate: 1
   Oxygen: 100
-  OxygenRundownSpeed: 0.5
+  OxygenRundownSpeed: 1
 --- !u!95 &1549738827107533057
 Animator:
   serializedVersion: 5
@@ -381,6 +385,9 @@ GameObject:
   - component: {fileID: 1784074159388247133}
   - component: {fileID: 1353915444681764828}
   - component: {fileID: 4870212878121515290}
+  - component: {fileID: 6765189007673346718}
+  - component: {fileID: 7010688537696601385}
+  - component: {fileID: 8924571025066376271}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -403,7 +410,7 @@ Transform:
   - {fileID: 8792806387761632647}
   - {fileID: 4118787682970257077}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1784074159388247133
 MonoBehaviour:
@@ -417,7 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98af990c41f33943b49eabba9be9d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerModel: {fileID: 4118787682970257077}
+  playerModel: {fileID: 1185900252338530153}
   _camera: {fileID: 538332708390056252}
   cameraHolder: {fileID: 8792806387761632647}
   UI: {fileID: 0}
@@ -449,15 +456,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Objectives:
-  - Walk
-  - Jump
-  - Crouch
-  - pickup item
-  - rotate Item holding right click
-  - throw obj
-  - pick up fire ext and use it
-  - go to there
-  placesToGo: []
+  - {fileID: 6765189007673346718}
+  - {fileID: 7010688537696601385}
+  - {fileID: 8924571025066376271}
+  placesToGo:
+  - {fileID: 0}
+  - {fileID: 0}
+  itemsToPickUp:
+  - {fileID: 0}
+  - {fileID: 0}
+  objToCollideWithForThePutItemInPlace: {fileID: 0}
+--- !u!114 &6765189007673346718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033994363957624608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb202e55954b6c3439d69f81edec87a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskThePlayerSees: walk
+  TaskUnderstoodByCode: walk
+--- !u!114 &7010688537696601385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033994363957624608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb202e55954b6c3439d69f81edec87a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskThePlayerSees: d adwads rotation
+  TaskUnderstoodByCode: rotate
+--- !u!114 &8924571025066376271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033994363957624608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb202e55954b6c3439d69f81edec87a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskThePlayerSees: jump
+  TaskUnderstoodByCode: jump
 --- !u!1 &4255699015494416899
 GameObject:
   m_ObjectHideFlags: 0
