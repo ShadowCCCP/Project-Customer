@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     Transform fireExtinguisher;
 
-    bool hasFireExtinguisher = false;
+    public bool hasFireExtinguisher = false;
 
     void Start()
     {

@@ -42,4 +42,12 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Play();
     }
+
+    public void ChangeVolume(float volume)
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            sounds[i].source.volume = volume;
+        }
+    }
 }

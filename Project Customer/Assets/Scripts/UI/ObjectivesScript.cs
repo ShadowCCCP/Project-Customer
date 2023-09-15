@@ -6,8 +6,8 @@ using UnityEngine;
 public class ObjectivesScript : MonoBehaviour
 {
     // Start is called before the first frame update
-  //[SerializeField]
-  //  string[] ObjectivesOld;
+    //[SerializeField]
+    //  string[] ObjectivesOld;
 
     [SerializeField]
     ObjectiveClass[] Objectives;
@@ -22,8 +22,8 @@ public class ObjectivesScript : MonoBehaviour
     [SerializeField]
     GameObject[] itemsToPickUp;
 
-    [SerializeField]    
-    SpecificCollisions objToCollideWithForThePutItemInPlace;
+    [SerializeField]
+    SpecificCollisions[] objToCollideWithForThePutItemInPlace;
 
     //walk 
     //jump
@@ -226,12 +226,13 @@ public class ObjectivesScript : MonoBehaviour
         }
     }
 
-   
 
+    int objToCollideWithIndex = 0;
     void putItemInPlace()
     {
-        if (objToCollideWithForThePutItemInPlace.GetCollisionStatus())
+        if (objToCollideWithForThePutItemInPlace[objToCollideWithIndex].GetCollisionStatus())
         {
+            objToCollideWithIndex++;
             objectiveIndex++;
         }
     }

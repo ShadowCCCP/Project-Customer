@@ -32,6 +32,7 @@ public class Teleporter : MonoBehaviour
         }
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            playerModel.DropObject();
             playerModel.gameObject.transform.position = placeToTeleport.transform.position;
         }
     }
