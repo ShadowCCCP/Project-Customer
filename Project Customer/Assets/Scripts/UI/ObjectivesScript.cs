@@ -200,7 +200,7 @@ public class ObjectivesScript : MonoBehaviour
         collisionCheckForObjective.checkPlace(placesToGo[placeIndex]);
         if (collisionCheckForObjective.GetReachPlaceStatus())
         {
-            if (placeIndex <= placesToGo.Length)
+            if (placeIndex < placesToGo.Length-1)
             {
                 placeIndex++;
             }
@@ -217,7 +217,7 @@ public class ObjectivesScript : MonoBehaviour
         {
             if (physicsPickup.currentObject.name == itemsToPickUp[itemToPickUpIndex].name)
             {
-                if (itemToPickUpIndex <= itemsToPickUp.Length)
+                if (itemToPickUpIndex < itemsToPickUp.Length-1)
                 {
                     itemToPickUpIndex++;
                 }
@@ -230,13 +230,14 @@ public class ObjectivesScript : MonoBehaviour
     int objToCollideWithIndex = 0;
     void putItemInPlace()
     {
-        if (objToCollideWithIndex < objToCollideWithForThePutItemInPlace.Length)
+        if (objToCollideWithForThePutItemInPlace[objToCollideWithIndex].GetCollisionStatus())
         {
-            if (objToCollideWithForThePutItemInPlace[objToCollideWithIndex].GetCollisionStatus())
+            if (objToCollideWithIndex < objToCollideWithForThePutItemInPlace.Length - 1)
             {
                 objToCollideWithIndex++;
-                objectiveIndex++;
             }
+            objectiveIndex++;
+
         }
     }
 
