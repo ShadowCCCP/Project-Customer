@@ -177,7 +177,7 @@ public class PhysicsPickup : MonoBehaviour
 
     public void DropObject()
     {
-        if (!rotationOnlyItem)
+        if (!rotationOnlyItem && currentObject)
         {
             currentObject.angularDrag = objectNormalAngularDrag;
             currentObject.useGravity = true;
