@@ -106,6 +106,30 @@ MonoBehaviour:
     volume: 0.2
     pitch: 1
     source: {fileID: 0}
+  - name: Pickup
+    clip: {fileID: 8300000, guid: cc8ae752d0724d8418afbbec67fdd559, type: 3}
+    loop: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: Throw1
+    clip: {fileID: 8300000, guid: b395296157e1e074fa4b7ab50e4c64cf, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Throw2
+    clip: {fileID: 8300000, guid: e22ae00e7fa4c2048a1aa18ab0237f84, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Throw3
+    clip: {fileID: 8300000, guid: 92be74aabd7f2b745b6f13fe9ee15ca8, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!114 &5049977219752339110
 MonoBehaviour:
   m_ObjectHideFlags: 0

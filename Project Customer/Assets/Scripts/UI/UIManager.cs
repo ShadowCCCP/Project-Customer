@@ -33,6 +33,12 @@ public class UIManager : MonoBehaviour
     float cooldown = 1;
     float activatedAt;
 
+    [SerializeField]
+    Transform oxygenBar;
+
+    [SerializeField]
+    Transform lifeBar;
+
 
 
     [Serializable]
@@ -56,6 +62,8 @@ public class UIManager : MonoBehaviour
     LayerMask pickupMask;
     [SerializeField]
     LayerMask lookAtMask;
+    [SerializeField]
+    LayerMask rotatebleOnlyMask;
 
     [SerializeField]
     bool useOutline = false;
@@ -67,6 +75,7 @@ public class UIManager : MonoBehaviour
 
     Renderer rend;
     Animator anim;
+    Life life;
 
     [SerializeField]
     Slider sliderOxygen;
@@ -78,6 +87,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        life = FindObjectOfType<Life>();
 
         pPickup = FindObjectOfType<PhysicsPickup>();
         objectiveNormalColor = Objective.color;
@@ -96,10 +106,7 @@ public class UIManager : MonoBehaviour
 
         LifeText.text = "Life: " + playerLife.GetLife().ToString();
         OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
-
-
-     
-       // shader = Material.Find("OutlineShaderMaterial");
+        Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
 
     }
 
@@ -146,6 +153,13 @@ public class UIManager : MonoBehaviour
         {
             transition = true;
         }
+    }
+
+    public void ToggleHealthOxygenBar()
+    {
+        life.damageActivated = !life.damageActivated;
+        oxygenBar.gameObject.SetActive(!oxygenBar.gameObject.activeSelf);
+        lifeBar.gameObject.SetActive(!lifeBar.gameObject.activeSelf);
     }
 
     void TransitionText()
@@ -217,29 +231,26 @@ public class UIManager : MonoBehaviour
     {
         Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hitInfo;
-        if (Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), lookAtMask))
+        if (Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), lookAtMask) || Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), rotatebleOnlyMask))
         {
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
                 
-                //Debug.Log(rend.materials.Length);
-                    if (rend)
-                    {
-                        rend.material = shaderMaterialEmpty;
-                    }
+               if (rend)
+               {
+                     rend.material = shaderMaterialEmpty;
+               }
                 
                 rend = hitInfo.collider.GetComponent<Renderer>();
-               // if (rend.materials.Length >= 2)
-                //{
+
 
                 rend.material = shaderMaterial;
-                    /// rend.materials[1] = shaderMaterial;
-                    /// 
-                //}
+
             }
             LookedAtItem.text = hitInfo.transform.name;
             LookedAtItemDesc.text = findLookAtDesc(hitInfo.transform.name);
             OnClickItems onClickItems = hitInfo.collider.GetComponent<OnClickItems>();
-            if (onClickItems && Input.GetMouseButtonDown(0))
+            
+            if (onClickItems && Input.GetMouseButtonDown(0) && Time.timeScale !=0)
             {
                 onClickItems.Cliked();
             }

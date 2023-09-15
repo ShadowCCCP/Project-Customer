@@ -45,6 +45,7 @@ public class SpecificCollisions : MonoBehaviour
             if (destroyUsedObject)
             {
                 Destroy(other.gameObject);
+                //Destroy(gameObject);
             }
         }
         else

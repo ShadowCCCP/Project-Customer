@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6729898685730375469}
   - component: {fileID: 4095562043610331233}
   - component: {fileID: 8569840978750713178}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lock
   m_TagString: Unlockable
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6729898685730375469
 MeshFilter:
@@ -62,6 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 876cb6edd6f908e4fa7bb6d4a52e3e45, type: 2}
   - {fileID: 2100000, guid: 876cb6edd6f908e4fa7bb6d4a52e3e45, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
