@@ -623,6 +623,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3143225791941318655, guid: 82800105bdacb2c4daf8067a31dad20e,
+        type: 3}
+      propertyPath: sounds.Array.data[11].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143225791941318655, guid: 82800105bdacb2c4daf8067a31dad20e,
+        type: 3}
+      propertyPath: sounds.Array.data[12].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143225791941318655, guid: 82800105bdacb2c4daf8067a31dad20e,
+        type: 3}
+      propertyPath: sounds.Array.data[13].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5407637706104600162, guid: 82800105bdacb2c4daf8067a31dad20e,
         type: 3}
       propertyPath: m_RootOrder
@@ -894,7 +909,7 @@ PrefabInstance:
     - target: {fileID: 1786684342458000087, guid: dcfcea0d608bacd4a879b430fadf02be,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3623168590710001652, guid: dcfcea0d608bacd4a879b430fadf02be,
         type: 3}
@@ -1668,6 +1683,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50035363ca750143b6ccf5d3a36d7e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sparkSounds:
+  - {fileID: 8300000, guid: d7300756e65c722488d8ca2c68369364, type: 3}
+  - {fileID: 8300000, guid: 2e467488b56465a408fc377e2aaea1d2, type: 3}
+  - {fileID: 8300000, guid: 0894c98862448374e81e29f00d9aaaca, type: 3}
+  - {fileID: 8300000, guid: 2f45e5140050a5140a24e3723e82a87b, type: 3}
 --- !u!1 &1757537043 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2346484445432854699, guid: c062a3115abc4e349bdc119718d4074f,
