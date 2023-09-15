@@ -233,25 +233,22 @@ public class UIManager : MonoBehaviour
         {
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
                 
-                //Debug.Log(rend.materials.Length);
-                    if (rend)
-                    {
-                        rend.material = shaderMaterialEmpty;
-                    }
+               if (rend)
+               {
+                     rend.material = shaderMaterialEmpty;
+               }
                 
                 rend = hitInfo.collider.GetComponent<Renderer>();
-               // if (rend.materials.Length >= 2)
-                //{
+
 
                 rend.material = shaderMaterial;
-                    /// rend.materials[1] = shaderMaterial;
-                    /// 
-                //}
+
             }
             LookedAtItem.text = hitInfo.transform.name;
             LookedAtItemDesc.text = findLookAtDesc(hitInfo.transform.name);
             OnClickItems onClickItems = hitInfo.collider.GetComponent<OnClickItems>();
-            if (onClickItems && Input.GetMouseButtonDown(0))
+            
+            if (onClickItems && Input.GetMouseButtonDown(0) && Time.timeScale !=0)
             {
                 onClickItems.Cliked();
             }
