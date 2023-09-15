@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundTransition : MonoBehaviour
 {
     [SerializeField]
-    float transitionDuration = 2; 
+    float transitionDuration = 2;
     private AudioSource audioSource;
 
     private void Start()
