@@ -32,10 +32,9 @@ public class OnClickItems : MonoBehaviour
 
     private void ReplaceObject()
     {
-        if(beforeClickObject != null && afterClickObject != null)
+
+        if (clicked == false)
         {
-            if (clicked == false)
-            {
                 clicked = true;
                 if (afterClickObject)
                 {
@@ -45,8 +44,8 @@ public class OnClickItems : MonoBehaviour
                         beforeClickObject.SetActive(false);
                     }
                 }
-            }
         }
+        
         else if (canBeClickedAgain)
         {
             clicked = false;
