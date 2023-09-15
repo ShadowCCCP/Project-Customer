@@ -97,9 +97,6 @@ public class UIManager : MonoBehaviour
         OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
         Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
 
-
-        // shader = Material.Find("OutlineShaderMaterial");
-
     }
 
     // Update is called once per frame
