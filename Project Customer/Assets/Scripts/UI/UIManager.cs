@@ -95,10 +95,10 @@ public class UIManager : MonoBehaviour
 
         LifeText.text = "Life: " + playerLife.GetLife().ToString();
         OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
+        Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
 
 
-     
-       // shader = Material.Find("OutlineShaderMaterial");
+        // shader = Material.Find("OutlineShaderMaterial");
 
     }
 
