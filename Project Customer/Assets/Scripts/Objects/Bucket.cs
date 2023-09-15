@@ -79,6 +79,11 @@ public class WaterInteractable : MonoBehaviour
             }
 
         }
+
+        if(other.tag == "Fire" && wetBool == true)
+        {
+            Dry();
+        }
     }
     
     private void OnTriggerExit(Collider other)

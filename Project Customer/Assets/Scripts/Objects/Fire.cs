@@ -32,6 +32,9 @@ public class Fire : MonoBehaviour
 
     WaterInteractable waterInteractable;
 
+    AudioSource audioSource;
+    SoundTransition sTrans;
+
     ParticleSystem fire;
     bool extinguished;
 
@@ -48,6 +51,11 @@ public class Fire : MonoBehaviour
     int lastLife;
     List<Fire> spawnedFiresTracker = new List<Fire>();
 
+    [SerializeField]
+    AudioClip bigFire;
+    [SerializeField]
+    AudioClip smallFire;
+
     // Use this Life property instead of the "life" variable...
     public int Life
     {
@@ -62,17 +70,34 @@ public class Fire : MonoBehaviour
 
     void Start()
     {
+        sTrans = GetComponent<SoundTransition>();
+        audioSource = GetComponent<AudioSource>();
         fire = GetComponent<ParticleSystem>();
         waterInteractable = FindObjectOfType<WaterInteractable>();
     }
 
     void Update()
     {
+        CheckSound();
         FlameExtinguished();
         SpreadFire();
         FireGrowth();
 
-        //Testing();
+        Testing();
+    }
+
+    private void CheckSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.volume = 0;
+
+            if(Life > 2) audioSource.clip = bigFire;
+            else audioSource.clip= smallFire;
+
+            audioSource.Play();
+            sTrans.TransitionToFullVolume();
+        }
     }
 
     private void Testing()
@@ -170,6 +195,7 @@ public class Fire : MonoBehaviour
     {
         if (Life <= 0)
         {
+            sTrans.TransitionToZeroVolume();
             fire.Stop();
             smoke.Stop();
             extinguished = true;
@@ -186,6 +212,7 @@ public class Fire : MonoBehaviour
 
         if(!fire.isPlaying)
         {
+            audioSource.Stop();
             gameObject.SetActive(false);
             smoke.gameObject.SetActive(false);
             lighting.gameObject.SetActive(false);

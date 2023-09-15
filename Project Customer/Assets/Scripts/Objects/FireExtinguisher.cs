@@ -6,6 +6,12 @@ using UnityEngine;
 public class FireExtinguisher : MonoBehaviour
 {
     [SerializeField]
+    AudioClip oneShot;
+
+    [SerializeField]
+    AudioClip loopSound;
+
+    [SerializeField]
     ParticleSystem foamParticle;
 
     [SerializeField]
@@ -19,10 +25,23 @@ public class FireExtinguisher : MonoBehaviour
 
     FoamBullet currentFoam;
     float lastShot;
-    float cooldown = 0.25f;
+    float cooldownFoamSpawn = 0.25f;
+
+    [SerializeField]
+    float cooldownSpam = 1;
+    float lastPress;
+
+    InventoryManager inventoryManager;
+    AudioSource audioSource;
+    SoundTransition sTrans;
+    bool doOnce;
+    bool startPlayingSounds;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        sTrans = GetComponent<SoundTransition>();
+        inventoryManager = FindObjectOfType<InventoryManager>();
         lastShot = Time.time;
         Life.onDeath += DeactivateSelf;
     }
@@ -34,15 +53,23 @@ public class FireExtinguisher : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && Time.time - lastShot > cooldown)
+        if(inventoryManager.hasFireExtinguisher && Time.time - lastPress > cooldownSpam)
         {
-            Shoot();
-            lastShot = Time.time;
-        }
+            PlaySoundEffects();
 
-        if(Input.GetMouseButtonUp(0))
-        {
-            foamParticle.Stop();
+            if (Input.GetMouseButton(0) && Time.time - lastShot > cooldownFoamSpawn)
+            {
+                Shoot();
+                lastShot = Time.time;
+                startPlayingSounds = true;
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                foamParticle.Stop();
+                StopSoundEffects();
+                lastPress = Time.time;
+            }
         }
     }
 
@@ -57,5 +84,36 @@ public class FireExtinguisher : MonoBehaviour
     private void DeactivateSelf()
     {
         gameObject.SetActive(false);
+    }
+
+    private void PlaySoundEffects()
+    {
+        if(startPlayingSounds && !audioSource.isPlaying)
+        {
+            if (!doOnce)
+            {
+                audioSource.volume = 1;
+                audioSource.clip = oneShot;
+                audioSource.Play();
+                doOnce = true;
+            }
+
+            if (!audioSource.isPlaying && doOnce)
+            {
+                audioSource.loop = true;
+                audioSource.clip = loopSound;
+                audioSource.Play();
+            }
+        }
+    }
+
+    private void StopSoundEffects()
+    {
+        audioSource.loop = false;
+        audioSource.clip = oneShot;
+        sTrans.TransitionToZeroVolume();
+        audioSource.Play();
+        doOnce = false;
+        startPlayingSounds = false;
     }
 }
