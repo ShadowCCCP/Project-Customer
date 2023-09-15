@@ -232,7 +232,11 @@ public class ObjectivesScript : MonoBehaviour
     {
         if (objToCollideWithForThePutItemInPlace[objToCollideWithIndex].GetCollisionStatus())
         {
-            objToCollideWithIndex++;
+            if (objToCollideWithIndex <= objToCollideWithForThePutItemInPlace.Length)
+            {
+                objToCollideWithIndex++;
+            }
+              
             objectiveIndex++;
         }
     }
