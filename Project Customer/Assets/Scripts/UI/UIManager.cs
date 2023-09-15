@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
     Material shaderMaterialEmpty;
 
     Renderer rend;
+    Animator anim;
 
     [SerializeField]
     Slider sliderOxygen;
@@ -76,6 +77,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+
         pPickup = FindObjectOfType<PhysicsPickup>();
         objectiveNormalColor = Objective.color;
 
@@ -263,5 +266,10 @@ public class UIManager : MonoBehaviour
     {
         sliderOxygen.value = (float)playerLife.GetOxygen()/100;
         sliderHealth.value = (float)playerLife.GetLife()/100;
+    }
+
+    public void TriggerSleepAnimation()
+    {
+        anim.SetTrigger("Sleep");
     }
 }
