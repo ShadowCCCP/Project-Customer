@@ -230,14 +230,13 @@ public class ObjectivesScript : MonoBehaviour
     int objToCollideWithIndex = 0;
     void putItemInPlace()
     {
-        if (objToCollideWithForThePutItemInPlace[objToCollideWithIndex].GetCollisionStatus())
+        if (objToCollideWithIndex < objToCollideWithForThePutItemInPlace.Length)
         {
-            if (objToCollideWithIndex <= objToCollideWithForThePutItemInPlace.Length)
+            if (objToCollideWithForThePutItemInPlace[objToCollideWithIndex].GetCollisionStatus())
             {
                 objToCollideWithIndex++;
+                objectiveIndex++;
             }
-              
-            objectiveIndex++;
         }
     }
 
