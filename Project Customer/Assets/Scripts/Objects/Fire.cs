@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
+    public static int flameCount;
+    bool hasBeenAdded;
+
     [SerializeField]
     int maxLife = 5;
     [SerializeField]
@@ -82,6 +85,7 @@ public class Fire : MonoBehaviour
 
     void Update()
     {
+        AddToCount();
         CheckSound();
         FlameExtinguished();
         SpreadFire();
@@ -89,6 +93,15 @@ public class Fire : MonoBehaviour
         //AddLifeOverTime();
 
         Testing();
+    }
+
+    private void AddToCount()
+    {
+        if (!hasBeenAdded)
+        {
+            flameCount++;
+            hasBeenAdded = true;
+        }
     }
 
     private void CheckSound()
@@ -214,7 +227,7 @@ public class Fire : MonoBehaviour
             smoke.Stop();
             extinguished = true;
         }
-        else if(life > 0 && extinguished)
+        else if(life > 0 && extinguished && (!fire.isPlaying || !smoke.isPlaying))
         {
             fire.Play();
             smoke.Play();
@@ -224,6 +237,8 @@ public class Fire : MonoBehaviour
 
         if(!fire.isPlaying)
         {
+            flameCount--;
+            hasBeenAdded = false;
             audioSource.Stop();
             transform.parent.gameObject.SetActive(false);
         }

@@ -20,20 +20,33 @@ public class Life : MonoBehaviour
     bool canTakeDamage = true;
     bool triggerOnce;
 
-    public float Oxygen = 100;
-    public float OxygenRundownSpeed = 0.5f;
+    public float oxygen = 100;
+    public float oxygenRundownSpeed = 0.5f;
+
+    [SerializeField]
+    float oxygenRundownMaxSpeed = 0.75f;
+    float originalOxygenRundownSpeed;
+
+    public bool damageActivated = true;
+
+    [SerializeField]
+    int flameCountToMaxLoss = 5;
+
+    
 
     //private float fireDamageRate = 0.5f;
     void Start()
     {
+        originalOxygenRundownSpeed = oxygenRundownSpeed;
         normalFireDamageRate = fireDamageRate;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer();
-        oxygenRundown();
+        SetOxygenInterval();
+        Timer();
+        OxygenRundown();
 
         if (life <= 0)
         {
@@ -44,10 +57,15 @@ public class Life : MonoBehaviour
             }
         }
     }
+
+    private void SetOxygenInterval()
+    {
+        oxygenRundownSpeed = Mathf.Lerp(originalOxygenRundownSpeed, oxygenRundownMaxSpeed, Fire.flameCount / flameCountToMaxLoss);
+    }
     
     private void OnParticleCollision(GameObject other)
     {
-        if (other.gameObject.tag == "Fire")
+        if (damageActivated && other.gameObject.tag == "Fire")
         {
             if (canTakeDamage && life > 0)
             {
@@ -59,7 +77,7 @@ public class Life : MonoBehaviour
         }
     }
 
-    void timer()
+    void Timer()
     {
         if (!canTakeDamage)
         {
@@ -72,12 +90,15 @@ public class Life : MonoBehaviour
         }
     }
 
-    void oxygenRundown()
+    void OxygenRundown()
     {
-        Oxygen -= Time.deltaTime * OxygenRundownSpeed;
-        if (Oxygen <= 0)
+        if(damageActivated)
         {
-            life = 0;
+            oxygen -= Time.deltaTime * oxygenRundownSpeed;
+            if (oxygen <= 0)
+            {
+                life = 0;
+            }
         }
     }
 
@@ -88,6 +109,6 @@ public class Life : MonoBehaviour
 
     public int GetOxygen()
     {
-        return (int)Oxygen;
+        return (int)oxygen;
     }
 }

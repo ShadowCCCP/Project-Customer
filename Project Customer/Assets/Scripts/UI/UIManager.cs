@@ -33,6 +33,12 @@ public class UIManager : MonoBehaviour
     float cooldown = 1;
     float activatedAt;
 
+    [SerializeField]
+    Transform oxygenBar;
+
+    [SerializeField]
+    Transform lifeBar;
+
 
 
     [Serializable]
@@ -68,6 +74,7 @@ public class UIManager : MonoBehaviour
     Material shaderMaterialEmpty;
 
     Renderer rend;
+    Life life;
 
     [SerializeField]
     Slider sliderOxygen;
@@ -78,6 +85,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        life = FindObjectOfType<Life>();
+
         pPickup = FindObjectOfType<PhysicsPickup>();
         objectiveNormalColor = Objective.color;
 
@@ -142,6 +151,13 @@ public class UIManager : MonoBehaviour
         {
             transition = true;
         }
+    }
+
+    public void ToggleHealthOxygenBar()
+    {
+        life.damageActivated = !life.damageActivated;
+        oxygenBar.gameObject.SetActive(!oxygenBar.gameObject.activeSelf);
+        lifeBar.gameObject.SetActive(!lifeBar.gameObject.activeSelf);
     }
 
     void TransitionText()
