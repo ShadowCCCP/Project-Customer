@@ -83,7 +83,7 @@ public class Fire : MonoBehaviour
         SpreadFire();
         FireGrowth();
 
-        //Testing();
+        Testing();
     }
 
     private void CheckSound()
