@@ -1345,6 +1345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50035363ca750143b6ccf5d3a36d7e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sparkSounds: []
 --- !u!1 &1757537043 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2346484445432854699, guid: c062a3115abc4e349bdc119718d4074f,

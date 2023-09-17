@@ -60,8 +60,18 @@ public class Life : MonoBehaviour
 
     private void SetOxygenInterval()
     {
-        Debug.Log(oxygenRundownSpeed);
-        oxygenRundownSpeed = Mathf.Lerp(originalOxygenRundownSpeed, oxygenRundownMaxSpeed, (float)Fire.flameCount / (float)flameCountToMaxLoss);
+        if(Fire.flameCount > 1)
+        {
+            oxygenRundownSpeed = Mathf.Lerp(originalOxygenRundownSpeed, oxygenRundownMaxSpeed, (float)Fire.flameCount / (float)flameCountToMaxLoss);
+        }
+        else if(Fire.flameCount == 1)
+        {
+            oxygenRundownSpeed = originalOxygenRundownSpeed;
+        }
+        else
+        {
+            oxygenRundownSpeed = 0;
+        }
     }
     
     private void OnParticleCollision(GameObject other)
