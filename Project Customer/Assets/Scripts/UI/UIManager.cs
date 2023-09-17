@@ -17,6 +17,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ExtraHint;
     public TextMeshProUGUI Objective;
 
+    public TextMeshProUGUI Objective1;
+    public TextMeshProUGUI Objective2;
+    public TextMeshProUGUI Objective3;
+
     PhysicsPickup pPickup;
     [SerializeField]
     Color objectiveFinishedColor = Color.green;
@@ -32,6 +36,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     float cooldown = 1;
     float activatedAt;
+
+    [SerializeField]
+    Transform oxygenBar;
+
+    [SerializeField]
+    Transform lifeBar;
 
 
 
@@ -49,6 +59,7 @@ public class UIManager : MonoBehaviour
     private PhysicsPickup playerPhysicsPickup;
     private Life playerLife;
     private ObjectivesScript objectivesScript;
+    private AdvancedObjectivesScript advancedObjectivesScript;
 
     Camera _camera;
 
@@ -68,6 +79,8 @@ public class UIManager : MonoBehaviour
     Material shaderMaterialEmpty;
 
     Renderer rend;
+    Animator anim;
+    Life life;
 
     [SerializeField]
     Slider sliderOxygen;
@@ -78,11 +91,15 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+        life = FindObjectOfType<Life>();
+
         pPickup = FindObjectOfType<PhysicsPickup>();
         objectiveNormalColor = Objective.color;
 
         _camera = FindObjectOfType<Camera>();
         objectivesScript = FindObjectOfType<ObjectivesScript>();
+        advancedObjectivesScript = FindObjectOfType<AdvancedObjectivesScript>();
 
         ItemDescription.text = null;
         LookedAtItem.text = null;
@@ -96,6 +113,10 @@ public class UIManager : MonoBehaviour
         LifeText.text = "Life: " + playerLife.GetLife().ToString();
         OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
         Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
+
+        Objective1.text = advancedObjectivesScript.GetCurrentObjective(1).ToString();
+        Objective2.text = advancedObjectivesScript.GetCurrentObjective(2).ToString();
+        Objective3.text = advancedObjectivesScript.GetCurrentObjective(3).ToString();
 
     }
 
@@ -142,6 +163,29 @@ public class UIManager : MonoBehaviour
         {
             transition = true;
         }
+
+
+        if (Objective1.text != advancedObjectivesScript.GetCurrentObjective(1).ToString())
+        {
+            Objective1.text =advancedObjectivesScript.GetCurrentObjective(1).ToString();
+        }
+        if (Objective2.text != advancedObjectivesScript.GetCurrentObjective(2).ToString())
+        {
+            Objective2.text =advancedObjectivesScript.GetCurrentObjective(2).ToString();
+        }
+        if (Objective3.text != advancedObjectivesScript.GetCurrentObjective(3).ToString())
+        {
+            Objective3.text = advancedObjectivesScript.GetCurrentObjective(3).ToString();
+        }
+
+
+    }
+
+    public void ToggleHealthOxygenBar()
+    {
+        life.damageActivated = !life.damageActivated;
+        oxygenBar.gameObject.SetActive(!oxygenBar.gameObject.activeSelf);
+        lifeBar.gameObject.SetActive(!lifeBar.gameObject.activeSelf);
     }
 
     void TransitionText()
@@ -217,25 +261,22 @@ public class UIManager : MonoBehaviour
         {
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
                 
-                //Debug.Log(rend.materials.Length);
-                    if (rend)
-                    {
-                        rend.material = shaderMaterialEmpty;
-                    }
+               if (rend)
+               {
+                     rend.material = shaderMaterialEmpty;
+               }
                 
                 rend = hitInfo.collider.GetComponent<Renderer>();
-               // if (rend.materials.Length >= 2)
-                //{
+
 
                 rend.material = shaderMaterial;
-                    /// rend.materials[1] = shaderMaterial;
-                    /// 
-                //}
+
             }
             LookedAtItem.text = hitInfo.transform.name;
             LookedAtItemDesc.text = findLookAtDesc(hitInfo.transform.name);
             OnClickItems onClickItems = hitInfo.collider.GetComponent<OnClickItems>();
-            if (onClickItems && Input.GetMouseButtonDown(0))
+            
+            if (onClickItems && Input.GetMouseButtonDown(0) && Time.timeScale !=0)
             {
                 onClickItems.Cliked();
             }
@@ -262,5 +303,10 @@ public class UIManager : MonoBehaviour
     {
         sliderOxygen.value = (float)playerLife.GetOxygen()/100;
         sliderHealth.value = (float)playerLife.GetLife()/100;
+    }
+
+    public void TriggerSleepAnimation()
+    {
+        anim.SetTrigger("Sleep");
     }
 }

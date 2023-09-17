@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
+    public static int flameCount;
+    bool hasBeenAdded;
+
     [SerializeField]
     int maxLife = 5;
     [SerializeField]
@@ -23,12 +26,16 @@ public class Fire : MonoBehaviour
     bool solidFire = false;
 
     [SerializeField]
-    float cooldown = 0.75f;
+    float hitCooldown = 0.75f;
     float lastHit;
+
+    [SerializeField]
+    float growthCooldown = 20;
+    float lastGrowth;
 
     // Higher values make the flames bigger...
     [SerializeField]
-    float maxLifeTime = 1.48f;
+    float flameMaxHeight = 1.48f;
 
     WaterInteractable waterInteractable;
 
@@ -78,12 +85,23 @@ public class Fire : MonoBehaviour
 
     void Update()
     {
+        AddToCount();
         CheckSound();
         FlameExtinguished();
         SpreadFire();
         FireGrowth();
+        //AddLifeOverTime();
 
         Testing();
+    }
+
+    private void AddToCount()
+    {
+        if (!hasBeenAdded)
+        {
+            flameCount++;
+            hasBeenAdded = true;
+        }
     }
 
     private void CheckSound()
@@ -116,12 +134,21 @@ public class Fire : MonoBehaviour
     {
         ParticleSystem.MainModule pSMain = fire.main;
         float lifeValue = (float)life / (float)maxLife;
-        pSMain.startLifetime = Mathf.Lerp(1.1f, maxLifeTime, lifeValue);
+        pSMain.startLifetime = Mathf.Lerp(1.1f, flameMaxHeight, lifeValue);
+    }
+
+    private void AddLifeOverTime()
+    {
+        if (Life < maxLife && Time.time - lastGrowth > growthCooldown)
+        {
+            Life++;
+        }
+        else if (Life > maxLife) Life = maxLife;
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        if(Time.time - lastHit > cooldown)
+        if(Time.time - lastHit > hitCooldown)
         {
             if (other.gameObject.tag == "FoamBullet")
             {
@@ -166,7 +193,7 @@ public class Fire : MonoBehaviour
                 }
                 else
                 {
-                    gameObject.SetActive(false);
+                    transform.parent.gameObject.SetActive(false);
                     Debug.Log("level failed");
                 }
             }
@@ -200,22 +227,20 @@ public class Fire : MonoBehaviour
             smoke.Stop();
             extinguished = true;
         }
-        else if(life > 0 && extinguished)
+        else if(life > 0 && extinguished && (!fire.isPlaying || !smoke.isPlaying))
         {
             fire.Play();
             smoke.Play();
-            gameObject.SetActive(true);
-            smoke.gameObject.SetActive(true);
-            lighting.gameObject.SetActive(true);
+            transform.parent.gameObject.SetActive(true);
             extinguished = false;
         }
 
         if(!fire.isPlaying)
         {
+            flameCount--;
+            hasBeenAdded = false;
             audioSource.Stop();
-            gameObject.SetActive(false);
-            smoke.gameObject.SetActive(false);
-            lighting.gameObject.SetActive(false);
+            transform.parent.gameObject.SetActive(false);
         }
     }
 
@@ -226,9 +251,7 @@ public class Fire : MonoBehaviour
         {
             for (int i = 0; i < fireSpread.Length; i++)
             {
-                fireSpread[i].gameObject.SetActive(true);
-                fireSpread[i].smoke.gameObject.SetActive(true);
-                fireSpread[i].lighting.gameObject.SetActive(true);
+                fireSpread[i].transform.parent.gameObject.SetActive(true);
                 spawnedFiresTracker.Add(fireSpread[i]);
             }
         }
