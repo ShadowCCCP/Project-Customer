@@ -78,9 +78,7 @@ public class WaterInteractable : MonoBehaviour
                 onWaterSource = true;
             }
 
-        }
-
-        if(other.tag == "Fire" && wetBool == true)
+        } else if(other.tag == "Plant" && wetBool == true)
         {
             Dry();
         }

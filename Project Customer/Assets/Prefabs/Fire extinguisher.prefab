@@ -128,9 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ed386415d67df4d96566bb4e8bd693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oneShot: {fileID: 8300000, guid: dd9b6be6728e37547a982e176c5f80de, type: 3}
+  loopSound: {fileID: 8300000, guid: 74af9a7a718adfd41a0994c097fd969a, type: 3}
   foamParticle: {fileID: 3628778702145002060, guid: ae1e8c14b3950d545a6ae014b9a79178,
     type: 3}
   foamPrefab: {fileID: 8493266595725129645, guid: 5c12a1e8da93ec44791529383c2d9e15,
     type: 3}
   spawnPoint: {fileID: 8338304393428918563}
   shootPower: 350
+  cooldownSpam: 1
