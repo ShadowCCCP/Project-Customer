@@ -17,6 +17,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ExtraHint;
     public TextMeshProUGUI Objective;
 
+    public TextMeshProUGUI Objective1;
+    public TextMeshProUGUI Objective2;
+    public TextMeshProUGUI Objective3;
+
     PhysicsPickup pPickup;
     [SerializeField]
     Color objectiveFinishedColor = Color.green;
@@ -55,6 +59,7 @@ public class UIManager : MonoBehaviour
     private PhysicsPickup playerPhysicsPickup;
     private Life playerLife;
     private ObjectivesScript objectivesScript;
+    private AdvancedObjectivesScript advancedObjectivesScript;
 
     Camera _camera;
 
@@ -94,6 +99,7 @@ public class UIManager : MonoBehaviour
 
         _camera = FindObjectOfType<Camera>();
         objectivesScript = FindObjectOfType<ObjectivesScript>();
+        advancedObjectivesScript = FindObjectOfType<AdvancedObjectivesScript>();
 
         ItemDescription.text = null;
         LookedAtItem.text = null;
@@ -107,6 +113,10 @@ public class UIManager : MonoBehaviour
         LifeText.text = "Life: " + playerLife.GetLife().ToString();
         OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
         Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
+
+        Objective1.text = advancedObjectivesScript.GetCurrentObjective(1).ToString();
+        Objective2.text = advancedObjectivesScript.GetCurrentObjective(2).ToString();
+        Objective3.text = advancedObjectivesScript.GetCurrentObjective(3).ToString();
 
     }
 
@@ -153,6 +163,22 @@ public class UIManager : MonoBehaviour
         {
             transition = true;
         }
+
+
+        if (Objective1.text != advancedObjectivesScript.GetCurrentObjective(1).ToString())
+        {
+            Objective1.text =advancedObjectivesScript.GetCurrentObjective(1).ToString();
+        }
+        if (Objective2.text != advancedObjectivesScript.GetCurrentObjective(2).ToString())
+        {
+            Objective2.text =advancedObjectivesScript.GetCurrentObjective(2).ToString();
+        }
+        if (Objective3.text != advancedObjectivesScript.GetCurrentObjective(3).ToString())
+        {
+            Objective3.text = advancedObjectivesScript.GetCurrentObjective(3).ToString();
+        }
+
+
     }
 
     public void ToggleHealthOxygenBar()
