@@ -9,6 +9,8 @@ public class PhysicsPickup : MonoBehaviour
 {
     public static event Action onPickupFireExtinguisher;
 
+    public bool activatePickupKeys = true;
+
     [SerializeField]
     LayerMask pickupMask;
 
@@ -102,6 +104,8 @@ public class PhysicsPickup : MonoBehaviour
 
             if (Physics.Raycast(cameraRay, out RaycastHit hitInfo, pickupRange, pickupMask))
             {
+                if (hitInfo.transform.tag == "Key" && !activatePickupKeys) return;
+
                 audioManager.Play(pickupSound);
                 currentObject = hitInfo.rigidbody;
                 objectNormalAngularDrag = currentObject.angularDrag;
