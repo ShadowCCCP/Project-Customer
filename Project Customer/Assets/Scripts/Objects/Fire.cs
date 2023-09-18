@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,25 +6,22 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
+    public static event Action onRepellSoda;
+
     public static int flameCount;
+
     bool hasBeenAdded;
 
-    [SerializeField]
-    int maxLife = 5;
+    public int maxLife = 5;
     [SerializeField]
     int life = 5;
     [SerializeField]
     int fireLifeFilledBucket = 5;
 
-    [SerializeField] //max life the specific item can extinguish
-    int fireLifePotion = 5;
-
     [SerializeField]
     bool electricFire = false;
     [SerializeField]
     bool cookingFire = false;
-    [SerializeField]
-    bool solidFire = false;
 
     [SerializeField]
     float hitCooldown = 0.75f;
@@ -48,6 +46,7 @@ public class Fire : MonoBehaviour
     // For firespreading...
     [SerializeField]
     Fire[] fireSpread;
+    bool setSpreadFireToMax;
 
     [SerializeField]
     ParticleSystem smoke;
@@ -62,6 +61,7 @@ public class Fire : MonoBehaviour
     AudioClip bigFire;
     [SerializeField]
     AudioClip smallFire;
+
 
     // Use this Life property instead of the "life" variable...
     public int Life
@@ -128,6 +128,11 @@ public class Fire : MonoBehaviour
         {
             Life--;
         }
+        else if(Input.GetKeyDown(KeyCode.P))
+        {
+            Life = maxLife;
+            setSpreadFireToMax = true;
+        }
     }
 
     private void FireGrowth()
@@ -148,7 +153,24 @@ public class Fire : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if(Time.time - lastHit > hitCooldown)
+        if (other.gameObject.tag == "ElectricFireStop")
+        {
+            if (electricFire)
+            {
+                Life = 0;
+            }
+            // Baking soda used on anything else...
+            else
+            {
+                // Repell the baking soda...
+                if (onRepellSoda != null)
+                {
+                    onRepellSoda();
+                }
+            }
+        }
+
+        if (Time.time - lastHit > hitCooldown)
         {
             if (other.gameObject.tag == "FoamBullet")
             {
@@ -162,39 +184,7 @@ public class Fire : MonoBehaviour
                     if (Life <= fireLifeFilledBucket ) //water bucket
                     {
                         DifferentFireCheck();
-
                     }
-
-                }
-                else
-                {
-                    if (Life <= fireLifePotion  ) //potion
-                    {
-                        DifferentFireCheck();
-                        if (solidFire)
-                        {
-                            Life = 0;
-                            waterInteractable.Dry();
-                        }
-                        else
-                        {
-                            Debug.Log("level failed");
-                        }
-
-                    }
-                }
-            }
-
-            if (other.gameObject.tag == "ElectricFireStop")
-            {
-                if (electricFire)
-                {
-                    Life = 0;
-                }
-                else
-                {
-                    transform.parent.gameObject.SetActive(false);
-                    Debug.Log("level failed");
                 }
             }
 
@@ -209,9 +199,12 @@ public class Fire : MonoBehaviour
             Life = 0;
             waterInteractable.Dry();
         }
+        // If it's an electricFire or cookingFire...
         else
         {
-            Debug.Log("explosion");
+            // Explosion!!!
+            Life = maxLife;
+            setSpreadFireToMax = true;
         }
     }
 
@@ -247,13 +240,18 @@ public class Fire : MonoBehaviour
     private void SpreadFire()
     {
         KeepTrackOfInstances();
-        if (fireSpread.Length > 0 && Life == maxLife && lastLife < Life && spawnedFiresTracker.Count == 0)
+        if (fireSpread.Length > 0 && Life == maxLife && lastLife < Life && spawnedFiresTracker.Count < fireSpread.Length)
         {
             for (int i = 0; i < fireSpread.Length; i++)
             {
                 fireSpread[i].transform.parent.gameObject.SetActive(true);
                 spawnedFiresTracker.Add(fireSpread[i]);
             }
+        }
+
+        if (setSpreadFireToMax)
+        {
+            SetSpreadFireToMax();
         }
     }
 
@@ -268,5 +266,15 @@ public class Fire : MonoBehaviour
                 spawnedFiresTracker.Remove(spawnedFiresTracker[i]);
             }
         }
+    }
+
+    private void SetSpreadFireToMax()
+    {
+        for (int i = 0; i < spawnedFiresTracker.Count; i++)
+        {
+            spawnedFiresTracker[i].Life = spawnedFiresTracker[i].maxLife;
+        }
+
+        setSpreadFireToMax = false;
     }
 }

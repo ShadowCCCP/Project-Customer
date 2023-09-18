@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class AdvancedObjectivesScript : MonoBehaviour
 {
- //   [SerializeField]
 
     [SerializeField]
     AdvancedObjectiveClass[] Objectives;
@@ -13,15 +12,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
     PhysicsPickup physicsPickup;
     InventoryManager inventoryManager;
     CollisionCheckForObjective collisionCheckForObjective;
-
-    [SerializeField]
-    GameObject[] placesToGo;
-
-    [SerializeField]
-    GameObject[] itemsToPickUp;
-
-    [SerializeField]
-    SpecificCollisions[] objToCollideWithForThePutItemInPlace;
+  
 
     int objectiveIndex = 0;
     int objectiveType;
@@ -83,6 +74,9 @@ public class AdvancedObjectivesScript : MonoBehaviour
             case 9:
                 putItemInPlace(i);
                 break;
+            case 10:
+                onClickObj(i);
+                break;
 
         }
     }
@@ -130,6 +124,10 @@ public class AdvancedObjectivesScript : MonoBehaviour
             {
                 objectiveType = 9;
             }
+            if (Objectives[index].TaskUnderstoodByCode.Contains("Click") || Objectives[index].TaskUnderstoodByCode.Contains("click"))
+            {
+                objectiveType = 10;
+            }
         }
     }
 
@@ -137,7 +135,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
 
     void walkObj(int i)
     {
-        if (Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical")!= 0)
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical")!= 0)
         {
             Objectives[i].done = true;
         }
@@ -188,51 +186,47 @@ public class AdvancedObjectivesScript : MonoBehaviour
             Objectives[i].done = true;
         }
     }
-    int placeIndex = 0;
     void goToPlaceObj(int i)
     {
-        collisionCheckForObjective.checkPlace(placesToGo[placeIndex]);
+        collisionCheckForObjective.checkPlace(Objectives[i].gameObject);
         if (collisionCheckForObjective.GetReachPlaceStatus())
         {
-            if (placeIndex < placesToGo.Length-1)
-            {
-                placeIndex++;
-            }
             Objectives[i].done = true;
         }
 
     }
-
-    int itemToPickUpIndex = 0;
 
     void pickUpSpecificItemObj(int i)
     {
         if (physicsPickup.currentObject)
         {
-            if (physicsPickup.currentObject.name == itemsToPickUp[itemToPickUpIndex].name)
+            if (physicsPickup.currentObject.name == Objectives[i].gameObject.name)
             {
-                if (itemToPickUpIndex < itemsToPickUp.Length-1)
-                {
-                    itemToPickUpIndex++;
-                }
                 Objectives[i].done = true;
             }
         }
     }
 
-
-    int objToCollideWithIndex = 0;
     void putItemInPlace(int i)
     {
-        if (objToCollideWithForThePutItemInPlace[objToCollideWithIndex].GetCollisionStatus())
+        SpecificCollisions specificCollisions = Objectives[i].gameObject.GetComponent<SpecificCollisions>();
+        if (specificCollisions.GetCollisionStatus())
         {
-            if (objToCollideWithIndex < objToCollideWithForThePutItemInPlace.Length - 1)
-            {
-                objToCollideWithIndex++;
-            }
             Objectives[i].done = true;
+        }
+    }
+
+    void onClickObj(int i)
+    {
+        OnClickItems onClickItem = Objectives[i].gameObject.GetComponent<OnClickItems>();
+
+        if (onClickItem.GetClickStatus())
+        {
+
+             Objectives[i].done = true;
 
         }
+        
     }
 
 
