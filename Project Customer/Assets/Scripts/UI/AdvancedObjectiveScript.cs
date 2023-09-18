@@ -16,12 +16,6 @@ public class AdvancedObjectivesScript : MonoBehaviour
   
 
     [SerializeField]
-    GameObject[] placesToGo;
-
-    [SerializeField]
-    GameObject[] itemsToPickUp;
-
-    [SerializeField]
     SpecificCollisions[] objToCollideWithForThePutItemInPlace;
 
     [SerializeField]
@@ -148,7 +142,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
 
     void walkObj(int i)
     {
-        if (Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical")!= 0)
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical")!= 0)
         {
             Objectives[i].done = true;
         }
@@ -199,65 +193,47 @@ public class AdvancedObjectivesScript : MonoBehaviour
             Objectives[i].done = true;
         }
     }
-    int placeIndex = 0;
     void goToPlaceObj(int i)
     {
-        collisionCheckForObjective.checkPlace(placesToGo[placeIndex]);
+        collisionCheckForObjective.checkPlace(Objectives[i].gameObject);
         if (collisionCheckForObjective.GetReachPlaceStatus())
         {
-            if (placeIndex < placesToGo.Length-1)
-            {
-                placeIndex++;
-            }
             Objectives[i].done = true;
         }
 
     }
-
-    int itemToPickUpIndex = 0;
 
     void pickUpSpecificItemObj(int i)
     {
         if (physicsPickup.currentObject)
         {
-            if (physicsPickup.currentObject.name == itemsToPickUp[itemToPickUpIndex].name)
+            if (physicsPickup.currentObject.name == Objectives[i].gameObject.name)
             {
-                if (itemToPickUpIndex < itemsToPickUp.Length-1)
-                {
-                    itemToPickUpIndex++;
-                }
                 Objectives[i].done = true;
             }
         }
     }
 
-
-    int objToCollideWithIndex = 0;
     void putItemInPlace(int i)
     {
-        if (objToCollideWithForThePutItemInPlace[objToCollideWithIndex].GetCollisionStatus())
+        SpecificCollisions specificCollisions = Objectives[i].gameObject.GetComponent<SpecificCollisions>();
+        if (specificCollisions.GetCollisionStatus())
         {
-            if (objToCollideWithIndex < objToCollideWithForThePutItemInPlace.Length - 1)
-            {
-                objToCollideWithIndex++;
-            }
             Objectives[i].done = true;
-
         }
     }
 
-    int onClickIndex = 0;
     void onClickObj(int i)
     {
-        if (onClickItems[onClickIndex].GetClickStatus())
+        OnClickItems onClickItem = Objectives[i].gameObject.GetComponent<OnClickItems>();
+
+        if (onClickItem.GetClickStatus())
         {
-            if (onClickIndex < onClickItems.Length - 1)
-            {
-                onClickIndex++;
-            }
-            Objectives[i].done = true;
+
+             Objectives[i].done = true;
 
         }
+        
     }
 
 
