@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    LayerMask groundMask;
+    
     [SerializeField]
     bool jumpMultiplier;
 
@@ -30,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     float jumpPowerMultiplier = 100f;
+
+    public PlayableDirector pD;
 
 
     Rigidbody rb;
@@ -131,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * groundCheckDist, Color.cyan);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, groundCheckDist))
+        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, groundCheckDist, groundMask))
         {
             return true;
         }

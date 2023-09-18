@@ -144,6 +144,7 @@ public class PhysicsPickup : MonoBehaviour
             else if (Input.GetMouseButtonUp(1))
             {
                 //rotateCameraScript.enabled = true;
+                rotateCameraScript.enabled = true;
                 isRotating = false;
             }
 
@@ -161,10 +162,6 @@ public class PhysicsPickup : MonoBehaviour
 
             currentObject.transform.Rotate(Vector3.down, xRotation);
             currentObject.transform.Rotate(Vector3.right, yRotation);
-        }
-        else
-        {
-            rotateCameraScript.enabled = true;
         }
     }
 

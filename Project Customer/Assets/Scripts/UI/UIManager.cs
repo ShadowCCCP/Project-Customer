@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     float cooldown = 1;
-    float[] activatedAt = new float[3];
+    float activatedAt;
 
     [SerializeField]
     Transform oxygenBar;
@@ -168,9 +168,9 @@ public class UIManager : MonoBehaviour
         }
         */
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < objectives.Length; i++)
         {
-            if (objectives[i].text != advancedObjectivesScript.GetCurrentObjective(1).ToString() && !doOnce[i])
+            if (objectives[i].text != advancedObjectivesScript.GetCurrentObjective(i + 1).ToString() && !doOnce[i])
             {
                 transition[i] = true;
             }
@@ -186,14 +186,14 @@ public class UIManager : MonoBehaviour
 
     void TransitionText()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < objectives.Length; i++)
         {
             if (transition[i])
             {
                 ColorTransition(objectives[i], i);
             }
 
-            FinishColorTransition(objectives[i], i);
+            FinishColorTransition(i);
         }
     }
 
@@ -210,19 +210,30 @@ public class UIManager : MonoBehaviour
             text.color = objectiveFinishedColor;
             transition[transitionIndex] = false;
             doOnce[transitionIndex] = true;
-            activatedAt[transitionIndex] = Time.time;
+            activatedAt = Time.time;
         }
     }
 
-    void FinishColorTransition(TextMeshProUGUI text, int transitionIndex)
+    void FinishColorTransition(int transitionIndex)
     {
-        if (Time.time - activatedAt[transitionIndex] > cooldown && doOnce[transitionIndex])
+        int count = 0;
+        for (int i = 0; i < objectives.Length; i++)
         {
-            text.color = objectiveNormalColor;
-            colorTransitionTimer[transitionIndex] = 0;
-            text.text = advancedObjectivesScript.GetCurrentObjective(transitionIndex + 1).ToString();
-            Debug.Log(advancedObjectivesScript.GetCurrentObjective(transitionIndex + 1).ToString());
-            doOnce[transitionIndex] = false;
+            if (objectives[i].color == objectiveFinishedColor || objectives[i].text == " ")
+            {
+                count++;
+            }
+        }
+        
+        if(count >= 3 && Time.time - activatedAt > cooldown && doOnce[transitionIndex])
+        {
+            for (int i = 0; i < objectives.Length; i++)
+            {
+                objectives[i].color = objectiveNormalColor;
+                colorTransitionTimer[transitionIndex] = 0;
+                objectives[i].text = advancedObjectivesScript.GetCurrentObjective(i + 1).ToString();
+                doOnce[i] = false;
+            }
         }
     }
 

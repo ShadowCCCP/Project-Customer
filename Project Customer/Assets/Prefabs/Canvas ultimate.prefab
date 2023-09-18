@@ -959,7 +959,7 @@ RectTransform:
   - {fileID: 6078034998697150883}
   - {fileID: 1128921956207564306}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1049,9 +1049,10 @@ MonoBehaviour:
   LookedAtItemDesc: {fileID: 7925089906945108704}
   ExtraHint: {fileID: 4670674418275386678}
   Objective: {fileID: 5068970006955109062}
-  Objective1: {fileID: 7671952167481057195}
-  Objective2: {fileID: 7190246531964678073}
-  Objective3: {fileID: 1981430378873307156}
+  objectives:
+  - {fileID: 7671952167481057195}
+  - {fileID: 7190246531964678073}
+  - {fileID: 1981430378873307156}
   objectiveFinishedColor: {r: 0, g: 1, b: 0, a: 1}
   colorTransitionDuration: 1
   cooldown: 1
