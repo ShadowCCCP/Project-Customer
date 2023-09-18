@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3542559020829875437}
   - component: {fileID: 5291358060440591766}
-  m_Layer: 0
-  m_Name: Pivot
+  - component: {fileID: 8223708385058083409}
+  - component: {fileID: 7934981012132314147}
+  m_Layer: 8
+  m_Name: Bedroom Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +45,7 @@ Animator:
   m_GameObject: {fileID: 811970480757222824}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a2b3343fefb95ba4da6f515e34628abf, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0acd294293e065d4ebdc2a3c12cf3f1e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -54,6 +56,42 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &8223708385058083409
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811970480757222824}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.19009542, y: 2.1734052, z: 1.5037994}
+  m_Center: {x: -0.054206133, y: 0.29972863, z: 0.6855488}
+--- !u!114 &7934981012132314147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811970480757222824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterClickObject: {fileID: 0}
+  beforeClickObject: {fileID: 0}
+  canBeClickedAgain: 0
 --- !u!1 &5259347046310010494
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,8 +201,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6002085220592884098}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.05, y: 0.298, z: 0.671}
-  m_LocalScale: {x: 0.009999999, y: 0.01, z: 0.009999999}
+  m_LocalPosition: {x: -0.05000019, y: 0.29799998, z: 0.6709995}
+  m_LocalScale: {x: 0.009999995, y: 0.01, z: 0.009999995}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8156831566897964085}
@@ -230,9 +268,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5520912208341434654}
-  - component: {fileID: 2885115790145076192}
-  - component: {fileID: 2443976541609631406}
-  - component: {fileID: 8174567167671771462}
   m_Layer: 8
   m_Name: DoorsBedroom
   m_TagString: Untagged
@@ -254,62 +289,5 @@ Transform:
   m_Children:
   - {fileID: 3542559020829875437}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &2885115790145076192
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8920308469536303230}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0acd294293e065d4ebdc2a3c12cf3f1e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2443976541609631406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8920308469536303230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  afterClickObject: {fileID: 0}
-  beforeClickObject: {fileID: 0}
-  canBeClickedAgain: 0
---- !u!65 &8174567167671771462
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8920308469536303230}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.20058155, y: 2.1091924, z: 1.4684334}
-  m_Center: {x: -0.068832874, y: 1.0392716, z: 0.69125366}

@@ -116,7 +116,10 @@ GameObject:
   - component: {fileID: 3223751830457155905}
   - component: {fileID: 7832156639620376773}
   - component: {fileID: 8907540035994433184}
-  m_Layer: 0
+  - component: {fileID: 3367869170151136989}
+  - component: {fileID: 5437407763939852650}
+  - component: {fileID: 2118888507518650431}
+  m_Layer: 8
   m_Name: DoorBathroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +171,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 8748892135801146194, guid: 42d834f8b6995da45bfd1a7dd0845f72, type: 3}
+  - {fileID: 8748892135801146194, guid: 42d834f8b6995da45bfd1a7dd0845f72, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -189,6 +193,63 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &3367869170151136989
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813063239849184555}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1367db7e0e1e6cb43af2972ce3b2db0f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5437407763939852650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813063239849184555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterClickObject: {fileID: 0}
+  beforeClickObject: {fileID: 0}
+  canBeClickedAgain: 0
+--- !u!65 &2118888507518650431
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813063239849184555}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 18.145206, y: 218.5665, z: 123.43892}
+  m_Center: {x: -0.0000038146986, y: -1.3154298, z: -56.700752}
 --- !u!1 &8335343877221628478
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,10 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7685289054598712294}
-  - component: {fileID: 8224113608582349098}
-  - component: {fileID: 548938588918091482}
-  - component: {fileID: 286270020238235786}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DoorBathroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,62 +280,5 @@ Transform:
   m_Children:
   - {fileID: 3223751830457155905}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8224113608582349098
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8335343877221628478}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1367db7e0e1e6cb43af2972ce3b2db0f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &548938588918091482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8335343877221628478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  afterClickObject: {fileID: 0}
-  beforeClickObject: {fileID: 0}
-  canBeClickedAgain: 0
---- !u!65 &286270020238235786
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8335343877221628478}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.8594589, y: 1.9198358, z: 0.19635963}
-  m_Center: {x: 0.27614832, y: 0.21844542, z: 0.0035152435}
