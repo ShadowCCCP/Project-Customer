@@ -13,6 +13,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
     PhysicsPickup physicsPickup;
     InventoryManager inventoryManager;
     CollisionCheckForObjective collisionCheckForObjective;
+  
 
     [SerializeField]
     GameObject[] placesToGo;
@@ -22,6 +23,9 @@ public class AdvancedObjectivesScript : MonoBehaviour
 
     [SerializeField]
     SpecificCollisions[] objToCollideWithForThePutItemInPlace;
+
+    [SerializeField]
+    OnClickItems[] onClickItems;
 
     int objectiveIndex = 0;
     int objectiveType;
@@ -83,6 +87,9 @@ public class AdvancedObjectivesScript : MonoBehaviour
             case 9:
                 putItemInPlace(i);
                 break;
+            case 10:
+                onClickObj(i);
+                break;
 
         }
     }
@@ -129,6 +136,10 @@ public class AdvancedObjectivesScript : MonoBehaviour
             if (Objectives[index].TaskUnderstoodByCode.Contains("Put the") || Objectives[index].TaskUnderstoodByCode.Contains("put the"))
             {
                 objectiveType = 9;
+            }
+            if (Objectives[index].TaskUnderstoodByCode.Contains("Click") || Objectives[index].TaskUnderstoodByCode.Contains("click"))
+            {
+                objectiveType = 10;
             }
         }
     }
@@ -229,6 +240,20 @@ public class AdvancedObjectivesScript : MonoBehaviour
             if (objToCollideWithIndex < objToCollideWithForThePutItemInPlace.Length - 1)
             {
                 objToCollideWithIndex++;
+            }
+            Objectives[i].done = true;
+
+        }
+    }
+
+    int onClickIndex = 0;
+    void onClickObj(int i)
+    {
+        if (onClickItems[onClickIndex].GetClickStatus())
+        {
+            if (onClickIndex < onClickItems.Length - 1)
+            {
+                onClickIndex++;
             }
             Objectives[i].done = true;
 

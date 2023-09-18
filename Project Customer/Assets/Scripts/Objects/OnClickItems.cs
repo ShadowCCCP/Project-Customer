@@ -71,4 +71,9 @@ public class OnClickItems : MonoBehaviour
         }
     }
 
+    public bool GetClickStatus()
+    {
+        return clicked;
+    }
+
 }
