@@ -49,7 +49,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
 
     }
 
-    void objectiveTypeCheck( int i)
+    void objectiveTypeCheck(int i)
     {
         switch (objectiveType)
         {

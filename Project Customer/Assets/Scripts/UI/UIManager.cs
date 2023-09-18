@@ -164,7 +164,7 @@ public class UIManager : MonoBehaviour
             transition = true;
         }
 
-
+        Debug.Log(Objective1.text + "  " + advancedObjectivesScript.GetCurrentObjective(1).ToString());
         if (Objective1.text != advancedObjectivesScript.GetCurrentObjective(1).ToString())
         {
             Objective1.text =advancedObjectivesScript.GetCurrentObjective(1).ToString();
