@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
+    bool jumpMultiplier;
+
+    [SerializeField]
     float movementSpeed = 1;
 
     [SerializeField]
@@ -42,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Teleporter.onTeleport += JumpMultiplier;
+
+        if (jumpMultiplier) jumpPower *= jumpPowerMultiplier;
+        else jumpPower /= jumpPowerMultiplier;
+
         playerColliders = playerObject.GetComponents<Collider>();
         rb = GetComponent<Rigidbody>();
         moveCamera = cameraHolder.GetComponent<MoveCamera>();
@@ -55,9 +63,14 @@ public class PlayerMovement : MonoBehaviour
         CapSpeed();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         ApplyMovement();
+    }
+
+    void OnDestroy()
+    {
+        Teleporter.onTeleport -= JumpMultiplier;
     }
 
     private void ApplyMovement()
@@ -149,19 +162,11 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void JumpMultiplier()
     {
-        if(other.tag == "JumpBoost")
-        {
-            
-            jumpPower  *= jumpPowerMultiplier;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "JumpBoost")
-        {
-            jumpPower /= jumpPowerMultiplier;
-        }
+        jumpMultiplier = !jumpMultiplier;
+
+        if(jumpMultiplier) jumpPower *= jumpPowerMultiplier;
+        else jumpPower /= jumpPowerMultiplier;
     }
 }
