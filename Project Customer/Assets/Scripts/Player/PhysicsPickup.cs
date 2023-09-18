@@ -54,6 +54,7 @@ public class PhysicsPickup : MonoBehaviour
 
     void Start()
     {
+        Fire.onRepellSoda += LetGoOffBakingSoda;
         audioManager = FindObjectOfType<AudioManager>();
         rotateCameraScript = _camera.GetComponent<RotateCamera>();
     }
@@ -78,6 +79,11 @@ public class PhysicsPickup : MonoBehaviour
             currentObject.velocity = directionToPoint * pickupMoveSpeed * distanceToPoint;
             currentObject.angularDrag = angularDrag;
         }
+    }
+
+    private void OnDestroy()
+    {
+        Fire.onRepellSoda -= LetGoOffBakingSoda;
     }
 
     private void PickupItem()
@@ -158,7 +164,13 @@ public class PhysicsPickup : MonoBehaviour
         }
     }
 
-
+    private void LetGoOffBakingSoda()
+    {
+        if(currentObject != null)
+        {
+            DropObject();
+        }
+    }
 
     private void ThrowItem()
     {
