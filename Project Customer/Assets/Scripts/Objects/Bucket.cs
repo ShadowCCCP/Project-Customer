@@ -80,8 +80,7 @@ public class WaterInteractable : MonoBehaviour
 
         } else if(other.tag == "Plant" && wetBool == true)
         {
-            new WaitForSeconds(5f);
-            Dry();
+            Invoke("Dry", .5f); //Dry();
         }
     }
     

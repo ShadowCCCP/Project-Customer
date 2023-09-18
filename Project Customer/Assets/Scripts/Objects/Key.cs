@@ -27,7 +27,7 @@ public class Key : MonoBehaviour
             player.currentObject = null;
             safe.lockUnlocked();
 
-            Destroy(other.gameObject);
+            // Destroy(other.gameObject);
             Destroy(gameObject);
             
         }

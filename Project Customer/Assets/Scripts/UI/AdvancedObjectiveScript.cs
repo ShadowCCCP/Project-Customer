@@ -210,9 +210,11 @@ public class AdvancedObjectivesScript : MonoBehaviour
     void putItemInPlace(int i)
     {
         SpecificCollisions specificCollisions = Objectives[i].gameObject.GetComponent<SpecificCollisions>();
+        if(specificCollisions){
         if (specificCollisions.GetCollisionStatus())
         {
             Objectives[i].done = true;
+        }
         }
     }
 

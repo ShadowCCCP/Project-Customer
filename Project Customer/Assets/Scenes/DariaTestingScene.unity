@@ -1486,7 +1486,7 @@ PrefabInstance:
     - target: {fileID: 2579093014291614316, guid: dd3df0a41158d5748bd2615356dfde83,
         type: 3}
       propertyPath: lockNumber
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2628932746740376644, guid: dd3df0a41158d5748bd2615356dfde83,
         type: 3}
@@ -1862,6 +1862,7 @@ MonoBehaviour:
   TaskThePlayerSees: rotate
   TaskUnderstoodByCode: rotate
   ObjectiveNumber: 1
+  gameObject: {fileID: 0}
   done: 0
 --- !u!114 &1997679872
 MonoBehaviour:
@@ -1878,6 +1879,7 @@ MonoBehaviour:
   TaskThePlayerSees: throw
   TaskUnderstoodByCode: throw
   ObjectiveNumber: 2
+  gameObject: {fileID: 0}
   done: 0
 --- !u!114 &1997679873
 MonoBehaviour:
@@ -1894,6 +1896,7 @@ MonoBehaviour:
   TaskThePlayerSees: pick up
   TaskUnderstoodByCode: pick up
   ObjectiveNumber: 2
+  gameObject: {fileID: 0}
   done: 0
 --- !u!114 &1997679874
 MonoBehaviour:
@@ -1910,6 +1913,7 @@ MonoBehaviour:
   TaskThePlayerSees: crouch
   TaskUnderstoodByCode: crouch
   ObjectiveNumber: 3
+  gameObject: {fileID: 0}
   done: 0
 --- !u!114 &1997679875
 MonoBehaviour:
@@ -1926,6 +1930,7 @@ MonoBehaviour:
   TaskThePlayerSees: jump
   TaskUnderstoodByCode: jump
   ObjectiveNumber: 3
+  gameObject: {fileID: 0}
   done: 0
 --- !u!114 &1997679876
 MonoBehaviour:
@@ -1942,6 +1947,7 @@ MonoBehaviour:
   TaskThePlayerSees: walk
   TaskUnderstoodByCode: walk
   ObjectiveNumber: 3
+  gameObject: {fileID: 0}
   done: 0
 --- !u!114 &1997679877
 MonoBehaviour:
@@ -1962,10 +1968,6 @@ MonoBehaviour:
   - {fileID: 1997679873}
   - {fileID: 1997679872}
   - {fileID: 1997679871}
-  placesToGo: []
-  itemsToPickUp: []
-  objToCollideWithForThePutItemInPlace: []
-  onClickItems: []
 --- !u!1001 &502516813924451793
 PrefabInstance:
   m_ObjectHideFlags: 0
