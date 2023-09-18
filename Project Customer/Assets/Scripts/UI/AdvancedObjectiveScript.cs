@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class AdvancedObjectivesScript : MonoBehaviour
 {
- //   [SerializeField]
 
     [SerializeField]
     AdvancedObjectiveClass[] Objectives;
@@ -14,12 +13,6 @@ public class AdvancedObjectivesScript : MonoBehaviour
     InventoryManager inventoryManager;
     CollisionCheckForObjective collisionCheckForObjective;
   
-
-    [SerializeField]
-    SpecificCollisions[] objToCollideWithForThePutItemInPlace;
-
-    [SerializeField]
-    OnClickItems[] onClickItems;
 
     int objectiveIndex = 0;
     int objectiveType;
