@@ -1036,7 +1036,7 @@ RectTransform:
   - {fileID: 1128921956207564306}
   - {fileID: 1352602716235252471}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1170,7 +1170,7 @@ MonoBehaviour:
     m_Bits: 256
   rotatebleOnlyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   useOutline: 1
   shaderMaterial: {fileID: 2100000, guid: 93ef7d6b2245cdf4ea680996ef104f61, type: 2}
   shaderMaterialEmpty: {fileID: 2100000, guid: 38069117300dbfa40b804732be4675e6, type: 2}
