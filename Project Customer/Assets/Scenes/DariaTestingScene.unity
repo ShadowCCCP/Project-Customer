@@ -2034,6 +2034,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1051516339871387317, guid: b77e80c176c82fe4dac0a0088c778f6a,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.044706345
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051516339871387317, guid: b77e80c176c82fe4dac0a0088c778f6a,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.042871475
+      objectReference: {fileID: 0}
     - target: {fileID: 4117996896786690919, guid: b77e80c176c82fe4dac0a0088c778f6a,
         type: 3}
       propertyPath: m_Enabled
@@ -2041,14 +2051,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4755295691101036839, guid: b77e80c176c82fe4dac0a0088c778f6a,
         type: 3}
+      propertyPath: m_Size.z
+      value: 0.0511961
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755295691101036839, guid: b77e80c176c82fe4dac0a0088c778f6a,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755295691101036839, guid: b77e80c176c82fe4dac0a0088c778f6a,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.04395151
       objectReference: {fileID: 0}
     - target: {fileID: 7152792799285415677, guid: b77e80c176c82fe4dac0a0088c778f6a,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7152792799285415677, guid: b77e80c176c82fe4dac0a0088c778f6a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 66e7d38797e11c24b92169650387536e, type: 2}
     - target: {fileID: 7685289054598712294, guid: b77e80c176c82fe4dac0a0088c778f6a,
         type: 3}
       propertyPath: m_RootOrder
@@ -2109,6 +2134,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorBathroom
       objectReference: {fileID: 0}
+    - target: {fileID: 9082118106862938595, guid: b77e80c176c82fe4dac0a0088c778f6a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9082118106862938595, guid: b77e80c176c82fe4dac0a0088c778f6a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1367db7e0e1e6cb43af2972ce3b2db0f, type: 2}
     m_RemovedComponents:
     - {fileID: 4618974933240629328, guid: b77e80c176c82fe4dac0a0088c778f6a, type: 3}
     - {fileID: 1200526085499647360, guid: b77e80c176c82fe4dac0a0088c778f6a, type: 3}
