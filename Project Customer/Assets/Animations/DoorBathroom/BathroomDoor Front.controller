@@ -61,7 +61,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1944740572328030143}
-    m_Position: {x: 40, y: 190, z: 0}
+    m_Position: {x: 40, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2223971322589721724}
     m_Position: {x: 40, y: 330, z: 0}
@@ -84,7 +84,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DoorBathroom
+  m_Name: BathroomDoor Front
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: PlayAnimation
@@ -92,7 +92,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -127,7 +127,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0ffe233c8ad15c44a917ccba681ee479, type: 2}
+  m_Motion: {fileID: 7400000, guid: 47dcf8f585ac3284c89b896f78009d63, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -181,7 +181,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 47dcf8f585ac3284c89b896f78009d63, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0ffe233c8ad15c44a917ccba681ee479, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
