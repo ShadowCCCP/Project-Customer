@@ -247,6 +247,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 502516813924451793}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &178044627 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7709929072758769984, guid: 34fca78ba8bc73241afed09d1d56da16,
+    type: 3}
+  m_PrefabInstance: {fileID: 709011157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &354627323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,6 +1965,7 @@ MonoBehaviour:
   placesToGo: []
   itemsToPickUp: []
   objToCollideWithForThePutItemInPlace: []
+  onClickItems: []
 --- !u!1001 &502516813924451793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2322,6 +2335,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3465848903255180306, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: onClickItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465848903255180306, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: onClickItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 178044627}
     - target: {fileID: 4870212878121515290, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: placesToGo.Array.data[0]
@@ -2347,6 +2370,16 @@ PrefabInstance:
       propertyPath: objToCollideWithForThePutItemInPlace.Array.data[0]
       value: 
       objectReference: {fileID: 1729579084}
+    - target: {fileID: 5039743199281956152, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: TaskThePlayerSees
+      value: click
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039743199281956152, guid: e7fc0d16171e9a24fb228a873b8a3d76,
+        type: 3}
+      propertyPath: TaskUnderstoodByCode
+      value: click
+      objectReference: {fileID: 0}
     - target: {fileID: 6765189007673346718, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: TaskThePlayerSees
