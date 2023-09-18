@@ -1,9 +1,11 @@
 using System;
 using System.Linq;
+using System.Xml.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 using static System.TimeZoneInfo;
 
 public class UIManager : MonoBehaviour
@@ -17,9 +19,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ExtraHint;
     public TextMeshProUGUI Objective;
 
-    public TextMeshProUGUI Objective1;
-    public TextMeshProUGUI Objective2;
-    public TextMeshProUGUI Objective3;
+    public TextMeshProUGUI[] objectives = new TextMeshProUGUI[3];
 
     PhysicsPickup pPickup;
     [SerializeField]
@@ -115,9 +115,10 @@ public class UIManager : MonoBehaviour
         OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
         Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
 
-        Objective1.text = advancedObjectivesScript.GetCurrentObjective(1).ToString();
-        Objective2.text = advancedObjectivesScript.GetCurrentObjective(2).ToString();
-        Objective3.text = advancedObjectivesScript.GetCurrentObjective(3).ToString();
+        for (int i = 0; i < 3; i++)
+        {
+            objectives[i].text = advancedObjectivesScript.GetCurrentObjective(i + 1);
+        }
 
     }
 
@@ -167,20 +168,13 @@ public class UIManager : MonoBehaviour
         }
         */
 
-        if (Objective1.text != advancedObjectivesScript.GetCurrentObjective(1).ToString() && !doOnce[0])
+        for (int i = 0; i < 3; i++)
         {
-            transition[0] = true;
+            if (objectives[i].text != advancedObjectivesScript.GetCurrentObjective(1).ToString() && !doOnce[i])
+            {
+                transition[i] = true;
+            }
         }
-        if (Objective2.text != advancedObjectivesScript.GetCurrentObjective(2).ToString() && !doOnce[1])
-        {
-            transition[1] = true;
-        }
-        if (Objective3.text != advancedObjectivesScript.GetCurrentObjective(3).ToString() && !doOnce[2])
-        {
-            transition[2] = true;
-        }
-
-
     }
 
     public void ToggleHealthOxygenBar()
@@ -192,22 +186,15 @@ public class UIManager : MonoBehaviour
 
     void TransitionText()
     {
-        if (transition[0])
+        for (int i = 0; i < 3; i++)
         {
-            ColorTransition(Objective1, 0);
-        }
+            if (transition[i])
+            {
+                ColorTransition(objectives[i], i);
+            }
 
-        if (transition[1])
-        {
-            ColorTransition(Objective2, 1);
+            FinishColorTransition(objectives[i], i);
         }
-
-        if (transition[2])
-        {
-            ColorTransition(Objective3, 2);
-        }
-
-        
     }
 
     void ColorTransition(TextMeshProUGUI text, int transitionIndex)
@@ -225,12 +212,16 @@ public class UIManager : MonoBehaviour
             doOnce[transitionIndex] = true;
             activatedAt[transitionIndex] = Time.time;
         }
+    }
 
+    void FinishColorTransition(TextMeshProUGUI text, int transitionIndex)
+    {
         if (Time.time - activatedAt[transitionIndex] > cooldown && doOnce[transitionIndex])
         {
             text.color = objectiveNormalColor;
             colorTransitionTimer[transitionIndex] = 0;
-            text.text = advancedObjectivesScript.GetCurrentObjective(transitionIndex + 1).ToString(); ;
+            text.text = advancedObjectivesScript.GetCurrentObjective(transitionIndex + 1).ToString();
+            Debug.Log(advancedObjectivesScript.GetCurrentObjective(transitionIndex + 1).ToString());
             doOnce[transitionIndex] = false;
         }
     }

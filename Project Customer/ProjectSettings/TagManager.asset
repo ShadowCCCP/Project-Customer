@@ -13,6 +13,7 @@ TagManager:
   - Bucket
   - FireRepelantPowder
   - JumpBoost
+  - Key
   layers:
   - Default
   - TransparentFX
