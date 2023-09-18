@@ -118,6 +118,8 @@ public class UIManager : MonoBehaviour
         Objective2.text = advancedObjectivesScript.GetCurrentObjective(2).ToString();
         Objective3.text = advancedObjectivesScript.GetCurrentObjective(3).ToString();
 
+        print(advancedObjectivesScript.GetCurrentObjective(1).ToString());
+
     }
 
     // Update is called once per frame

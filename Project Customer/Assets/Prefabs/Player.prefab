@@ -288,9 +288,9 @@ MonoBehaviour:
   pickupRange: 10
   angularDrag: 5
   pickupMoveSpeed: 12
+  throwPower: 6
   currentObject: {fileID: 0}
   rotationSpeed: 2
-  throwPower: 6
 --- !u!114 &8295852779483972955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,8 +306,11 @@ MonoBehaviour:
   life: 100
   fireDamage: 20
   fireDamageRate: 1
-  Oxygen: 100
-  OxygenRundownSpeed: 1
+  oxygen: 100
+  oxygenRundownSpeed: 0.5
+  oxygenRundownMaxSpeed: 0.75
+  damageActivated: 1
+  flameCountToMaxLoss: 5
 --- !u!95 &1549738827107533057
 Animator:
   serializedVersion: 5
@@ -409,7 +412,7 @@ Transform:
   - {fileID: 8792806387761632647}
   - {fileID: 4118787682970257077}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1784074159388247133
 MonoBehaviour:
