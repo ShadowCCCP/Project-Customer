@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     float verticalInput;
 
     float normalMoveSpeed;
+    bool jumpWasMultiplied;
 
     Collider[] playerColliders;
 
@@ -47,8 +48,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Teleporter.onTeleport += JumpMultiplier;
 
-        if (jumpMultiplier) jumpPower *= jumpPowerMultiplier;
-        else jumpPower /= jumpPowerMultiplier;
+        if (jumpMultiplier)
+        {
+            jumpWasMultiplied = true;
+            jumpPower *= jumpPowerMultiplier;
+        }
 
         playerColliders = playerObject.GetComponents<Collider>();
         rb = GetComponent<Rigidbody>();
@@ -166,7 +170,15 @@ public class PlayerMovement : MonoBehaviour
     {
         jumpMultiplier = !jumpMultiplier;
 
-        if(jumpMultiplier) jumpPower *= jumpPowerMultiplier;
-        else jumpPower /= jumpPowerMultiplier;
+        if (jumpMultiplier)
+        {
+            jumpWasMultiplied = true;
+            jumpPower *= jumpPowerMultiplier;
+        }
+        else if (jumpWasMultiplied)
+        {
+            jumpWasMultiplied = false;
+            jumpPower /= jumpPowerMultiplier;
+        }
     }
 }

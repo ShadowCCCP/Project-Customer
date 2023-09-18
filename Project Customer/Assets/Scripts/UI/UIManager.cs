@@ -29,19 +29,20 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     float colorTransitionDuration = 3;
-    float colorTransitionTimer = 0;
-    bool transition;
-    bool doOnce;
+    float[] colorTransitionTimer = new float[3];
+    bool[] doOnce = new bool[3];
 
     [SerializeField]
     float cooldown = 1;
-    float activatedAt;
+    float[] activatedAt = new float[3];
 
     [SerializeField]
     Transform oxygenBar;
 
     [SerializeField]
     Transform lifeBar;
+
+    bool[] transition = new bool[3];
 
 
 
@@ -159,22 +160,24 @@ public class UIManager : MonoBehaviour
         {
             OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
         }
+        /*
         if(Objective.text.Substring(Objective.text.IndexOf(':') + 2) != objectivesScript.GetCurrentObjective().ToString() && !doOnce)
         {
             transition = true;
         }
+        */
 
-        if (Objective1.text != advancedObjectivesScript.GetCurrentObjective(1).ToString())
+        if (Objective1.text != advancedObjectivesScript.GetCurrentObjective(1).ToString() && !doOnce[0])
         {
-            Objective1.text =advancedObjectivesScript.GetCurrentObjective(1).ToString();
+            transition[0] = true;
         }
-        if (Objective2.text != advancedObjectivesScript.GetCurrentObjective(2).ToString())
+        if (Objective2.text != advancedObjectivesScript.GetCurrentObjective(2).ToString() && !doOnce[1])
         {
-            Objective2.text =advancedObjectivesScript.GetCurrentObjective(2).ToString();
+            transition[1] = true;
         }
-        if (Objective3.text != advancedObjectivesScript.GetCurrentObjective(3).ToString())
+        if (Objective3.text != advancedObjectivesScript.GetCurrentObjective(3).ToString() && !doOnce[2])
         {
-            Objective3.text = advancedObjectivesScript.GetCurrentObjective(3).ToString();
+            transition[2] = true;
         }
 
 
@@ -189,29 +192,46 @@ public class UIManager : MonoBehaviour
 
     void TransitionText()
     {
-        if(transition)
+        if (transition[0])
         {
-            if (colorTransitionTimer < colorTransitionDuration)
-            {
-                currentColor = Color.Lerp(objectiveNormalColor, objectiveFinishedColor, colorTransitionTimer / colorTransitionDuration);
-                Objective.color = currentColor;
-                colorTransitionTimer += Time.deltaTime;
-            }
-            else
-            {
-                Objective.color = objectiveFinishedColor;
-                transition = false;
-                doOnce = true;
-                activatedAt = Time.time;
-            }
+            ColorTransition(Objective1, 0);
         }
 
-        if (Time.time - activatedAt > cooldown && doOnce)
+        if (transition[1])
         {
-            Objective.color = objectiveNormalColor;
-            colorTransitionTimer = 0;
-            Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
-            doOnce = false;
+            ColorTransition(Objective2, 1);
+        }
+
+        if (transition[2])
+        {
+            ColorTransition(Objective3, 2);
+        }
+
+        
+    }
+
+    void ColorTransition(TextMeshProUGUI text, int transitionIndex)
+    {
+        if (colorTransitionTimer[transitionIndex] < colorTransitionDuration)
+        {
+            currentColor = Color.Lerp(objectiveNormalColor, objectiveFinishedColor, colorTransitionTimer[transitionIndex] / colorTransitionDuration);
+            text.color = currentColor;
+            colorTransitionTimer[transitionIndex] += Time.deltaTime;
+        }
+        else
+        {
+            text.color = objectiveFinishedColor;
+            transition[transitionIndex] = false;
+            doOnce[transitionIndex] = true;
+            activatedAt[transitionIndex] = Time.time;
+        }
+
+        if (Time.time - activatedAt[transitionIndex] > cooldown && doOnce[transitionIndex])
+        {
+            text.color = objectiveNormalColor;
+            colorTransitionTimer[transitionIndex] = 0;
+            text.text = advancedObjectivesScript.GetCurrentObjective(transitionIndex + 1).ToString(); ;
+            doOnce[transitionIndex] = false;
         }
     }
 
