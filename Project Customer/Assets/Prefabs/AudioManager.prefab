@@ -175,25 +175,25 @@ MonoBehaviour:
   - name: Cough1
     clip: {fileID: 8300000, guid: 4f54665342ccfdb43879f71e5d28e43d, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
   - name: Cough2
     clip: {fileID: 8300000, guid: 6dd0a755cec02904db2a985dabc7673d, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
   - name: Cough3
     clip: {fileID: 8300000, guid: 53b1c716d64fb1248b174f2ddb49166b, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
   - name: HeavyBreathing
     clip: {fileID: 8300000, guid: 7be950ee77800d147ae56663b77dd79f, type: 3}
     loop: 1
-    volume: 1
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
 --- !u!114 &5049977219752339110
