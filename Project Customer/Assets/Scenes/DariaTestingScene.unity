@@ -881,6 +881,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5160287175330750157, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160287175330750157, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7557693563844847675, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -925,7 +935,7 @@ GameObject:
   - component: {fileID: 1158676174}
   - component: {fileID: 1158676173}
   - component: {fileID: 1158676172}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
