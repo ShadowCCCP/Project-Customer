@@ -54,6 +54,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlamesWSmokeV3
       objectReference: {fileID: 0}
+    - target: {fileID: 149913582785798979, guid: 5f4dec9bb35d5f04382360ce34608858,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4437978657622527361, guid: 5f4dec9bb35d5f04382360ce34608858,
         type: 3}
       propertyPath: CollisionModule.m_Dampen.scalar
@@ -177,15 +182,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 5
-  life: 5
+  life: 3
   fireLifeFilledBucket: 5
-  fireLifePotion: 5
   electricFire: 0
   cookingFire: 0
-  solidFire: 0
-  cooldown: 0.25
-  maxLifeTime: 1.48
-  fireSpread: []
+  hitCooldown: 0.75
+  growthCooldown: 20
+  flameMaxHeight: 1.48
+  fireSpread:
+  - {fileID: 0}
+  - {fileID: 0}
   smoke: {fileID: 5379428167519566946}
   lighting: {fileID: 2712221698648715408}
   bigFire: {fileID: 8300000, guid: 3b9fa06bc3405b044926e256b184204d, type: 3}

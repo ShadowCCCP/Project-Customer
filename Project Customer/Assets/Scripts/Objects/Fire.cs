@@ -106,7 +106,7 @@ public class Fire : MonoBehaviour
 
     private void CheckSound()
     {
-        if (!audioSource.isPlaying)
+        if (!audioSource.isPlaying && audioSource.enabled)
         {
             audioSource.volume = 0;
 

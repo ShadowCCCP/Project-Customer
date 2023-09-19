@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        Teleporter.onTeleport += JumpMultiplier;
+        Teleporter.onPlayerTeleport += JumpMultiplier;
 
         if (jumpMultiplier)
         {
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDestroy()
     {
-        Teleporter.onTeleport -= JumpMultiplier;
+        Teleporter.onPlayerTeleport -= JumpMultiplier;
     }
 
     private void ApplyMovement()
