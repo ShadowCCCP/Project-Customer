@@ -254,6 +254,7 @@ MonoBehaviour:
   cameraHolder: {fileID: 8792806387761632647}
   playerObject: {fileID: 625623169930612923}
   jumpPowerMultiplier: 100
+  pD: {fileID: 0}
 --- !u!114 &6869898518010677468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +403,6 @@ GameObject:
   - component: {fileID: 1201977044511270871}
   - component: {fileID: 2712834508575866827}
   - component: {fileID: 2370916567322345946}
-  - component: {fileID: 3845180043223472519}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -425,7 +425,7 @@ Transform:
   - {fileID: 8792806387761632647}
   - {fileID: 4118787682970257077}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1784074159388247133
 MonoBehaviour:
@@ -636,19 +636,6 @@ MonoBehaviour:
   ObjectiveNumber: 1
   GameObject: {fileID: 0}
   done: 0
---- !u!114 &3845180043223472519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033994363957624608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d2add45f5b10644b319058e3e1345d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Objectives: []
 --- !u!1 &4255699015494416899
 GameObject:
   m_ObjectHideFlags: 0
