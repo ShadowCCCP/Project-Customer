@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 8113209709324895442}
   - component: {fileID: 2265785376833376512}
   - component: {fileID: 4587056611837500584}
-  - component: {fileID: 8279824146046645259}
+  - component: {fileID: 495325388403963842}
   m_Layer: 0
   m_Name: DoorBedroom
   m_TagString: Untagged
@@ -352,7 +352,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8279824146046645259
+--- !u!65 &495325388403963842
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

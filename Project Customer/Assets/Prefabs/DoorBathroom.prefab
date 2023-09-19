@@ -186,8 +186,8 @@ GameObject:
   - component: {fileID: 3223751830457155905}
   - component: {fileID: 7832156639620376773}
   - component: {fileID: 8907540035994433184}
-  - component: {fileID: 1584653087981356934}
-  m_Layer: 0
+  - component: {fileID: 8284961462696486618}
+  m_Layer: 8
   m_Name: DoorBathroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1584653087981356934
+--- !u!65 &8284961462696486618
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

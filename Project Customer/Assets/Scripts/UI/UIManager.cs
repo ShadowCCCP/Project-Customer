@@ -295,7 +295,7 @@ public class UIManager : MonoBehaviour
             LookedAtItemDesc.text = findLookAtDesc(hitInfo.transform.name);
             OnClickItems onClickItems = hitInfo.collider.GetComponent<OnClickItems>();
             
-            if (onClickItems && Input.GetMouseButtonDown(0) && Time.timeScale !=0)
+            if (onClickItems && Input.GetKeyDown(KeyCode.E) && Time.timeScale !=0)
             {
                 onClickItems.Cliked();
             }
