@@ -8,7 +8,7 @@ public class Fire : MonoBehaviour
 {
     public static event Action onRepellSoda;
 
-    public static int flameCount;
+    public static int flameCount =0;
 
     bool hasBeenAdded;
 
