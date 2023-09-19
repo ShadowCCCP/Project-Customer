@@ -15,6 +15,7 @@ TagManager:
   - JumpBoost
   - Key
   - Stove
+  - Bed
   layers:
   - Default
   - TransparentFX

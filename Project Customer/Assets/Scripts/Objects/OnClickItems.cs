@@ -6,6 +6,9 @@ using UnityEngine;
 public class OnClickItems : MonoBehaviour
 {
     public static event Action onStoveClicked;
+    public static event Action onBedClicked;
+
+    public bool activateBed = true;
 
     //DO NOT ADD THIS TO PICKEABLEUP OBJECTS
     [SerializeField]
@@ -26,6 +29,9 @@ public class OnClickItems : MonoBehaviour
 
     public void Cliked()
     {
+        // If it's a bed...
+        BedSleep();
+
         // If it's a stove...
         StoveSound();
 
@@ -73,6 +79,15 @@ public class OnClickItems : MonoBehaviour
         }
     }
 
+    private void BedSleep()
+    {
+        if(gameObject.tag == "Bed" && onBedClicked != null && activateBed)
+        {
+            activateBed = false;
+            onBedClicked();
+        }
+    }
+
     private void StoveSound()
     {
         if(gameObject.tag == "Stove" && onStoveClicked != null)
@@ -85,5 +100,7 @@ public class OnClickItems : MonoBehaviour
     {
         return clicked;
     }
+
+
 
 }

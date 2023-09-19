@@ -88,10 +88,16 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Slider sliderHealth;
 
+    RotateCamera rotateCamera;
+    PlayerMovement playerMovement;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        rotateCamera = FindObjectOfType<RotateCamera>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
+
         anim = GetComponent<Animator>();
         life = FindObjectOfType<Life>();
 
@@ -325,5 +331,11 @@ public class UIManager : MonoBehaviour
     public void TriggerSleepAnimation()
     {
         anim.SetTrigger("Sleep");
+    }
+
+    public void TogglePlayerOnOff()
+    {
+        rotateCamera.enabled = !rotateCamera.enabled;
+        playerMovement.enabled = !playerMovement.enabled;
     }
 }
