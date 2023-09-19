@@ -9,6 +9,8 @@ public class PhysicsPickup : MonoBehaviour
 {
     public static event Action onPickupFireExtinguisher;
 
+    public bool activatePickupKeys = true;
+
     [SerializeField]
     LayerMask pickupMask;
 
@@ -94,6 +96,7 @@ public class PhysicsPickup : MonoBehaviour
             if (currentObject != null)
             {
                 DropObject();
+                
                 return;
             }
 
@@ -102,6 +105,8 @@ public class PhysicsPickup : MonoBehaviour
 
             if (Physics.Raycast(cameraRay, out RaycastHit hitInfo, pickupRange, pickupMask))
             {
+                if (hitInfo.transform.tag == "Key" && !activatePickupKeys) return;
+
                 audioManager.Play(pickupSound);
                 currentObject = hitInfo.rigidbody;
                 objectNormalAngularDrag = currentObject.angularDrag;
@@ -123,6 +128,7 @@ public class PhysicsPickup : MonoBehaviour
                 currentObject = hitInfoRotation.rigidbody;
                 isRotating = true;
                 rotationOnlyItem = true;
+
             }
 
         }
@@ -140,6 +146,7 @@ public class PhysicsPickup : MonoBehaviour
             else if (Input.GetMouseButtonUp(1))
             {
                 //rotateCameraScript.enabled = true;
+                rotateCameraScript.enabled = true;
                 isRotating = false;
             }
 
@@ -155,13 +162,12 @@ public class PhysicsPickup : MonoBehaviour
             float xRotation = Input.GetAxisRaw("Mouse X") * rotationSpeed;
             float yRotation = Input.GetAxisRaw("Mouse Y") * rotationSpeed;
 
-            currentObject.transform.Rotate(Vector3.down, xRotation);
-            currentObject.transform.Rotate(Vector3.right, yRotation);
+            currentObject.transform.Rotate(Vector3.down, xRotation, Space.World);
+            currentObject.transform.Rotate(Vector3.right, yRotation, Space.World);
+
+            //currentObject.transform.eulerAngles += new Vector3(xRotation, yRotation, yRotation);
         }
-        else
-        {
-            rotateCameraScript.enabled = true;
-        }
+
     }
 
     private void LetGoOffBakingSoda()
@@ -189,11 +195,19 @@ public class PhysicsPickup : MonoBehaviour
 
     public void DropObject()
     {
-        if (!rotationOnlyItem && currentObject)
+        if (currentObject)
         {
-            currentObject.angularDrag = objectNormalAngularDrag;
-            currentObject.useGravity = true;
+            if (!rotationOnlyItem)
+            {
+                currentObject.angularDrag = objectNormalAngularDrag;
+                currentObject.useGravity = true;
+            }
+            else
+            {
+                rotateCameraScript.enabled = true;
+            }
         }
+
         currentObject = null;
         isRotating = false;
        // objectName = null;

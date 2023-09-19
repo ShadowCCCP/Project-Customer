@@ -7,7 +7,7 @@ public class AdvancedObjectiveClass : MonoBehaviour
     public string TaskThePlayerSees;
     public string TaskUnderstoodByCode;
     public int ObjectiveNumber;
-    public GameObject gameObject;
+    public GameObject GameObject;
     public bool done;
 
 }

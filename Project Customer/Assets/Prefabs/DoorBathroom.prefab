@@ -173,8 +173,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.176414, y: 2.0912564, z: 0.06642532}
-  m_Center: {x: -0.54308534, y: 0.026528, z: 0.0363369}
+  m_Size: {x: 1.176414, y: 2.0912564, z: 0.0511961}
+  m_Center: {x: -0.54308534, y: 0.026528, z: 0.04395151}
 --- !u!1 &2813063239849184555
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 3223751830457155905}
   - component: {fileID: 7832156639620376773}
   - component: {fileID: 8907540035994433184}
+  - component: {fileID: 8284961462696486618}
   m_Layer: 8
   m_Name: DoorBathroom
   m_TagString: Untagged
@@ -260,6 +261,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8284961462696486618
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813063239849184555}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 18.145206, y: 218.5665, z: 123.438934}
+  m_Center: {x: -0.0000038146986, y: -1.3154298, z: -56.70076}
 --- !u!1 &8335343877221628478
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +312,7 @@ Transform:
   m_Children:
   - {fileID: 2810460031981100037}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8557130067932596161
 GameObject:
@@ -382,5 +404,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1470838, y: 2.0589502, z: 0.063874245}
-  m_Center: {x: -0.52304006, y: 0.084754825, z: -0.033287525}
+  m_Size: {x: 1.1470838, y: 2.0589502, z: 0.044706345}
+  m_Center: {x: -0.52304006, y: 0.084754825, z: -0.042871475}
