@@ -1,11 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class OnClickItems : MonoBehaviour
 {
-    // Start is called before the first frame update
-
+    public static event Action onStoveClicked;
 
     //DO NOT ADD THIS TO PICKEABLEUP OBJECTS
     [SerializeField]
@@ -26,6 +26,9 @@ public class OnClickItems : MonoBehaviour
 
     public void Cliked()
     {
+        // If it's a stove...
+        StoveSound();
+
         ReplaceObject();
         PlayAnimation();
     }
@@ -66,8 +69,15 @@ public class OnClickItems : MonoBehaviour
     {
         if (anim != null)
         {
-            //Debug.Log("oooo");
             anim.SetTrigger("PlayAnimation");
+        }
+    }
+
+    private void StoveSound()
+    {
+        if(gameObject.tag == "Stove" && onStoveClicked != null)
+        {
+            onStoveClicked();
         }
     }
 
