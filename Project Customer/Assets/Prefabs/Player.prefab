@@ -291,7 +291,7 @@ MonoBehaviour:
     m_Bits: 512
   _camera: {fileID: 2611464451652168929}
   pickupTarget: {fileID: 3680350114293827758}
-  pickupRange: 10
+  pickupRange: 3
   angularDrag: 5
   pickupMoveSpeed: 12
   throwPower: 6

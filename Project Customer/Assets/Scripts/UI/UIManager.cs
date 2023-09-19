@@ -281,7 +281,7 @@ public class UIManager : MonoBehaviour
         if (Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), lookAtMask) || Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), rotatebleOnlyMask))
         {
             if (hitInfo.transform.tag == "Key" && !playerPhysicsPickup.activatePickupKeys) return;
-
+            //  || hitInfo.transform.gameObject.GetComponent<OnClickItems>() != null
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
                 
                if (rend)

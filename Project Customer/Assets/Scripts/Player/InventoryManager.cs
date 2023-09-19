@@ -36,6 +36,7 @@ public class InventoryManager : MonoBehaviour
     private void GatheredFireExtinguisher()
     {
         hasFireExtinguisher = true;
+        fireExtinguisher.gameObject.SetActive(!fireExtinguisher.gameObject.activeSelf);
     }
 
     public bool GetFireExtinguisherHoldState()
