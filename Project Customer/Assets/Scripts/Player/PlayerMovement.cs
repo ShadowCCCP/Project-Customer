@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    LayerMask groundMask;
+    
     [SerializeField]
     bool jumpMultiplier;
 
@@ -31,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float jumpPowerMultiplier = 100f;
 
+    public PlayableDirector pD;
+
 
     Rigidbody rb;
     MoveCamera moveCamera;
@@ -40,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     float verticalInput;
 
     float normalMoveSpeed;
+    bool jumpWasMultiplied;
 
     Collider[] playerColliders;
 
@@ -47,8 +54,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Teleporter.onTeleport += JumpMultiplier;
 
-        if (jumpMultiplier) jumpPower *= jumpPowerMultiplier;
-        else jumpPower /= jumpPowerMultiplier;
+        if (jumpMultiplier)
+        {
+            jumpWasMultiplied = true;
+            jumpPower *= jumpPowerMultiplier;
+        }
 
         playerColliders = playerObject.GetComponents<Collider>();
         rb = GetComponent<Rigidbody>();
@@ -127,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * groundCheckDist, Color.cyan);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, groundCheckDist))
+        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, groundCheckDist, groundMask))
         {
             return true;
         }
@@ -166,7 +176,15 @@ public class PlayerMovement : MonoBehaviour
     {
         jumpMultiplier = !jumpMultiplier;
 
-        if(jumpMultiplier) jumpPower *= jumpPowerMultiplier;
-        else jumpPower /= jumpPowerMultiplier;
+        if (jumpMultiplier)
+        {
+            jumpWasMultiplied = true;
+            jumpPower *= jumpPowerMultiplier;
+        }
+        else if (jumpWasMultiplied)
+        {
+            jumpWasMultiplied = false;
+            jumpPower /= jumpPowerMultiplier;
+        }
     }
 }

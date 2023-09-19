@@ -188,7 +188,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
     }
     void goToPlaceObj(int i)
     {
-        collisionCheckForObjective.checkPlace(Objectives[i].gameObject);
+        collisionCheckForObjective.checkPlace(Objectives[i].GameObject);
         if (collisionCheckForObjective.GetReachPlaceStatus())
         {
             Objectives[i].done = true;
@@ -200,7 +200,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
     {
         if (physicsPickup.currentObject)
         {
-            if (physicsPickup.currentObject.name == Objectives[i].gameObject.name)
+            if (physicsPickup.currentObject.name == Objectives[i].GameObject.name)
             {
                 Objectives[i].done = true;
             }
@@ -209,8 +209,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
 
     void putItemInPlace(int i)
     {
-        SpecificCollisions specificCollisions = Objectives[i].gameObject.GetComponent<SpecificCollisions>();
-        if(specificCollisions){
+        SpecificCollisions specificCollisions = Objectives[i].GameObject.GetComponent<SpecificCollisions>();
         if (specificCollisions.GetCollisionStatus())
         {
             Objectives[i].done = true;
@@ -220,7 +219,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
 
     void onClickObj(int i)
     {
-        OnClickItems onClickItem = Objectives[i].gameObject.GetComponent<OnClickItems>();
+        OnClickItems onClickItem = Objectives[i].GameObject.GetComponent<OnClickItems>();
 
         if (onClickItem.GetClickStatus())
         {

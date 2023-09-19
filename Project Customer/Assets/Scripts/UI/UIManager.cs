@@ -1,9 +1,11 @@
 using System;
 using System.Linq;
+using System.Xml.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 using static System.TimeZoneInfo;
 
 public class UIManager : MonoBehaviour
@@ -17,9 +19,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ExtraHint;
     public TextMeshProUGUI Objective;
 
-    public TextMeshProUGUI Objective1;
-    public TextMeshProUGUI Objective2;
-    public TextMeshProUGUI Objective3;
+    public TextMeshProUGUI[] objectives = new TextMeshProUGUI[3];
 
     PhysicsPickup pPickup;
     [SerializeField]
@@ -29,9 +29,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     float colorTransitionDuration = 3;
-    float colorTransitionTimer = 0;
-    bool transition;
-    bool doOnce;
+    float[] colorTransitionTimer = new float[3];
+    bool[] doOnce = new bool[3];
 
     [SerializeField]
     float cooldown = 1;
@@ -42,6 +41,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     Transform lifeBar;
+
+    bool[] transition = new bool[3];
 
 
 
@@ -114,9 +115,10 @@ public class UIManager : MonoBehaviour
         OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
         Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
 
-        Objective1.text = advancedObjectivesScript.GetCurrentObjective(1).ToString();
-        Objective2.text = advancedObjectivesScript.GetCurrentObjective(2).ToString();
-        Objective3.text = advancedObjectivesScript.GetCurrentObjective(3).ToString();
+        for (int i = 0; i < 3; i++)
+        {
+            objectives[i].text = advancedObjectivesScript.GetCurrentObjective(i + 1);
+        }
 
         print(advancedObjectivesScript.GetCurrentObjective(1).ToString());
 
@@ -161,25 +163,14 @@ public class UIManager : MonoBehaviour
         {
             OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
         }
-        if(Objective.text.Substring(Objective.text.IndexOf(':') + 2) != objectivesScript.GetCurrentObjective().ToString() && !doOnce)
-        {
-            transition = true;
-        }
 
-        if (Objective1.text != advancedObjectivesScript.GetCurrentObjective(1).ToString())
+        for (int i = 0; i < objectives.Length; i++)
         {
-            Objective1.text =advancedObjectivesScript.GetCurrentObjective(1).ToString();
+            if (objectives[i].text != advancedObjectivesScript.GetCurrentObjective(i + 1).ToString() && !doOnce[i])
+            {
+                transition[i] = true;
+            }
         }
-        if (Objective2.text != advancedObjectivesScript.GetCurrentObjective(2).ToString())
-        {
-            Objective2.text =advancedObjectivesScript.GetCurrentObjective(2).ToString();
-        }
-        if (Objective3.text != advancedObjectivesScript.GetCurrentObjective(3).ToString())
-        {
-            Objective3.text = advancedObjectivesScript.GetCurrentObjective(3).ToString();
-        }
-
-
     }
 
     public void ToggleHealthOxygenBar()
@@ -191,29 +182,54 @@ public class UIManager : MonoBehaviour
 
     void TransitionText()
     {
-        if(transition)
+        for (int i = 0; i < objectives.Length; i++)
         {
-            if (colorTransitionTimer < colorTransitionDuration)
+            if (transition[i])
             {
-                currentColor = Color.Lerp(objectiveNormalColor, objectiveFinishedColor, colorTransitionTimer / colorTransitionDuration);
-                Objective.color = currentColor;
-                colorTransitionTimer += Time.deltaTime;
+                ColorTransition(objectives[i], i);
             }
-            else
+
+            FinishColorTransition(i);
+        }
+    }
+
+    void ColorTransition(TextMeshProUGUI text, int transitionIndex)
+    {
+        if (colorTransitionTimer[transitionIndex] < colorTransitionDuration)
+        {
+            currentColor = Color.Lerp(objectiveNormalColor, objectiveFinishedColor, colorTransitionTimer[transitionIndex] / colorTransitionDuration);
+            text.color = currentColor;
+            colorTransitionTimer[transitionIndex] += Time.deltaTime;
+        }
+        else
+        {
+            text.color = objectiveFinishedColor;
+            transition[transitionIndex] = false;
+            doOnce[transitionIndex] = true;
+            activatedAt = Time.time;
+        }
+    }
+
+    void FinishColorTransition(int transitionIndex)
+    {
+        int count = 0;
+        for (int i = 0; i < objectives.Length; i++)
+        {
+            if (objectives[i].color == objectiveFinishedColor || objectives[i].text == " ")
             {
-                Objective.color = objectiveFinishedColor;
-                transition = false;
-                doOnce = true;
-                activatedAt = Time.time;
+                count++;
             }
         }
-
-        if (Time.time - activatedAt > cooldown && doOnce)
+        
+        if(count >= 3 && Time.time - activatedAt > cooldown && doOnce[transitionIndex])
         {
-            Objective.color = objectiveNormalColor;
-            colorTransitionTimer = 0;
-            Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
-            doOnce = false;
+            for (int i = 0; i < objectives.Length; i++)
+            {
+                objectives[i].color = objectiveNormalColor;
+                colorTransitionTimer[i] = 0;
+                objectives[i].text = advancedObjectivesScript.GetCurrentObjective(i + 1).ToString();
+                doOnce[i] = false;
+            }
         }
     }
 
@@ -260,6 +276,8 @@ public class UIManager : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), lookAtMask) || Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), rotatebleOnlyMask))
         {
+            if (hitInfo.transform.tag == "Key" && !playerPhysicsPickup.activatePickupKeys) return;
+
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
                 
                if (rend)
