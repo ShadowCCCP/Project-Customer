@@ -96,6 +96,7 @@ public class PhysicsPickup : MonoBehaviour
             if (currentObject != null)
             {
                 DropObject();
+                
                 return;
             }
 
@@ -127,6 +128,7 @@ public class PhysicsPickup : MonoBehaviour
                 currentObject = hitInfoRotation.rigidbody;
                 isRotating = true;
                 rotationOnlyItem = true;
+
             }
 
         }
@@ -160,9 +162,12 @@ public class PhysicsPickup : MonoBehaviour
             float xRotation = Input.GetAxisRaw("Mouse X") * rotationSpeed;
             float yRotation = Input.GetAxisRaw("Mouse Y") * rotationSpeed;
 
-            currentObject.transform.Rotate(Vector3.down, xRotation);
-            currentObject.transform.Rotate(Vector3.right, yRotation);
+            currentObject.transform.Rotate(Vector3.down, xRotation, Space.World);
+            currentObject.transform.Rotate(Vector3.right, yRotation, Space.World);
+
+            //currentObject.transform.eulerAngles += new Vector3(xRotation, yRotation, yRotation);
         }
+
     }
 
     private void LetGoOffBakingSoda()
@@ -190,11 +195,19 @@ public class PhysicsPickup : MonoBehaviour
 
     public void DropObject()
     {
-        if (!rotationOnlyItem && currentObject)
+        if (currentObject)
         {
-            currentObject.angularDrag = objectNormalAngularDrag;
-            currentObject.useGravity = true;
+            if (!rotationOnlyItem)
+            {
+                currentObject.angularDrag = objectNormalAngularDrag;
+                currentObject.useGravity = true;
+            }
+            else
+            {
+                rotateCameraScript.enabled = true;
+            }
         }
+
         currentObject = null;
         isRotating = false;
        // objectName = null;
