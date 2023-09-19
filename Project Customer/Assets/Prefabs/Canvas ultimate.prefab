@@ -1125,9 +1125,10 @@ MonoBehaviour:
   LookedAtItemDesc: {fileID: 7925089906945108704}
   ExtraHint: {fileID: 4670674418275386678}
   Objective: {fileID: 5068970006955109062}
-  Objective1: {fileID: 7671952167481057195}
-  Objective2: {fileID: 7190246531964678073}
-  Objective3: {fileID: 1981430378873307156}
+  objectives:
+  - {fileID: 7671952167481057195}
+  - {fileID: 7190246531964678073}
+  - {fileID: 1981430378873307156}
   objectiveFinishedColor: {r: 0, g: 1, b: 0, a: 1}
   colorTransitionDuration: 1
   cooldown: 1
