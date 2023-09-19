@@ -8,12 +8,14 @@ public class DesignerTutorial : MonoBehaviour
 {
 
     [SerializeField] GameObject objectiveParent;
-    void OnTriggerExit (Collider other)
+    [SerializeField] private Animator showUI;
+
+    void OnTriggerEnter (Collider other)
     {
-        print(other.name);
-        if(other.name == "PlayerObject")
+        if(other.name == "PlayerObject" && showUI != null)
         {
             objectiveParent.SetActive(true);
+            showUI.SetTrigger("PlayAnimation");
         }
 
         this.enabled = false;

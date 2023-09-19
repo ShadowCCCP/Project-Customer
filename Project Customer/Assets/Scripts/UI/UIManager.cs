@@ -104,7 +104,7 @@ public class UIManager : MonoBehaviour
         ItemDescription.text = null;
         LookedAtItem.text = null;
         LookedAtItemDesc.text = null;
-        ExtraHint.text = null;
+        //ExtraHint.text = null;
 
         playerPhysicsPickup = FindObjectOfType<PhysicsPickup>();
         playerLife = FindObjectOfType<Life>();
