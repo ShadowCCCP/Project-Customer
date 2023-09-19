@@ -2012,7 +2012,7 @@ PrefabInstance:
     - target: {fileID: 1353915444681764828, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: hasFireExtinguisher
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1784074159388247133, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
@@ -2107,7 +2107,7 @@ PrefabInstance:
     - target: {fileID: 8699665917228124673, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
