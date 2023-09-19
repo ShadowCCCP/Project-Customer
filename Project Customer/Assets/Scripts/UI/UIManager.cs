@@ -161,12 +161,6 @@ public class UIManager : MonoBehaviour
         {
             OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
         }
-        /*
-        if(Objective.text.Substring(Objective.text.IndexOf(':') + 2) != objectivesScript.GetCurrentObjective().ToString() && !doOnce)
-        {
-            transition = true;
-        }
-        */
 
         for (int i = 0; i < objectives.Length; i++)
         {
@@ -230,7 +224,7 @@ public class UIManager : MonoBehaviour
             for (int i = 0; i < objectives.Length; i++)
             {
                 objectives[i].color = objectiveNormalColor;
-                colorTransitionTimer[transitionIndex] = 0;
+                colorTransitionTimer[i] = 0;
                 objectives[i].text = advancedObjectivesScript.GetCurrentObjective(i + 1).ToString();
                 doOnce[i] = false;
             }
