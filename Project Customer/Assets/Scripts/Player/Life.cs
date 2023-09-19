@@ -21,6 +21,7 @@ public class Life : MonoBehaviour
     bool triggerOnce;
 
     public float oxygen = 100;
+    float maxOxygen;
     public float oxygenRundownSpeed = 0.5f;
 
     [SerializeField]
@@ -32,11 +33,16 @@ public class Life : MonoBehaviour
     [SerializeField]
     int flameCountToMaxLoss = 5;
 
-    
+    AudioManager audioManager;
+    bool playOnce;
+    string[] cough = { "Cough1", "Cough2", "Cough3" };
+    string heavyBreathing = "HeavyBreathing";
+    int breathingStage = 4;
 
-    //private float fireDamageRate = 0.5f;
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+        maxOxygen = oxygen;
         originalOxygenRundownSpeed = oxygenRundownSpeed;
         normalFireDamageRate = fireDamageRate;
     }
@@ -44,6 +50,7 @@ public class Life : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OxygenStateSound();
         SetOxygenInterval();
         Timer();
         OxygenRundown();
@@ -99,6 +106,26 @@ public class Life : MonoBehaviour
         }
     }
 
+    void OxygenStateSound()
+    {
+        float currentPercentage = oxygen / maxOxygen * 100;
+        Debug.Log(currentPercentage);
+
+        if (currentPercentage <= (20 * breathingStage))
+        {
+            breathingStage--;
+            int randomNumber = UnityEngine.Random.Range(0, 3);
+
+            audioManager.Play(cough[randomNumber]);
+        }
+
+        if(currentPercentage <= 10 && !playOnce)
+        {
+            playOnce = true;
+            audioManager.Play(heavyBreathing);
+        }
+    }
+
     void OxygenRundown()
     {
         if(damageActivated)
@@ -106,6 +133,7 @@ public class Life : MonoBehaviour
             oxygen -= Time.deltaTime * oxygenRundownSpeed;
             if (oxygen <= 0)
             {
+                audioManager.Stop(heavyBreathing);
                 life = 0;
             }
         }

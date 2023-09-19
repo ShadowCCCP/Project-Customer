@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateBed: 1
   afterClickObject: {fileID: 0}
   beforeClickObject: {fileID: 0}
   canBeClickedAgain: 0
@@ -187,7 +188,7 @@ GameObject:
   - component: {fileID: 7832156639620376773}
   - component: {fileID: 8907540035994433184}
   - component: {fileID: 8284961462696486618}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DoorBathroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,6 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateBed: 1
   afterClickObject: {fileID: 0}
   beforeClickObject: {fileID: 0}
   canBeClickedAgain: 0

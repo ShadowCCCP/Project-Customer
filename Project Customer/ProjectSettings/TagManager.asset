@@ -16,6 +16,8 @@ TagManager:
   - Key
   - Stove
   - Bed
+  - BathDoor
+  - BedDoor
   layers:
   - Default
   - TransparentFX

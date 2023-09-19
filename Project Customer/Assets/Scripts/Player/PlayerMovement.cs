@@ -48,7 +48,13 @@ public class PlayerMovement : MonoBehaviour
     float normalMoveSpeed;
     bool jumpWasMultiplied;
 
+    AudioManager audioManager;
+
     Collider[] playerColliders;
+
+    string[] jump = { "JumpSound1", "JumpSound2", "JumpSound3" };
+    bool jumped;
+    string[] land = { "LandSound1", "LandSound2", "LandSound3" };
 
     void Start()
     {
@@ -63,11 +69,13 @@ public class PlayerMovement : MonoBehaviour
         playerColliders = playerObject.GetComponents<Collider>();
         rb = GetComponent<Rigidbody>();
         moveCamera = cameraHolder.GetComponent<MoveCamera>();
+        audioManager = FindObjectOfType<AudioManager>();
         normalMoveSpeed = movementSpeed;
     }
 
     void Update()
     {
+        Landed();
         CheckInput();
         ApplyDrag();
         CapSpeed();
@@ -126,11 +134,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void Landed()
+    {
+        if(jumped && IsGrounded())
+        {
+            int randomNumber = UnityEngine.Random.Range(0, 3);
+            audioManager.Play(land[randomNumber]);
+            jumped = false;
+        }
+    }
+
     private void Jump()
     {
+        int randomNumber = UnityEngine.Random.Range(0, 3);
+        audioManager.Play(jump[randomNumber]);
+
         // To make the body jump the same height always
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * jumpPower, ForceMode.Impulse);
+        Invoke("SetJumpedTrue", 0.2f);
+    }
+
+    private void SetJumpedTrue()
+    {
+        jumped = true;
     }
 
     public bool IsGrounded()

@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3143225791941318655
 MonoBehaviour:
@@ -127,6 +127,72 @@ MonoBehaviour:
   - name: Throw3
     clip: {fileID: 8300000, guid: 92be74aabd7f2b745b6f13fe9ee15ca8, type: 3}
     loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: FireFail
+    clip: {fileID: 8300000, guid: 92be74aabd7f2b745b6f13fe9ee15ca8, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: JumpSound1
+    clip: {fileID: 8300000, guid: 7c169f40ca0fc1a4589d2b1fc4a9b967, type: 3}
+    loop: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: JumpSound2
+    clip: {fileID: 8300000, guid: bc03cef54ef794742b819332e38544f6, type: 3}
+    loop: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: JumpSound3
+    clip: {fileID: 8300000, guid: 532f00a9cb7ec094eaf62231c6775516, type: 3}
+    loop: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: LandSound1
+    clip: {fileID: 8300000, guid: 76884c84b01b699488d6b9828f03ac01, type: 3}
+    loop: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: LandSound2
+    clip: {fileID: 8300000, guid: 248b02f9d10e3cc4b834526064db90b2, type: 3}
+    loop: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: LandSound3
+    clip: {fileID: 8300000, guid: 920a37a69e7100a41b1ada48bd47917b, type: 3}
+    loop: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: Cough1
+    clip: {fileID: 8300000, guid: 4f54665342ccfdb43879f71e5d28e43d, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Cough2
+    clip: {fileID: 8300000, guid: 6dd0a755cec02904db2a985dabc7673d, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Cough3
+    clip: {fileID: 8300000, guid: 53b1c716d64fb1248b174f2ddb49166b, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: HeavyBreathing
+    clip: {fileID: 8300000, guid: 7be950ee77800d147ae56663b77dd79f, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
     source: {fileID: 0}

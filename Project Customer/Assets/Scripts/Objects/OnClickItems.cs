@@ -7,6 +7,8 @@ public class OnClickItems : MonoBehaviour
 {
     public static event Action onStoveClicked;
     public static event Action onBedClicked;
+    public static event Action onBathDoorClicked;
+    public static event Action onBedDoorClicked;
 
     public bool activateBed = true;
 
@@ -29,14 +31,17 @@ public class OnClickItems : MonoBehaviour
 
     public void Cliked()
     {
+        PlayAnimation();
+        ReplaceObject();
+
+        // If it's a door...
+        DoorSound();
+
         // If it's a bed...
         BedSleep();
 
         // If it's a stove...
         StoveSound();
-
-        ReplaceObject();
-        PlayAnimation();
     }
 
     private void ReplaceObject()
@@ -93,6 +98,15 @@ public class OnClickItems : MonoBehaviour
         if(gameObject.tag == "Stove" && onStoveClicked != null)
         {
             onStoveClicked();
+        }
+    }
+
+    private void DoorSound()
+    {
+        if(onBathDoorClicked != null || onBedDoorClicked != null)
+        {
+            if (gameObject.tag == "BathDoor") onBathDoorClicked();
+            else if (gameObject.tag == "BedDoor") onBedDoorClicked();
         }
     }
 
