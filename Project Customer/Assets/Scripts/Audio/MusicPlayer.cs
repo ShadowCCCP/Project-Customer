@@ -22,9 +22,6 @@ public class MusicPlayer : MonoBehaviour
     AudioClip mainThemeLoop;
 
     [SerializeField]
-    AudioClip eveningTheme;
-
-    [SerializeField]
     AudioClip SleepTheme;
 
     AudioSource audioSource;

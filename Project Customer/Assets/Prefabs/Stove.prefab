@@ -196,9 +196,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateBed: 1
   afterClickObject: {fileID: 0}
   beforeClickObject: {fileID: 0}
-  canBeClickedAgain: 0
+  canBeClickedAgain: 1
 --- !u!114 &9188579365662970469
 MonoBehaviour:
   m_ObjectHideFlags: 0
