@@ -109,7 +109,6 @@ public class Life : MonoBehaviour
     void OxygenStateSound()
     {
         float currentPercentage = oxygen / maxOxygen * 100;
-        Debug.Log(currentPercentage);
 
         if (currentPercentage <= (20 * breathingStage))
         {

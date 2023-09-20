@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7934981012132314147}
   m_Layer: 8
   m_Name: Bedroom Door Front
-  m_TagString: Door
+  m_TagString: BedDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   activateBed: 1
   afterClickObject: {fileID: 0}
   beforeClickObject: {fileID: 0}
-  canBeClickedAgain: 0
+  canBeClickedAgain: 1
 --- !u!1 &3453536720263732925
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 6667907003112622745}
   m_Layer: 8
   m_Name: Bedroom Door Back
-  m_TagString: Door
+  m_TagString: BedDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   activateBed: 1
   afterClickObject: {fileID: 0}
   beforeClickObject: {fileID: 0}
-  canBeClickedAgain: 0
+  canBeClickedAgain: 1
 --- !u!95 &6667907003112622745
 Animator:
   serializedVersion: 5
