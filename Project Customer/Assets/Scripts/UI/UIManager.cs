@@ -36,11 +36,6 @@ public class UIManager : MonoBehaviour
     float cooldown = 1;
     float activatedAt;
 
-    [SerializeField]
-    Transform oxygenBar;
-
-    [SerializeField]
-    Transform lifeBar;
 
     bool[] transition = new bool[3];
 
@@ -81,12 +76,6 @@ public class UIManager : MonoBehaviour
 
     Renderer rend;
     Animator anim;
-    Life life;
-
-    [SerializeField]
-    Slider sliderOxygen;
-    [SerializeField]
-    Slider sliderHealth;
 
     RotateCamera rotateCamera;
     PlayerMovement playerMovement;
@@ -99,7 +88,6 @@ public class UIManager : MonoBehaviour
         playerMovement = FindObjectOfType<PlayerMovement>();
 
         anim = GetComponent<Animator>();
-        life = FindObjectOfType<Life>();
 
         pPickup = FindObjectOfType<PhysicsPickup>();
         objectiveNormalColor = Objective.color;
@@ -132,7 +120,6 @@ public class UIManager : MonoBehaviour
     {
         TransitionText();
 
-        SetSliderValues();
 
         if(ItemName.text == null || ItemName.text == "")
         {
@@ -176,12 +163,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ToggleHealthOxygenBar()
+    /*public void ToggleHealthOxygenBar()
     {
         life.damageActivated = !life.damageActivated;
-        oxygenBar.gameObject.SetActive(!oxygenBar.gameObject.activeSelf);
-        lifeBar.gameObject.SetActive(!lifeBar.gameObject.activeSelf);
-    }
+        sliderOxygen.gameObject.SetActive(!sliderOxygen.gameObject.activeSelf);
+        sliderHealth.gameObject.SetActive(!sliderHealth.gameObject.activeSelf);
+    }*/
 
     void TransitionText()
     {
@@ -320,11 +307,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void SetSliderValues()
-    {
-        sliderOxygen.value = (float)playerLife.GetOxygen()/100;
-        sliderHealth.value = (float)playerLife.GetLife()/100;
-    }
 
     public void TriggerSleepAnimation()
     {

@@ -8,24 +8,24 @@ public class FlashingBarAnimation : MonoBehaviour
     // Start is called before the first frame update
     Animator anim;
     bool doOnce;
-    Slider slider;
+    Image bar;
     [SerializeField]
     float flashingValue=25;
     void Start()
     {
         anim = GetComponent<Animator>();
-        slider = GetComponent<Slider>();
+        bar = GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-         if(slider.value <= flashingValue / 100 && !doOnce)
+         if(bar.fillAmount <= flashingValue / 100 && !doOnce)
          {
              doOnce = true;
              PlayAnimation();
          }
-         if(slider.value > flashingValue/100 && doOnce)
+         if(bar.fillAmount > flashingValue/100 && doOnce)
          {
              doOnce= false;
              PlayAnimation();
