@@ -15,6 +15,11 @@ public class VolumeSlider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!PlayerPrefs.HasKey("FirstTime"))
+        {
+            PlayerPrefs.SetInt("FirstTime", 1);
+            PlayerPrefs.SetFloat("volume", 100);
+        }
         audioManager = FindObjectOfType<AudioManager>();
         audioManager.ChangeVolume(PlayerPrefs.GetFloat("volume"));
         volumeSlider.value = PlayerPrefs.GetFloat("volume");

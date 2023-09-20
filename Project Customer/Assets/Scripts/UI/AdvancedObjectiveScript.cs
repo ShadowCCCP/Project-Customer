@@ -12,6 +12,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
     PhysicsPickup physicsPickup;
     InventoryManager inventoryManager;
     CollisionCheckForObjective collisionCheckForObjective;
+    Dialogue dialogue;
   
 
     int objectiveIndex = 0;
@@ -22,6 +23,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
         physicsPickup = FindObjectOfType<PhysicsPickup>();
         inventoryManager = FindObjectOfType<InventoryManager>();
         collisionCheckForObjective = FindObjectOfType<CollisionCheckForObjective>();
+        dialogue = FindObjectOfType<Dialogue>();
 
     }
 
@@ -242,6 +244,8 @@ public class AdvancedObjectivesScript : MonoBehaviour
         }
         if(check)
         {
+            //group of objectives done 
+            dialogue.dialogueTriggerQuests();
             objectiveIndex += Objectives[objectiveIndex].ObjectiveNumber;
         }
     }

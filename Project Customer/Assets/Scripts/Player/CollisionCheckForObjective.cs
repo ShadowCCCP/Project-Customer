@@ -8,9 +8,10 @@ public class CollisionCheckForObjective : MonoBehaviour
 
     GameObject placeToGo = null;
     bool reachedPlace;
+    Dialogue dialogue;
     void Start()
     {
-        
+        dialogue = FindObjectOfType<Dialogue>();
     }
 
     // Update is called once per frame
@@ -39,6 +40,26 @@ public class CollisionCheckForObjective : MonoBehaviour
             
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (dialogue != null)
+        {
+            if (other.tag == "solid")
+            {
+                dialogue.dialogueTriggerCollision(0);
+            }
+            if (other.tag == "electric")
+            {
+                dialogue.dialogueTriggerCollision(1);
+            }
+            if (other.tag == "cooking")
+            {
+                dialogue.dialogueTriggerCollision(2);
+            }
+        }
+    }
+
     public bool GetReachPlaceStatus()
     {
         return reachedPlace;

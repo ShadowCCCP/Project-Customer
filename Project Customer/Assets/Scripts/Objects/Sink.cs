@@ -31,7 +31,7 @@ public class Sink : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(cameraRay, out hitInfo, clickableDistance,  lookAtMask))
         {
-            if(hitInfo.transform.tag == "WaterSource" && Input.GetMouseButtonDown(0))
+            if(hitInfo.transform.tag == "WaterSource" && Input.GetKeyDown(KeyCode.E))
             {
                  if (!waterOn)
                  {
