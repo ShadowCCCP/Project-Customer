@@ -16,7 +16,7 @@ public class VolumeSlider : MonoBehaviour
         if (!PlayerPrefs.HasKey("FirstTime"))
         {
             PlayerPrefs.SetInt("FirstTime", 1);
-            PlayerPrefs.SetFloat("volume", 100);
+            PlayerPrefs.SetFloat("volume", 1);
         }
         AudioListener.volume = PlayerPrefs.GetFloat("volume");
         volumeSlider.value = PlayerPrefs.GetFloat("volume");
