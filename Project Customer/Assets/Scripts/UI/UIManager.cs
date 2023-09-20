@@ -113,7 +113,7 @@ public class UIManager : MonoBehaviour
 
         LifeText.text = "Life: " + playerLife.GetLife().ToString();
         OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
-        Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
+        // Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
 
         for (int i = 0; i < 3; i++)
         {

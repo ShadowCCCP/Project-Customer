@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 7113010133498204445}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3704147449513764046
 MeshFilter:
@@ -177,14 +177,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 5
-  life: 5
+  life: 1
   fireLifeFilledBucket: 5
-  fireLifePotion: 5
   electricFire: 0
   cookingFire: 0
-  solidFire: 0
-  cooldown: 0.25
-  maxLifeTime: 1.48
+  hitCooldown: 0.75
+  growthCooldown: 4
+  flameMaxHeight: 1.48
   fireSpread: []
   smoke: {fileID: 5379428167519566946}
   lighting: {fileID: 2712221698648715408}
