@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5407637706104600162}
   - component: {fileID: 3143225791941318655}
-  - component: {fileID: 5049977219752339110}
   - component: {fileID: 8680681798481299578}
   - component: {fileID: 5469690785701147604}
   - component: {fileID: 9192192064294179050}
@@ -199,19 +198,6 @@ MonoBehaviour:
     volume: 0.2
     pitch: 1
     source: {fileID: 0}
---- !u!114 &5049977219752339110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447233101646391338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85874867a59baa7419c1aedc57fff62a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundToPlay: NormalStep1
 --- !u!114 &8680681798481299578
 MonoBehaviour:
   m_ObjectHideFlags: 0

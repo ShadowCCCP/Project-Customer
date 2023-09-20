@@ -39,7 +39,8 @@ public class UIManager : MonoBehaviour
 
     bool[] transition = new bool[3];
 
-
+    [SerializeField]
+    Transform bars;
 
     [Serializable]
     public struct ObjectNamesAndDescriptions
@@ -113,6 +114,8 @@ public class UIManager : MonoBehaviour
             objectives[i].text = advancedObjectivesScript.GetCurrentObjective(i + 1);
         }
 
+        ToggleHealthOxygenBar();
+
     }
 
     // Update is called once per frame
@@ -163,12 +166,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /*public void ToggleHealthOxygenBar()
+    public void ToggleHealthOxygenBar()
     {
-        life.damageActivated = !life.damageActivated;
-        sliderOxygen.gameObject.SetActive(!sliderOxygen.gameObject.activeSelf);
-        sliderHealth.gameObject.SetActive(!sliderHealth.gameObject.activeSelf);
-    }*/
+        playerLife.damageActivated = !playerLife.damageActivated;
+        bars.gameObject.SetActive(!bars.gameObject.activeSelf);
+    }
 
     void TransitionText()
     {

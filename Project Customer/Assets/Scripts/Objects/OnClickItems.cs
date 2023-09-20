@@ -9,6 +9,7 @@ public class OnClickItems : MonoBehaviour
     public static event Action onBedClicked;
     public static event Action onBathDoorClicked;
     public static event Action onBedDoorClicked;
+    public static event Action onCandleClicked;
 
     public bool activateBed = true;
 
@@ -43,6 +44,9 @@ public class OnClickItems : MonoBehaviour
 
         // If it's a stove...
         StoveSound();
+
+        // If it's a candle...
+        CandleSound();
     }
 
     private void ReplaceObject()
@@ -116,6 +120,14 @@ public class OnClickItems : MonoBehaviour
         {
             if (gameObject.tag == "BathDoor") onBathDoorClicked();
             else if (gameObject.tag == "BedDoor") onBedDoorClicked();
+        }
+    }
+
+    private void CandleSound()
+    {
+        if(gameObject.tag == "Candle" && onCandleClicked != null)
+        {
+            onCandleClicked();
         }
     }
 

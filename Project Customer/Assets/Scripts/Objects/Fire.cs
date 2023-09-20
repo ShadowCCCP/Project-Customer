@@ -93,9 +93,9 @@ public class Fire : MonoBehaviour
         FlameExtinguished();
         SpreadFire();
         FireGrowth();
-        //AddLifeOverTime();
+        AddLifeOverTime();
 
-        Testing();
+        //Testing();
     }
 
     private void AddToCount()
