@@ -1698,7 +1698,7 @@ GameObject:
   - component: {fileID: 296787668}
   - component: {fileID: 296787667}
   - component: {fileID: 296787666}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14319,7 +14319,7 @@ MonoBehaviour:
   TaskThePlayerSees: Throw the trash in the bin
   TaskUnderstoodByCode: Put the
   ObjectiveNumber: 3
-  gameObject: {fileID: 0}
+  GameObject: {fileID: 0}
   done: 0
 --- !u!114 &1781874658
 MonoBehaviour:
@@ -14355,7 +14355,7 @@ MonoBehaviour:
   TaskThePlayerSees: Give the plant in the hallway water
   TaskUnderstoodByCode: Put the
   ObjectiveNumber: 3
-  gameObject: {fileID: 0}
+  GameObject: {fileID: 0}
   done: 0
 --- !u!114 &1781874665
 MonoBehaviour:
@@ -14372,7 +14372,7 @@ MonoBehaviour:
   TaskThePlayerSees: Put the blue book on the correct shelf
   TaskUnderstoodByCode: Put the
   ObjectiveNumber: 3
-  gameObject: {fileID: 0}
+  GameObject: {fileID: 0}
   done: 0
 --- !u!114 &1781874671
 MonoBehaviour:
@@ -14389,7 +14389,7 @@ MonoBehaviour:
   TaskThePlayerSees: Turn on the stove
   TaskUnderstoodByCode: 
   ObjectiveNumber: 3
-  gameObject: {fileID: 0}
+  GameObject: {fileID: 0}
   done: 0
 --- !u!114 &1781874672
 MonoBehaviour:
@@ -14406,7 +14406,7 @@ MonoBehaviour:
   TaskThePlayerSees: Light the candles
   TaskUnderstoodByCode: 
   ObjectiveNumber: 3
-  gameObject: {fileID: 0}
+  GameObject: {fileID: 0}
   done: 0
 --- !u!114 &1781874673
 MonoBehaviour:
@@ -14423,7 +14423,7 @@ MonoBehaviour:
   TaskThePlayerSees: Turn on the potion brewer
   TaskUnderstoodByCode: 
   ObjectiveNumber: 3
-  gameObject: {fileID: 0}
+  GameObject: {fileID: 0}
   done: 0
 --- !u!4 &1785180982 stripped
 Transform:
@@ -17679,7 +17679,7 @@ PrefabInstance:
     - target: {fileID: 7585445722787696598, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.88
+      value: 7.86
       objectReference: {fileID: 0}
     - target: {fileID: 7585445722787696598, guid: e7fc0d16171e9a24fb228a873b8a3d76,
         type: 3}
