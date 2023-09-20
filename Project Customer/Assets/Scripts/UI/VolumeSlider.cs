@@ -10,8 +10,6 @@ public class VolumeSlider : MonoBehaviour
     [SerializeField]
     Slider volumeSlider;
 
-    AudioManager audioManager;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +18,15 @@ public class VolumeSlider : MonoBehaviour
             PlayerPrefs.SetInt("FirstTime", 1);
             PlayerPrefs.SetFloat("volume", 100);
         }
-        audioManager = FindObjectOfType<AudioManager>();
-        audioManager.ChangeVolume(PlayerPrefs.GetFloat("volume"));
+        AudioListener.volume = PlayerPrefs.GetFloat("volume");
         volumeSlider.value = PlayerPrefs.GetFloat("volume");
-
+        
     }
 
     // Called when the slider value changes
     void Update()
     {
-        audioManager.ChangeVolume(volumeSlider.value);
+        AudioListener.volume = PlayerPrefs.GetFloat("volume");
         PlayerPrefs.SetFloat("volume", volumeSlider.value);
 
 
