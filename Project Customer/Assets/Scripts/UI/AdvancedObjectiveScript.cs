@@ -214,7 +214,7 @@ public class AdvancedObjectivesScript : MonoBehaviour
         {
             Objectives[i].done = true;
         }
-        }
+        
     }
 
     void onClickObj(int i)
