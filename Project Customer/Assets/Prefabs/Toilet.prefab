@@ -28,14 +28,14 @@ Transform:
   m_GameObject: {fileID: 1140157225543065633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.052201, y: 4.299, z: 0.16022056}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9374999, y: 0.93750006, z: 0.9374999}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4266087675720329824}
   - {fileID: 2262806276010929973}
   - {fileID: 5853646119205022046}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7952705715195978575
 BoxCollider:
@@ -56,8 +56,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.35698107, y: 0.23304892, z: 0.35893467}
+  m_Center: {x: 0.00018852949, y: -0.38347554, z: 0.32053274}
 --- !u!114 &1795303628089933415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,14 +65,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140157225543065633}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   afterClickObject: {fileID: 0}
   beforeClickObject: {fileID: 0}
-  canbeClickedAgain: 0
+  canBeClickedAgain: 0
 --- !u!95 &5699872880395784847
 Animator:
   serializedVersion: 5
@@ -81,7 +81,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140157225543065633}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 51e6ba92d137f6642b3c71af58b8b887, type: 2}
   m_CullingMode: 0
@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 4266087675720329824}
   - component: {fileID: 7844304184714740779}
   - component: {fileID: 40209235031338817}
+  - component: {fileID: 2262608363033443397}
   m_Layer: 8
   m_Name: toilet1
   m_TagString: Untagged
@@ -177,6 +178,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2262608363033443397
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115491965135721388}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5367599178721963914, guid: 7240cc4b4b6ec044da13c199fc1fadd9, type: 3}
 --- !u!1 &2237414330930724758
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,8 +294,10 @@ GameObject:
   - component: {fileID: 2262806276010929973}
   - component: {fileID: 5164512189669159401}
   - component: {fileID: 1589662616103820298}
+  - component: {fileID: 237772815294852809}
+  - component: {fileID: 872643255864154168}
   m_Layer: 8
-  m_Name: toilet3
+  m_Name: Toilet seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,14 +310,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5121137543066436937}
-  m_LocalRotation: {x: 4.626757e-15, y: 0.7369229, z: 0.6759769, w: 4.244108e-15}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: 0.0025, y: -0.1864, z: 0.0756}
   m_LocalScale: {x: 0.0023633742, y: -0.0012544667, z: 0.0027031489}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2088122990618897715}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 180, z: 0}
 --- !u!33 &5164512189669159401
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -321,6 +346,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 38069117300dbfa40b804732be4675e6, type: 2}
   - {fileID: 6034957751646507721, guid: 7240cc4b4b6ec044da13c199fc1fadd9, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -343,3 +369,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &237772815294852809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121137543066436937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterClickObject: {fileID: 0}
+  beforeClickObject: {fileID: 0}
+  canBeClickedAgain: 0
+--- !u!95 &872643255864154168
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121137543066436937}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 51e6ba92d137f6642b3c71af58b8b887, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
