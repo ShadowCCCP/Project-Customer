@@ -1207,6 +1207,7 @@ GameObject:
   - component: {fileID: 3152880884937823143}
   - component: {fileID: 89912543348437168}
   - component: {fileID: 481787738973297409}
+  - component: {fileID: 9107630515573757080}
   m_Layer: 5
   m_Name: Canvas ultimate
   m_TagString: Untagged
@@ -1233,7 +1234,7 @@ RectTransform:
   - {fileID: 4717317793538319233}
   - {fileID: 1128921956207564306}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1520,6 +1521,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 8819407108963145213}
+--- !u!114 &9107630515573757080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2936946254549839577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f84ce2379d1ea409b93e0d96dd10b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3134992108543029685
 GameObject:
   m_ObjectHideFlags: 0

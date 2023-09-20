@@ -115,7 +115,6 @@ public class UIManager : MonoBehaviour
         }
 
         ToggleHealthOxygenBar();
-
     }
 
     // Update is called once per frame

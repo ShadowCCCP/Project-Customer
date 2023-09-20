@@ -12,6 +12,9 @@ public class CutscenePlayer : MonoBehaviour
     PlayerMovement playerMovement;
     PlayableDirector cutScene;
 
+    bool playCutscene;
+    bool playedCutscene;
+
     void Start()
     {
         rotateCamera = FindObjectOfType<RotateCamera>();
@@ -21,21 +24,29 @@ public class CutscenePlayer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (playCutscene)
         {
             cutsceneCam.gameObject.SetActive(true);
             rotateCamera.transform.gameObject.SetActive(false);
             playerMovement.enabled = false;
             rotateCamera.enabled = false;
             cutScene.Play();
+            playCutscene = false;
+            playedCutscene = true;
         }
 
-        if(!rotateCamera.enabled && cutScene.state == PlayState.Paused)
+        if(!rotateCamera.enabled && cutScene.state == PlayState.Paused && playedCutscene)
         {
             cutsceneCam.gameObject.SetActive(false);
             rotateCamera.transform.gameObject.SetActive(true);
             playerMovement.enabled = true;
             rotateCamera.enabled = true;
+            playedCutscene = false;
         }
+    }
+
+    public void PlayCutscene()
+    {
+        playCutscene = true;
     }
 }

@@ -214,7 +214,6 @@ MonoBehaviour:
   basementTheme: {fileID: 8300000, guid: b3c14beb9c9bdbc429dd9d8b9b8ad6e2, type: 3}
   mainThemeOneShot: {fileID: 8300000, guid: 12e08f67d33e6364da5369ec3e084a25, type: 3}
   mainThemeLoop: {fileID: 8300000, guid: 54e26c6030df06745a6321420ef6f618, type: 3}
-  eveningTheme: {fileID: 8300000, guid: 3def71932051f384f8e8d22d01f59127, type: 3}
   SleepTheme: {fileID: 8300000, guid: 1b2e1afeb8911944381756f0506262e9, type: 3}
 --- !u!114 &5469690785701147604
 MonoBehaviour:
