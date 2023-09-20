@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4755295691101036839}
   m_Layer: 8
   m_Name: BathroomDoorBack
-  m_TagString: Untagged
+  m_TagString: BathDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   activateBed: 1
   afterClickObject: {fileID: 0}
   beforeClickObject: {fileID: 0}
-  canBeClickedAgain: 0
+  canBeClickedAgain: 1
 --- !u!95 &7152792799285415677
 Animator:
   serializedVersion: 5
@@ -170,7 +170,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -292,6 +292,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7685289054598712294}
+  - component: {fileID: 1936466762140501009}
+  - component: {fileID: 5155508922191099718}
   m_Layer: 0
   m_Name: DoorBathroom
   m_TagString: Untagged
@@ -313,8 +315,124 @@ Transform:
   m_Children:
   - {fileID: 2810460031981100037}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1936466762140501009
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335343877221628478}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &5155508922191099718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335343877221628478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36b0e5e44a0b434185b42c41c7da242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorSide1: {fileID: 2810460031981100037}
+  doorSide2: {fileID: 8109931067369285280}
+  doorOpenSound:
+  - {fileID: 8300000, guid: 21c738ca7f55bb943b5dfaf03468ec27, type: 3}
+  - {fileID: 8300000, guid: 292e4a6d00b507e47895282b3981f2a9, type: 3}
+  doorCloseSound:
+  - {fileID: 8300000, guid: 04d292c365e49e244b210f48e153ea55, type: 3}
+  - {fileID: 8300000, guid: ab921ba195ccb2743981fd8a6b73caf7, type: 3}
 --- !u!1 &8557130067932596161
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +447,7 @@ GameObject:
   - component: {fileID: 1051516339871387317}
   m_Layer: 8
   m_Name: BathroomDoorFront
-  m_TagString: Untagged
+  m_TagString: BathDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -365,7 +483,7 @@ MonoBehaviour:
   activateBed: 1
   afterClickObject: {fileID: 0}
   beforeClickObject: {fileID: 0}
-  canBeClickedAgain: 0
+  canBeClickedAgain: 1
 --- !u!95 &9082118106862938595
 Animator:
   serializedVersion: 5
@@ -402,7 +520,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

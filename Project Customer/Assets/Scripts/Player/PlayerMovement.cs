@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     LayerMask groundMask;
+
+    [SerializeField]
+    LayerMask rotatableMask;
     
     [SerializeField]
     bool jumpMultiplier;
@@ -164,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * groundCheckDist, Color.cyan);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, groundCheckDist, groundMask))
+        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, groundCheckDist, groundMask) || Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, groundCheckDist, rotatableMask))
         {
             return true;
         }

@@ -21,7 +21,7 @@ public class OnClickItems : MonoBehaviour
     Animator anim;
 
     [SerializeField]
-    bool canBeClickedAgain = false;
+    bool canBeClickedAgain = true;
 
     bool clicked = false;
     void Start()
@@ -32,6 +32,7 @@ public class OnClickItems : MonoBehaviour
     public void Cliked()
     {
         PlayAnimation();
+        SwitchLayerAfterClick();
         ReplaceObject();
 
         // If it's a door...
@@ -73,6 +74,14 @@ public class OnClickItems : MonoBehaviour
                         beforeClickObject.SetActive(true);
                     }
                 }
+        }
+    }
+
+    private void SwitchLayerAfterClick()
+    {
+        if(!canBeClickedAgain)
+        {
+            gameObject.layer = 0;
         }
     }
 

@@ -18,9 +18,19 @@ public class SoundTransition : MonoBehaviour
         StartCoroutine(FadeVolume(0, 1, transitionDuration));
     }
 
+    public void TransitionToFullVolume(float volume)
+    {
+        StartCoroutine(FadeVolume(0, volume, transitionDuration));
+    }
+
     public void TransitionToZeroVolume()
     {
         StartCoroutine(FadeVolume(1, 0, transitionDuration));
+    }
+
+    public void TransitionToZeroVolume(float volume)
+    {
+        StartCoroutine(FadeVolume(volume, 0, transitionDuration));
     }
 
     private IEnumerator FadeVolume(float startVolume, float targetVolume, float duration)
