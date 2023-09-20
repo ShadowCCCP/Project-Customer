@@ -80,11 +80,9 @@ public class MoveAnimation : MonoBehaviour
 
     private void PlayStepSound()
     {
-        Debug.Log(_camera.transform.localPosition.y <= Mathf.Sin((-Mathf.PI / 2) / frequency) * amplitude);
-
         if (audioManager != null)
         {
-            if (_camera.transform.localPosition.y <= Mathf.Sin(-Mathf.PI / 2) * amplitude && stepWasUp)
+            if (_camera.transform.localPosition.y <= Mathf.Sin((-Mathf.PI / 2) / frequency) * amplitude && stepWasUp)
             {
                 int randomNumber = UnityEngine.Random.Range(0, 4);
                 if (!moveCameraScript.IsCrouching())
