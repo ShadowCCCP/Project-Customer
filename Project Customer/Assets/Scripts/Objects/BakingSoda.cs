@@ -5,7 +5,7 @@ using UnityEngine;
 public class BakingSoda : MonoBehaviour
 {
     [SerializeField]
-    float repellMultiplier = 7;
+    float repellMultiplier = 4;
 
     PlayerMovement playerPos;
     Rigidbody rb;

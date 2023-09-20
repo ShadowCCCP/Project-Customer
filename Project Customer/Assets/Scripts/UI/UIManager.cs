@@ -148,15 +148,6 @@ public class UIManager : MonoBehaviour
             ItemDescription.text = null;
         }
 
-        if(LifeText.text.Substring(LifeText.text.IndexOf(':') + 2) != playerLife.GetLife().ToString())
-        {
-            LifeText.text = "Life: " + playerLife.GetLife().ToString();
-        }
-        if (OxygenLeftText.text.Substring(OxygenLeftText.text.IndexOf(':') + 2) != playerLife.GetOxygen().ToString())
-        {
-            OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
-        }
-
         for (int i = 0; i < objectives.Length; i++)
         {
             if (objectives[i].text != advancedObjectivesScript.GetCurrentObjective(i + 1).ToString() && !doOnce[i])

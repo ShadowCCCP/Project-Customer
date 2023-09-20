@@ -145,6 +145,7 @@ public class Fire : MonoBehaviour
         if (Life < maxLife && Time.time - lastGrowth > growthCooldown)
         {
             Life++;
+            lastGrowth = Time.time;
         }
         else if (Life > maxLife) Life = maxLife;
     }
