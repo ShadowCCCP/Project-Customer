@@ -4806,12 +4806,12 @@ PrefabInstance:
     - target: {fileID: 5180155556488998170, guid: 00adad733fce79c4fae9913f373033cd,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5180155556488998170, guid: 00adad733fce79c4fae9913f373033cd,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
