@@ -25,7 +25,7 @@ public class Sink : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waterCheck();
+        //waterCheck();
 
         Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hitInfo;
