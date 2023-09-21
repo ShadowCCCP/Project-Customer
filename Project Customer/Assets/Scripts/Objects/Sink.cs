@@ -29,18 +29,18 @@ public class Sink : MonoBehaviour
 
         Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hitInfo;
-        if (Physics.Raycast(cameraRay, out hitInfo, clickableDistance, lookAtMask))
+        if (Physics.Raycast(cameraRay, out hitInfo, clickableDistance,  lookAtMask))
         {
-            if (hitInfo.transform.tag == "WaterSource" && Input.GetMouseButtonDown(0))
+            if(hitInfo.transform.tag == "WaterSource" && Input.GetKeyDown(KeyCode.E))
             {
-                if (!waterOn)
-                {
-                    waterOn = true;
-                }
-                else
-                {
-                    waterOn = false;
-                }
+                 if (!waterOn)
+                 {
+                     waterOn = true;
+                 }
+                 else
+                 {
+                     waterOn = false;
+                 }
             }
         }
     }

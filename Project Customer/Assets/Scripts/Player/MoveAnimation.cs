@@ -23,6 +23,9 @@ public class MoveAnimation : MonoBehaviour
     string[] normalStepSounds = { "NormalStep1", "NormalStep2", "NormalStep3", "NormalStep4" };
     string[] crouchStepSounds = { "CrouchStep1", "CrouchStep2", "CrouchStep3", "CrouchStep4" };
 
+    AudioClip[] doorClose;
+    AudioClip[] doorOpen;
+
     bool stepWasUp = true;
     float toggleSpeed = 2;
     Vector3 startPos;

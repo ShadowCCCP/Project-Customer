@@ -14,6 +14,10 @@ TagManager:
   - FireRepelantPowder
   - JumpBoost
   - Key
+  - Stove
+  - Bed
+  - BathDoor
+  - BedDoor
   layers:
   - Default
   - TransparentFX
