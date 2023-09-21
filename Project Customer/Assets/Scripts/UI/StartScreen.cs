@@ -7,9 +7,9 @@ public class StartScreen : MonoBehaviour
 {
     [SerializeField]
     GameObject[] fires;
-    public void LoadScene(string sceneName)
+    public void LoadScene()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void QuitGame()
     {

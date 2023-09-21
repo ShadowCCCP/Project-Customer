@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class FireSpirit : MonoBehaviour
 {
-    [SerializeField]
-    AudioClip fireSpiritDeath;
+    //[SerializeField]
+    //AudioClip fireSpiritDeath;
     AudioSource audioSource;
 
     [SerializeField]
     Fire[] connectedFires;
     int fireConnected;
 
+    [SerializeField]
+    float floatSpeed = 1;
+
+    [SerializeField]
+    float height = 0.2f;
+
     bool doOnce;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
 
         fireConnected = connectedFires.Length;
     }
 
     void Update()
     {
+        /*
         int fireCount = fireConnected;
 
         for (int i = 0; i < fireConnected; i++)
@@ -32,7 +39,7 @@ public class FireSpirit : MonoBehaviour
                 fireCount--;
             }
         }
-
+        
         if(fireCount <= 0)
         {
             if(!doOnce)
@@ -48,5 +55,12 @@ public class FireSpirit : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+        */
+    }
+
+    void FixedUpdate()
+    {
+        float bouncy = Mathf.Sin(Time.time * floatSpeed) * height * Time.deltaTime;
+        transform.Translate(Vector3.up * bouncy);
     }
 }
