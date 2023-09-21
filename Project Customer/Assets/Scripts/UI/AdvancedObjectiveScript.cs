@@ -231,7 +231,10 @@ public class AdvancedObjectivesScript : MonoBehaviour
         
     }
 
-
+    int groupsOfQuestsDone = 0;
+    [SerializeField]
+    Transform bed;
+    OnClickItems onClickItems;
     void checkIfAllObjDone()
     {
         bool check = true;
@@ -247,6 +250,12 @@ public class AdvancedObjectivesScript : MonoBehaviour
             //group of objectives done 
             dialogue.dialogueTriggerQuests();
             objectiveIndex += Objectives[objectiveIndex].ObjectiveNumber;
+            groupsOfQuestsDone++;
+        }
+        if(groupsOfQuestsDone == 2)
+        {
+            onClickItems = bed.GetComponent<OnClickItems>();
+            onClickItems.activateBed = true;
         }
     }
 
