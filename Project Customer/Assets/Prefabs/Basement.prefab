@@ -480,9 +480,9 @@ Transform:
   - {fileID: 2946289496203256014}
   - {fileID: 1802049368986365795}
   - {fileID: 6420559032536268541}
-  - {fileID: 1571378073789708703}
+  - {fileID: 1333487446168629074}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7835954633759739523
 GameObject:
@@ -2314,6 +2314,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5464963651811181140, guid: f7b33988407965c4489e3a01f7d19f9d,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 6.4e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 5464963651811181140, guid: f7b33988407965c4489e3a01f7d19f9d,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.7e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 5464963651811181140, guid: f7b33988407965c4489e3a01f7d19f9d,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 4.067866e+19
+      objectReference: {fileID: 0}
+    - target: {fileID: 5464963651811181140, guid: f7b33988407965c4489e3a01f7d19f9d,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 7.34e-43
+      objectReference: {fileID: 0}
     - target: {fileID: 8649034627761334303, guid: f7b33988407965c4489e3a01f7d19f9d,
         type: 3}
       propertyPath: m_Name
@@ -2324,7 +2344,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7b33988407965c4489e3a01f7d19f9d, type: 3}
---- !u!4 &1571378073789708703 stripped
+--- !u!4 &1333487446168629074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5430911349189255305, guid: f7b33988407965c4489e3a01f7d19f9d,
     type: 3}
