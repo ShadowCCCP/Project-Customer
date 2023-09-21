@@ -788,6 +788,16 @@ PrefabInstance:
       propertyPath: dialogueLinesAfterGroupOfQuests.Array.data[3]
       value: dialogues4
       objectReference: {fileID: 0}
+    - target: {fileID: 4151341043141337863, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151341043141337863, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4285594919413973924, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -891,6 +901,21 @@ PrefabInstance:
     - target: {fileID: 4285594919413973924, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080734433333760704, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080734433333760704, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080734433333760704, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
