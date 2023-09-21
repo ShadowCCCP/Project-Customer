@@ -53,11 +53,17 @@ public class Dialogue : MonoBehaviour
     }
     public void dialogueTriggerQuests()
     {
-        if (!dialogueActive)
+
+        if (!dialogueActive )
         {
             dialoguetext.text = dialogueLinesAfterGroupOfQuests[dialogueQuestsIndex].ToString();
-            dialogueQuestsIndex++;
+
+            Debug.Log(dialogueQuestsIndex); Debug.Log(dialogueLinesAfterGroupOfQuests.Length);
             dialogueNew();
+        }
+        if(dialogueQuestsIndex  < dialogueLinesAfterGroupOfQuests.Length-1)
+        {
+            dialogueQuestsIndex++;
         }
     }
 
