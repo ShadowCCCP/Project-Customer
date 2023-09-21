@@ -78,7 +78,7 @@ public class FireExtinguisher : MonoBehaviour
         foamParticle.Play();
         currentFoam = Instantiate(foamPrefab, spawnPoint.position, spawnPoint.rotation);
         currentFoam.transform.SetParent(null);
-        currentFoam.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower);
+        currentFoam.GetComponent<Rigidbody>().AddForce(spawnPoint.transform.forward * shootPower);
     }
 
     private void DeactivateSelf()

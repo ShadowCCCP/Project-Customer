@@ -36,15 +36,11 @@ public class UIManager : MonoBehaviour
     float cooldown = 1;
     float activatedAt;
 
-    [SerializeField]
-    Transform oxygenBar;
-
-    [SerializeField]
-    Transform lifeBar;
 
     bool[] transition = new bool[3];
 
-
+    [SerializeField]
+    Transform bars;
 
     [Serializable]
     public struct ObjectNamesAndDescriptions
@@ -81,19 +77,18 @@ public class UIManager : MonoBehaviour
 
     Renderer rend;
     Animator anim;
-    Life life;
 
-    [SerializeField]
-    Slider sliderOxygen;
-    [SerializeField]
-    Slider sliderHealth;
+    RotateCamera rotateCamera;
+    PlayerMovement playerMovement;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        rotateCamera = FindObjectOfType<RotateCamera>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
+
         anim = GetComponent<Animator>();
-        life = FindObjectOfType<Life>();
 
         pPickup = FindObjectOfType<PhysicsPickup>();
         objectiveNormalColor = Objective.color;
@@ -105,7 +100,7 @@ public class UIManager : MonoBehaviour
         ItemDescription.text = null;
         LookedAtItem.text = null;
         LookedAtItemDesc.text = null;
-        //ExtraHint.text = null;
+        ExtraHint.text = null;
 
         playerPhysicsPickup = FindObjectOfType<PhysicsPickup>();
         playerLife = FindObjectOfType<Life>();
@@ -113,15 +108,13 @@ public class UIManager : MonoBehaviour
 
         LifeText.text = "Life: " + playerLife.GetLife().ToString();
         OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString(); ;
-        // Objective.text = "Objective: " + objectivesScript.GetCurrentObjective().ToString();
 
         for (int i = 0; i < 3; i++)
         {
             objectives[i].text = advancedObjectivesScript.GetCurrentObjective(i + 1);
         }
 
-        print(advancedObjectivesScript.GetCurrentObjective(1).ToString());
-
+        ToggleHealthOxygenBar();
     }
 
     // Update is called once per frame
@@ -129,7 +122,6 @@ public class UIManager : MonoBehaviour
     {
         TransitionText();
 
-        SetSliderValues();
 
         if(ItemName.text == null || ItemName.text == "")
         {
@@ -155,15 +147,6 @@ public class UIManager : MonoBehaviour
             ItemDescription.text = null;
         }
 
-        if(LifeText.text.Substring(LifeText.text.IndexOf(':') + 2) != playerLife.GetLife().ToString())
-        {
-            LifeText.text = "Life: " + playerLife.GetLife().ToString();
-        }
-        if (OxygenLeftText.text.Substring(OxygenLeftText.text.IndexOf(':') + 2) != playerLife.GetOxygen().ToString())
-        {
-            OxygenLeftText.text = "Oxygen: " + playerLife.GetOxygen().ToString();
-        }
-
         for (int i = 0; i < objectives.Length; i++)
         {
             if (objectives[i].text != advancedObjectivesScript.GetCurrentObjective(i + 1).ToString() && !doOnce[i])
@@ -175,9 +158,8 @@ public class UIManager : MonoBehaviour
 
     public void ToggleHealthOxygenBar()
     {
-        life.damageActivated = !life.damageActivated;
-        oxygenBar.gameObject.SetActive(!oxygenBar.gameObject.activeSelf);
-        lifeBar.gameObject.SetActive(!lifeBar.gameObject.activeSelf);
+        playerLife.damageActivated = !playerLife.damageActivated;
+        bars.gameObject.SetActive(!bars.gameObject.activeSelf);
     }
 
     void TransitionText()
@@ -277,7 +259,6 @@ public class UIManager : MonoBehaviour
         if (Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), pickupMask)|| Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), lookAtMask) || Physics.Raycast(cameraRay, out hitInfo, pPickup.GetPickupDistance(), rotatebleOnlyMask))
         {
             if (hitInfo.transform.tag == "Key" && !playerPhysicsPickup.activatePickupKeys) return;
-
             if (hitInfo.collider.GetComponent<Renderer>() && useOutline){
                 
                if (rend)
@@ -318,14 +299,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void SetSliderValues()
-    {
-        sliderOxygen.value = (float)playerLife.GetOxygen()/100;
-        sliderHealth.value = (float)playerLife.GetLife()/100;
-    }
 
     public void TriggerSleepAnimation()
     {
         anim.SetTrigger("Sleep");
+    }
+
+    public void TogglePlayerOnOff()
+    {
+        rotateCamera.enabled = !rotateCamera.enabled;
+        playerMovement.enabled = !playerMovement.enabled;
     }
 }

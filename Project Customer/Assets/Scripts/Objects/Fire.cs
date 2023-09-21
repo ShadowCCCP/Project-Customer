@@ -8,9 +8,11 @@ public class Fire : MonoBehaviour
 {
     public static event Action onRepellSoda;
 
-    public static int flameCount;
+    public static int flameCount =0;
 
     bool hasBeenAdded;
+
+    AudioManager audioManager;
 
     public int maxLife = 5;
     [SerializeField]
@@ -81,6 +83,7 @@ public class Fire : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         fire = GetComponent<ParticleSystem>();
         waterInteractable = FindObjectOfType<WaterInteractable>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Update()
@@ -90,9 +93,9 @@ public class Fire : MonoBehaviour
         FlameExtinguished();
         SpreadFire();
         FireGrowth();
-        //AddLifeOverTime();
+        AddLifeOverTime();
 
-        Testing();
+        //Testing();
     }
 
     private void AddToCount()
@@ -106,7 +109,7 @@ public class Fire : MonoBehaviour
 
     private void CheckSound()
     {
-        if (!audioSource.isPlaying)
+        if (!audioSource.isPlaying && audioSource.enabled)
         {
             audioSource.volume = 0;
 
@@ -128,11 +131,6 @@ public class Fire : MonoBehaviour
         {
             Life--;
         }
-        else if(Input.GetKeyDown(KeyCode.P))
-        {
-            Life = maxLife;
-            setSpreadFireToMax = true;
-        }
     }
 
     private void FireGrowth()
@@ -147,6 +145,7 @@ public class Fire : MonoBehaviour
         if (Life < maxLife && Time.time - lastGrowth > growthCooldown)
         {
             Life++;
+            lastGrowth = Time.time;
         }
         else if (Life > maxLife) Life = maxLife;
     }
@@ -203,6 +202,7 @@ public class Fire : MonoBehaviour
         else
         {
             // Explosion!!!
+            audioManager.Play("FireFail");
             Life = maxLife;
             setSpreadFireToMax = true;
         }
@@ -240,7 +240,7 @@ public class Fire : MonoBehaviour
     private void SpreadFire()
     {
         KeepTrackOfInstances();
-        if (fireSpread.Length > 0 && Life == maxLife && lastLife < Life && spawnedFiresTracker.Count < fireSpread.Length)
+        if (fireSpread.Length > 0 && Life == maxLife && lastLife < Life && spawnedFiresTracker.Count < fireSpread.Length && fireSpread.Length > 0)
         {
             for (int i = 0; i < fireSpread.Length; i++)
             {

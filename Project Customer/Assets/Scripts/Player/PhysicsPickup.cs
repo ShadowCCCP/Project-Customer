@@ -128,7 +128,6 @@ public class PhysicsPickup : MonoBehaviour
                 currentObject = hitInfoRotation.rigidbody;
                 isRotating = true;
                 rotationOnlyItem = true;
-
             }
 
         }
