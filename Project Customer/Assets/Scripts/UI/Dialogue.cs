@@ -57,8 +57,6 @@ public class Dialogue : MonoBehaviour
         if (!dialogueActive )
         {
             dialoguetext.text = dialogueLinesAfterGroupOfQuests[dialogueQuestsIndex].ToString();
-
-            Debug.Log(dialogueQuestsIndex); Debug.Log(dialogueLinesAfterGroupOfQuests.Length);
             dialogueNew();
         }
         if(dialogueQuestsIndex  < dialogueLinesAfterGroupOfQuests.Length-1)
