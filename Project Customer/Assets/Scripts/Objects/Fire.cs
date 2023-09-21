@@ -33,6 +33,10 @@ public class Fire : MonoBehaviour
     float growthCooldown = 20;
     float lastGrowth;
 
+    [SerializeField]
+    float spreadCooldown = 120;
+    float lastSpread;
+
     // Higher values make the flames bigger...
     [SerializeField]
     float flameMaxHeight = 1.48f;
@@ -173,6 +177,7 @@ public class Fire : MonoBehaviour
         {
             if (other.gameObject.tag == "FoamBullet")
             {
+                Debug.Log("gawk");
                 Life--;
             }
             if (other.GetComponent<WaterInteractable>())
@@ -240,10 +245,11 @@ public class Fire : MonoBehaviour
     private void SpreadFire()
     {
         KeepTrackOfInstances();
-        if (fireSpread.Length > 0 && Life == maxLife && lastLife < Life && spawnedFiresTracker.Count < fireSpread.Length && fireSpread.Length > 0)
+        if (fireSpread.Length > 0 && Life == maxLife && lastLife < Life && spawnedFiresTracker.Count <= 0 && Time.time - lastSpread > spreadCooldown)
         {
             for (int i = 0; i < fireSpread.Length; i++)
             {
+                lastSpread = Time.time;
                 fireSpread[i].transform.parent.gameObject.SetActive(true);
                 spawnedFiresTracker.Add(fireSpread[i]);
             }

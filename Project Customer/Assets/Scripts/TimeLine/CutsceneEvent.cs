@@ -26,6 +26,7 @@ public class CutsceneEvent : MonoBehaviour
 
         if(firstFlameSpawned && Time.time - lastTiggered > eventTriggerCooldown)
         {
+            eventTriggerCooldown += 10;
             TriggerEvent();
             lastTiggered = Time.time;
         }

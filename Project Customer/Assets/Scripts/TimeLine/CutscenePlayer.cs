@@ -11,12 +11,14 @@ public class CutscenePlayer : MonoBehaviour
     RotateCamera rotateCamera;
     PlayerMovement playerMovement;
     PlayableDirector cutScene;
+    UIManager uiManager;
 
     bool playCutscene;
     bool playedCutscene;
 
     void Start()
     {
+        uiManager = FindObjectOfType<UIManager>();
         rotateCamera = FindObjectOfType<RotateCamera>();
         playerMovement = FindObjectOfType<PlayerMovement>();
         cutScene = GetComponent<PlayableDirector>();
@@ -26,6 +28,7 @@ public class CutscenePlayer : MonoBehaviour
     {
         if (playCutscene)
         {
+            uiManager.ToggleHealthOxygenCrosshair();
             cutsceneCam.gameObject.SetActive(true);
             rotateCamera.transform.gameObject.SetActive(false);
             playerMovement.enabled = false;
@@ -37,6 +40,7 @@ public class CutscenePlayer : MonoBehaviour
 
         if(!rotateCamera.enabled && cutScene.state == PlayState.Paused && playedCutscene)
         {
+            uiManager.ToggleHealthOxygenCrosshair();
             cutsceneCam.gameObject.SetActive(false);
             rotateCamera.transform.gameObject.SetActive(true);
             playerMovement.enabled = true;

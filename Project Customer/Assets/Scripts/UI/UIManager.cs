@@ -10,6 +10,9 @@ using static System.TimeZoneInfo;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField]
+    Transform crosshair;
+
     public TextMeshProUGUI ItemName;
     public TextMeshProUGUI ItemDescription;
     public TextMeshProUGUI OxygenLeftText;
@@ -114,7 +117,7 @@ public class UIManager : MonoBehaviour
             objectives[i].text = advancedObjectivesScript.GetCurrentObjective(i + 1);
         }
 
-        ToggleHealthOxygenBar();
+        ToggleHealthOxygenBar(true);
     }
 
     // Update is called once per frame
@@ -156,8 +159,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ToggleHealthOxygenCrosshair()
+    {
+        crosshair.gameObject.SetActive(!crosshair.gameObject.activeSelf);
+        playerLife.damageActivated = !playerLife.damageActivated;
+        bars.gameObject.SetActive(!bars.gameObject.activeSelf);
+    }
+
     public void ToggleHealthOxygenBar()
     {
+        playerLife.damageActivated = !playerLife.damageActivated;
+        bars.gameObject.SetActive(!bars.gameObject.activeSelf);
+    }
+
+    private void ToggleHealthOxygenBar(bool leaveCrosshair)
+    {
+        if(!leaveCrosshair)
+        {
+            crosshair.gameObject.SetActive(!crosshair.gameObject.activeSelf);
+        }
         playerLife.damageActivated = !playerLife.damageActivated;
         bars.gameObject.SetActive(!bars.gameObject.activeSelf);
     }
