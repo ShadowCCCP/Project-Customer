@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 7113010133498204445}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3704147449513764046
 MeshFilter:
@@ -53,6 +53,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FlamesWSmokeV3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437978657622527361, guid: 5f4dec9bb35d5f04382360ce34608858,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4437978657622527361, guid: 5f4dec9bb35d5f04382360ce34608858,
         type: 3}
@@ -182,7 +187,7 @@ MonoBehaviour:
   electricFire: 0
   cookingFire: 0
   hitCooldown: 0.75
-  growthCooldown: 4
+  growthCooldown: 15
   flameMaxHeight: 1.48
   fireSpread: []
   smoke: {fileID: 5379428167519566946}
