@@ -3,7 +3,12 @@ guid: 61d424679853e4966b33911c86cf4722
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pickupitem_material
+    second: {fileID: 2100000, guid: e7fd406fb407eda46b87e76062099477, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
