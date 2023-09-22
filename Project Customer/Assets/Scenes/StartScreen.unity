@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.004683111, g: 0.03670168, b: 0.0897726, a: 1}
+  m_IndirectSpecularColor: {r: 0.00460989, g: 0.036318846, b: 0.089068025, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1630,7 +1630,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1577335558}
         m_TargetAssemblyTypeName: StartScreen, Assembly-CSharp
         m_MethodName: LoadScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
