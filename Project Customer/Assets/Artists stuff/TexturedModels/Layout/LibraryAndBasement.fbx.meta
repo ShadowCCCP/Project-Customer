@@ -3,7 +3,12 @@ guid: 760b633957adc9b4690580c2e5c5bbc6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookshelfMWardrobePlatform
+    second: {fileID: 2100000, guid: 7cc84720190c2ba488377e85797537bc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
