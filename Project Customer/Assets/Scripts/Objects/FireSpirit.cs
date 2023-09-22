@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FireSpirit : MonoBehaviour
 {
-    //[SerializeField]
-    //AudioClip fireSpiritDeath;
+    [SerializeField]
+    AudioClip[] fireSpiritDeath;
     AudioSource audioSource;
 
     [SerializeField]
@@ -22,14 +22,13 @@ public class FireSpirit : MonoBehaviour
 
     void Start()
     {
-        //audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
         fireConnected = connectedFires.Length;
     }
 
     void Update()
     {
-        /*
         int fireCount = fireConnected;
 
         for (int i = 0; i < fireConnected; i++)
@@ -44,7 +43,9 @@ public class FireSpirit : MonoBehaviour
         {
             if(!doOnce)
             {
-                audioSource.clip = fireSpiritDeath;
+                int randomNumber = Random.Range(0, fireSpiritDeath.Length);
+
+                audioSource.clip = fireSpiritDeath[randomNumber];
                 audioSource.loop = false;
                 audioSource.Play();
                 doOnce = false;
@@ -55,7 +56,6 @@ public class FireSpirit : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        */
     }
 
     void FixedUpdate()
