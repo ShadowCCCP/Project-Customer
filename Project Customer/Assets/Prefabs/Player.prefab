@@ -629,13 +629,6 @@ GameObject:
   - component: {fileID: 7585445722787696598}
   - component: {fileID: 1784074159388247133}
   - component: {fileID: 1353915444681764828}
-  - component: {fileID: 3628422168803529937}
-  - component: {fileID: 6220199410629112390}
-  - component: {fileID: 715094299214725833}
-  - component: {fileID: 4015781246859843895}
-  - component: {fileID: 1725731159641886949}
-  - component: {fileID: 5495282571694377724}
-  - component: {fileID: 3889706159030926662}
   - component: {fileID: 2325218847598257448}
   - component: {fileID: 2115279236649753534}
   - component: {fileID: 3114095348411795219}
@@ -666,7 +659,7 @@ Transform:
   - {fileID: 8792806387761632647}
   - {fileID: 4118787682970257077}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1784074159388247133
 MonoBehaviour:
@@ -698,127 +691,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireExtinguisher: {fileID: 7860972090596492025}
   hasFireExtinguisher: 0
---- !u!114 &3628422168803529937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033994363957624608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d2add45f5b10644b319058e3e1345d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Objectives:
-  - {fileID: 6220199410629112390}
-  - {fileID: 715094299214725833}
-  - {fileID: 4015781246859843895}
-  - {fileID: 1725731159641886949}
-  - {fileID: 5495282571694377724}
-  - {fileID: 3889706159030926662}
---- !u!114 &6220199410629112390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033994363957624608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24415c86300b456418fd11aad0aae353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskThePlayerSees: walk
-  TaskUnderstoodByCode: walk
-  ObjectiveNumber: 3
-  GameObject: {fileID: 0}
-  done: 0
---- !u!114 &715094299214725833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033994363957624608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24415c86300b456418fd11aad0aae353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskThePlayerSees: jump
-  TaskUnderstoodByCode: jump
-  ObjectiveNumber: 3
-  GameObject: {fileID: 0}
-  done: 0
---- !u!114 &4015781246859843895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033994363957624608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24415c86300b456418fd11aad0aae353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskThePlayerSees: crouch
-  TaskUnderstoodByCode: crouch
-  ObjectiveNumber: 3
-  GameObject: {fileID: 0}
-  done: 0
---- !u!114 &1725731159641886949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033994363957624608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24415c86300b456418fd11aad0aae353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskThePlayerSees: pick up
-  TaskUnderstoodByCode: pick up
-  ObjectiveNumber: 2
-  GameObject: {fileID: 0}
-  done: 0
---- !u!114 &5495282571694377724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033994363957624608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24415c86300b456418fd11aad0aae353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskThePlayerSees: throw
-  TaskUnderstoodByCode: throw
-  ObjectiveNumber: 2
-  GameObject: {fileID: 0}
-  done: 0
---- !u!114 &3889706159030926662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033994363957624608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24415c86300b456418fd11aad0aae353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskThePlayerSees: rotate
-  TaskUnderstoodByCode: rotate
-  ObjectiveNumber: 1
-  GameObject: {fileID: 0}
-  done: 0
 --- !u!114 &2325218847598257448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,6 +710,7 @@ MonoBehaviour:
   - {fileID: 998944803505998134}
   - {fileID: 1444632161967588188}
   - {fileID: 8583960977276147692}
+  bed: {fileID: 0}
 --- !u!114 &2115279236649753534
 MonoBehaviour:
   m_ObjectHideFlags: 0
