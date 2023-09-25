@@ -139,7 +139,7 @@ Transform:
   m_Children:
   - {fileID: 3793402837972638612}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4046763227108319288
 MeshFilter:
@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b873be4f4ba77bf4896bad5a8f2ad7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateBed: 1
   afterClickObject: {fileID: 1224300723249867620}
   beforeClickObject: {fileID: 0}
-  canbeClickedAgain: 0
+  canBeClickedAgain: 1
