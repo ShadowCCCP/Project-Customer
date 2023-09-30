@@ -62,7 +62,7 @@ public class WaterInteractable : MonoBehaviour
         if(collision.gameObject.tag == "FireRepelantPowder" && wetBool)
         {
             name = "Spirit Repelant";
-            potion.gameObject.SetActive(true);
+            //potion.gameObject.SetActive(true);
             Destroy(collision.gameObject);
         }
     }
@@ -80,7 +80,7 @@ public class WaterInteractable : MonoBehaviour
 
         } else if(other.tag == "Plant" && wetBool == true)
         {
-            Invoke("Dry", .5f);
+            Invoke("Dry", 1f);
         }
     }
     
@@ -98,7 +98,7 @@ public class WaterInteractable : MonoBehaviour
         //Debug.Log("dry");
         wetBool=false;
         wet.gameObject.SetActive(false);
-        potion.gameObject.SetActive(false);
+        //potion.gameObject.SetActive(false);
 
         name = "Bucket";
 
