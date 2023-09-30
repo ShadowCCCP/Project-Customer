@@ -24,6 +24,6 @@ public class DesignerTutorial : MonoBehaviour
             dialogue.dialogueWhenListHere();
         }
 
-        this.enabled = false;
+        gameObject.SetActive(false);
     }
 }
