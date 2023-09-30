@@ -655,77 +655,132 @@ PrefabInstance:
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
       propertyPath: Objects.Array.size
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[11].Name
+      propertyPath: Objects.Array.data[0].Name
+      value: Sink
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[1].Name
       value: Stove
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[12].Name
+      propertyPath: Objects.Array.data[2].Name
       value: Egg
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[13].Name
+      propertyPath: Objects.Array.data[3].Name
       value: Spirit Alarm
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[14].Name
+      propertyPath: Objects.Array.data[4].Name
       value: Toilet Seat
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[15].Name
+      propertyPath: Objects.Array.data[5].Name
       value: Bed
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[16].Name
+      propertyPath: Objects.Array.data[6].Name
       value: Picking up for Dummies
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[17].Name
+      propertyPath: Objects.Array.data[7].Name
       value: Jumping in One Easy Step
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[18].Name
+      propertyPath: Objects.Array.data[8].Name
       value: 'Crouching: How Do You Do That?'
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[19].Name
-      value: Rotating Book
+      propertyPath: Objects.Array.data[9].Name
+      value: Book
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[20].Name
+      propertyPath: Objects.Array.data[10].Name
       value: Chair
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[21].Name
+      propertyPath: Objects.Array.data[11].Name
+      value: Bucket
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[12].Name
+      value: Water Bucket
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[13].Name
+      value: Fire Extinguisher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[14].Name
       value: Candles
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
+      propertyPath: Objects.Array.data[15].Name
+      value: 'Fire Spirit fighting 101: Part 1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[16].Name
+      value: 'Fire Spirit fighting 101: Part 2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[17].Name
+      value: 'Fire Spirit fighting 101: Part 3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[18].Name
+      value: Baking Soda
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[19].Name
+      value: Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[20].Name
+      value: Lock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[21].Name
+      value: Safe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
       propertyPath: Objects.Array.data[22].Name
-      value: Defeating fire
+      value: Plant
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
       propertyPath: Objects.Array.data[23].Name
-      value: Defeating fire
+      value: Ladle
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
       propertyPath: Objects.Array.data[24].Name
-      value: Defeating fire
+      value: Basement teleporter
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
@@ -734,8 +789,238 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
-      propertyPath: Objects.Array.data[11].LookAtDescription
+      propertyPath: Objects.Array.data[0].Description
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[1].Description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[2].Description
+      value: Press L. Mouse button to throw
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[3].Description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[4].Description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[5].Description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[6].Description
+      value: "Press \u201CE\u201D while holding to drop them again"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[7].Description
+      value: 'Step 2: Profit'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[8].Description
+      value: Now time get down on those knees
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[9].Description
+      value: Please put him on a nice and high shelf
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[10].Description
+      value: "Probably shouldn\u2019t be thrown"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[11].Description
+      value: Keeper of things both solid and liquid
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[12].Description
+      value: This better not summon any water spirits
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[13].Description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[14].Description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[15].Description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[16].Description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[17].Description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[18].Description
+      value: Useful for baking and so much more!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[19].Description
+      value: I forgot what this was for again
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[23].Description
+      value: Old but reliable!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[0].LookAtDescription
+      value: '"E" to turn on the water'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[1].LookAtDescription
+      value: Getting me hot and bothered
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[2].LookAtDescription
+      value: Perfectly throwable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[3].LookAtDescription
+      value: Always on the lookout for magical intruders
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[4].LookAtDescription
+      value: It has its ups and downs
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[5].LookAtDescription
+      value: Nice and comfy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[6].LookAtDescription
+      value: "Press \u201CE\u201D to pick up small objects"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[7].LookAtDescription
+      value: "Step 1: Press \u201CSpacebar\u201D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[8].LookAtDescription
+      value: "Press \u201CControl\u201D to crouch, Press \u201CControl\u201D again
+        to uncrouch\u201D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[9].LookAtDescription
+      value: Sad and lonely to be left on the ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[10].LookAtDescription
+      value: Made out of especially light elven wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[11].LookAtDescription
+      value: Almost as empty as my heart
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[12].LookAtDescription
+      value: Nice and filled up!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[13].LookAtDescription
+      value: "As recommended by the Pyroguard Brigade\xAE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[14].LookAtDescription
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[15].LookAtDescription
+      value: "\u201CThe grunt of fire spirits, solid fire spirits can be taken out
+        with a good soaking.\u201D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[16].LookAtDescription
+      value: "\u201CIf a spirit is spawned from an electrical fire, don\u2019t use
+        water! Usually any powder takes care of it. In a home situation, baking soda
+        does the job.\u201D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[17].LookAtDescription
+      value: "\u201CSpirits derived from cooking oil fires require a heavy blast
+        of foam to send them back to their realm.\u201D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[18].LookAtDescription
+      value: How did mom even get so high up in the basement?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[19].LookAtDescription
+      value: "One size doesn\u2019t fit all"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[20].LookAtDescription
+      value: Devourer of keys
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[21].LookAtDescription
+      value: "Wouldn\u2019t want anyone to steal my foam wand"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[22].LookAtDescription
+      value: Makes sure I get enough oxygen! It looks pretty dried out though
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[23].LookAtDescription
+      value: I inherited this from my grandmother
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: Objects.Array.data[24].LookAtDescription
+      value: The design of this teleporter is inspired by a movie I once saw
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
