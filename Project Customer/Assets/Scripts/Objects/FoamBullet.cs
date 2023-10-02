@@ -16,14 +16,23 @@ public class FoamBullet : MonoBehaviour
     bool hitFoam;
     Coroutine myCoroutine;
 
+    bool doOnce;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(DestroyAfterTime());
     }
 
     void Update()
     {
         ReactivatePhysics();
+    }
+
+    private IEnumerator DestroyAfterTime()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)

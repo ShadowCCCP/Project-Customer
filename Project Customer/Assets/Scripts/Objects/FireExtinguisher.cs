@@ -53,7 +53,7 @@ public class FireExtinguisher : MonoBehaviour
 
     void Update()
     {
-        if(inventoryManager.hasFireExtinguisher && Time.time - lastPress > cooldownSpam)
+        if(inventoryManager.hasFireExtinguisher && Time.time - lastPress > cooldownSpam && gameObject.layer != 6)
         {
             PlaySoundEffects();
 

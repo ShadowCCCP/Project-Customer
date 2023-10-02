@@ -22,6 +22,14 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            TriggerCutscene();
+        }
+    }
+
     void OnDestroy()
     {
         CutsceneEvent.onPlayCutscene -= TriggerCutscene;
