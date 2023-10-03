@@ -38,9 +38,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float jumpPowerMultiplier = 100f;
 
-    public PlayableDirector pD;
-
-
     Rigidbody rb;
     MoveCamera moveCamera;
 

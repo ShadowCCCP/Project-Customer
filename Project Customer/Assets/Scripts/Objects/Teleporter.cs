@@ -23,6 +23,9 @@ public class Teleporter : MonoBehaviour
     PhysicsPickup playerModel;
     SoundTransition sTrans;
 
+    float enterTime;
+    float portalCooldown = 1;
+
     void Start()
     {
         sTrans = GetComponent<SoundTransition>();
@@ -58,10 +61,12 @@ public class Teleporter : MonoBehaviour
             if (onPlayTeleportSound != null) onPlayTeleportSound();
             
         }
-        if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("Player") && Time.time - enterTime > portalCooldown)
         {
             playerModel.DropObject();
             playerModel.gameObject.transform.position = placeToTeleport.transform.position;
+
+            enterTime = Time.time;
 
             if (onPlayTeleportSound != null) onPlayTeleportSound();
             if (onPlayerTeleport != null) onPlayerTeleport();
