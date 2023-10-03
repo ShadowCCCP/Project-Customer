@@ -921,7 +921,7 @@ PrefabInstance:
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
       propertyPath: Objects.Array.data[6].Name
-      value: Picking up for Dummies
+      value: Picking Up For Dummies
       objectReference: {fileID: 0}
     - target: {fileID: 4919707323617154903, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
@@ -14237,7 +14237,7 @@ GameObject:
   - component: {fileID: 7541728759881490259}
   - component: {fileID: 7541728759881490258}
   m_Layer: 6
-  m_Name: 'Crouching: How do you do that?'
+  m_Name: 'Crouching: How Do You Do That?'
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18936,7 +18936,7 @@ GameObject:
   - component: {fileID: 8809661283374321618}
   - component: {fileID: 8809661283374321617}
   m_Layer: 6
-  m_Name: Picking up for dummies
+  m_Name: Picking Up For Dummies
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

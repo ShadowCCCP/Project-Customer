@@ -101,7 +101,7 @@ public class WaterInteractable : MonoBehaviour
         //potion.gameObject.SetActive(false);
 
         name = "Bucket";
-
+        Debug.Log(gameObject.name);
     }
 
     public bool GetPotionStatus()
