@@ -53,6 +53,7 @@ public class Fire : MonoBehaviour
     [SerializeField]
     Fire[] fireSpread;
     bool setSpreadFireToMax;
+    bool firstTime;
 
     [SerializeField]
     ParticleSystem smoke;
@@ -245,8 +246,9 @@ public class Fire : MonoBehaviour
     private void SpreadFire()
     {
         KeepTrackOfInstances();
-        if (fireSpread.Length > 0 && Life == maxLife && lastLife < Life && spawnedFiresTracker.Count <= 0 && Time.time - lastSpread > spreadCooldown)
+        if (fireSpread.Length > 0 && Life == maxLife && lastLife < Life && spawnedFiresTracker.Count <= 0 && (Time.time - lastSpread > spreadCooldown || !firstTime))
         {
+            if (!firstTime) firstTime = true;
             for (int i = 0; i < fireSpread.Length; i++)
             {
                 lastSpread = Time.time;

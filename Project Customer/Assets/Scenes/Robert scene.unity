@@ -3514,11 +3514,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1173372213}
     m_Modifications:
-    - target: {fileID: 194078821864654395, guid: bf0496a85d1831a429fa0a763ec95838,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1391120710562222345, guid: bf0496a85d1831a429fa0a763ec95838,
         type: 3}
       propertyPath: m_RootOrder
@@ -3574,55 +3569,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1887232703990088454, guid: bf0496a85d1831a429fa0a763ec95838,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2061645046202703713, guid: bf0496a85d1831a429fa0a763ec95838,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3961236306840608569, guid: bf0496a85d1831a429fa0a763ec95838,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4804442717800173262, guid: bf0496a85d1831a429fa0a763ec95838,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971979335574590013, guid: bf0496a85d1831a429fa0a763ec95838,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185703157889564106, guid: bf0496a85d1831a429fa0a763ec95838,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6612929341169757827, guid: bf0496a85d1831a429fa0a763ec95838,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7712896720550849674, guid: bf0496a85d1831a429fa0a763ec95838,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8970767236506970695, guid: bf0496a85d1831a429fa0a763ec95838,
         type: 3}
       propertyPath: m_Name
       value: FireTypes
-      objectReference: {fileID: 0}
-    - target: {fileID: 8970767236506970695, guid: bf0496a85d1831a429fa0a763ec95838,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

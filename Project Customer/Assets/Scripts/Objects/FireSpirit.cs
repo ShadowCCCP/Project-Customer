@@ -28,12 +28,12 @@ public class FireSpirit : MonoBehaviour
 
         for (int i = 0; i < fireConnected; i++)
         {
-            if (!connectedFires[i].enabled)
+            if (!connectedFires[i].transform.parent.gameObject.activeSelf)
             {
                 fireCount--;
             }
         }
-        
+
         if(fireCount <= 0)
         {
             /*

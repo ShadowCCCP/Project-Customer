@@ -135,7 +135,7 @@ public class PhysicsPickup : MonoBehaviour
 
     private void RotateItem()
     {
-        if (currentObject != null && currentObject.tag != "Bucket" && !rotationOnlyItem)
+        if (currentObject != null && !rotationOnlyItem)
         {
             if (Input.GetMouseButtonDown(1))
             {
