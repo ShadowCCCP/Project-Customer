@@ -47,6 +47,7 @@ public class WaterInteractable : MonoBehaviour
 
     private void FixedUpdate()
     {
+        /*
         Quaternion targetRotation = Quaternion.Euler(targetRotationEulerAngles);
         Quaternion currentRotation = transform.rotation;
 
@@ -55,6 +56,7 @@ public class WaterInteractable : MonoBehaviour
             Quaternion newRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxDegreesPerSecond * Time.deltaTime);
             transform.rotation = newRotation;
         }
+        */
     }
 
     private void OnCollisionEnter(Collision collision)
