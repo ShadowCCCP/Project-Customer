@@ -763,6 +763,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 800056005609741107, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: ableToFinishGame
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2936946254549839577, guid: c062a3115abc4e349bdc119718d4074f,
         type: 3}
       propertyPath: m_Name
@@ -1252,6 +1257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Objects.Array.data[24].LookAtDescription
       value: The design of this teleporter is inspired by a movie I once saw
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107630515573757080, guid: c062a3115abc4e349bdc119718d4074f,
+        type: 3}
+      propertyPath: eventTriggerCooldown
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6425,7 +6435,7 @@ PrefabInstance:
     - target: {fileID: 3579041824818044974, guid: 40e59afb21bae954eb7fbd79ceb480c1,
         type: 3}
       propertyPath: m_Name
-      value: 'Fire (Spirit) fighting 101: Part 3'
+      value: 'Fire Spirit fighting 101: Part 3'
       objectReference: {fileID: 0}
     - target: {fileID: 3579041824818044974, guid: 40e59afb21bae954eb7fbd79ceb480c1,
         type: 3}
@@ -6543,7 +6553,7 @@ PrefabInstance:
     - target: {fileID: 7273221988980178981, guid: eefed00243302f54685b18cc09e66719,
         type: 3}
       propertyPath: m_Name
-      value: Pickup FireExtinguisher
+      value: Pickup Fire Extinguisher
       objectReference: {fileID: 0}
     - target: {fileID: 8161376457374714077, guid: eefed00243302f54685b18cc09e66719,
         type: 3}
@@ -7959,6 +7969,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 67.74179, y: 40.36487, z: 105.97235}
   m_Center: {x: 1.4862891, y: 17.27832, z: 3.8876042}
+--- !u!1 &1428478897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7733792515745663677, guid: 46f6116964532a044913a28ed27ae384,
+    type: 3}
+  m_PrefabInstance: {fileID: 672590138159447060}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1428478901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428478897}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 100, y: 139.01962, z: 103.03638}
+  m_Center: {x: 0, y: 69.50984, z: 1.5180683}
 --- !u!1 &1431850514 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3579041824818044974, guid: 40e59afb21bae954eb7fbd79ceb480c1,
@@ -11108,7 +11145,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0d81269951228734c8f0d3f767f39e4f,
         type: 3}
       propertyPath: m_Name
-      value: Coffeetable
+      value: Coffee table
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0d81269951228734c8f0d3f767f39e4f,
         type: 3}
@@ -11338,13 +11375,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2824852582912303379, guid: f9d9106d8f2201d40961159c61d55a95,
         type: 3}
+      propertyPath: m_Name
+      value: Pillow
+      objectReference: {fileID: 0}
+    - target: {fileID: -2824852582912303379, guid: f9d9106d8f2201d40961159c61d55a95,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f9d9106d8f2201d40961159c61d55a95,
         type: 3}
       propertyPath: m_Name
-      value: pillow
+      value: Pillow
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f9d9106d8f2201d40961159c61d55a95,
         type: 3}
@@ -12258,12 +12300,16 @@ PrefabInstance:
     - target: {fileID: 7733792515745663677, guid: 46f6116964532a044913a28ed27ae384,
         type: 3}
       propertyPath: m_Name
-      value: 'Fire (Spirit) Fighting 101: Part 1'
+      value: 'Fire Spirit fighting 101: Part 1'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7733792515745663677, guid: 46f6116964532a044913a28ed27ae384,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1428478901}
   m_SourcePrefab: {fileID: 100100000, guid: 46f6116964532a044913a28ed27ae384, type: 3}
 --- !u!4 &682594390525048796
 Transform:
@@ -13984,7 +14030,7 @@ GameObject:
   - component: {fileID: 2558808463960974808}
   - component: {fileID: 8362406791487997260}
   m_Layer: 9
-  m_Name: Platform (2)
+  m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14231,7 +14277,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f9d9106d8f2201d40961159c61d55a95,
         type: 3}
       propertyPath: m_Name
-      value: bed_blanket_prototype
+      value: Bed
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f9d9106d8f2201d40961159c61d55a95,
         type: 3}
@@ -14247,6 +14293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652608071124009013, guid: f9d9106d8f2201d40961159c61d55a95,
+        type: 3}
+      propertyPath: m_Name
+      value: Matress
       objectReference: {fileID: 0}
     - target: {fileID: 6652608071124009013, guid: f9d9106d8f2201d40961159c61d55a95,
         type: 3}
@@ -15215,7 +15266,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f1d9341aa086c39439466a9381d5f1bd,
         type: 3}
       propertyPath: m_Name
-      value: DoorsBedroomBathroom (1)
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1d9341aa086c39439466a9381d5f1bd,
         type: 3}
@@ -16100,7 +16151,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 884010ebe7e171f47a65cccfacf5662b,
         type: 3}
       propertyPath: m_Name
-      value: BedsideTable_prototype
+      value: Bedside Table
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 884010ebe7e171f47a65cccfacf5662b,
         type: 3}
@@ -16304,7 +16355,7 @@ GameObject:
   - component: {fileID: 5884950451483886357}
   - component: {fileID: 5884950451483886358}
   m_Layer: 8
-  m_Name: 'Spirit (fighting) 101: Part 2'
+  m_Name: 'Fire Spirit fighting 101: Part 2'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16524,7 +16575,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c4fb73ac6cd74214ca9bc24473c1212a,
         type: 3}
       propertyPath: m_Name
-      value: CabinetWand
+      value: Cabinet Wand
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c4fb73ac6cd74214ca9bc24473c1212a,
         type: 3}
@@ -18267,7 +18318,7 @@ GameObject:
   - component: {fileID: 6036550792619697174}
   - component: {fileID: 4383676183217677637}
   m_Layer: 9
-  m_Name: Platform (1)
+  m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19999,7 +20050,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c3e53e537435f4846914ae2591c548ce,
         type: 3}
       propertyPath: m_Name
-      value: TrashBin_prototype
+      value: Trash Bin
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c3e53e537435f4846914ae2591c548ce,
         type: 3}
@@ -22307,6 +22358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5796375730013925066, guid: 3d931119021c162499aec260edb5fa4b,
         type: 3}
+      propertyPath: m_Name
+      value: Toilet
+      objectReference: {fileID: 0}
+    - target: {fileID: -5796375730013925066, guid: 3d931119021c162499aec260edb5fa4b,
+        type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
@@ -22333,7 +22389,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3d931119021c162499aec260edb5fa4b,
         type: 3}
       propertyPath: m_Name
-      value: toilet4_prototype
+      value: Toilet
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3d931119021c162499aec260edb5fa4b,
         type: 3}
