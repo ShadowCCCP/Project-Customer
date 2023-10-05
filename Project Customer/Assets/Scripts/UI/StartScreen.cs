@@ -19,16 +19,22 @@ public class StartScreen : MonoBehaviour
 
     public void FiresOn()
     {
-        foreach (GameObject fires in fires) 
+        if (fires != null)
         {
-            fires.SetActive(true);
+            foreach (GameObject fires in fires)
+            {
+                fires.SetActive(true);
+            }
         }
     }
     public void FiresOff()
     {
-        foreach (GameObject fires in fires)
+        if(fires != null)
         {
-            fires.SetActive(false);
+            foreach (GameObject fires in fires)
+            {
+                fires.SetActive(false);
+            }
         }
     }
 }

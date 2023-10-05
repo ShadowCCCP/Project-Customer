@@ -9,11 +9,17 @@ public class HealthAndOxygenBar : MonoBehaviour
     Image HealthBarFill;
     [SerializeField]
     Image OxygenBarFill;
-    private Life player;
+    Life player;
+
+    float maxLife;
+    float maxOxygen;
+
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Life>();
+        maxLife = player.GetLife();
+        maxOxygen = player.GetOxygen();
     }
 
     // Update is called once per frame
@@ -23,7 +29,7 @@ public class HealthAndOxygenBar : MonoBehaviour
     }
     private void SetSliderValues()
     {
-        OxygenBarFill.fillAmount = (float)player.GetOxygen() /100;
-        HealthBarFill.fillAmount = (float)player.GetLife() / 100;
+        OxygenBarFill.fillAmount = (float)player.GetOxygen() / maxOxygen;
+        HealthBarFill.fillAmount = (float)player.GetLife() / maxLife;
     }
 }

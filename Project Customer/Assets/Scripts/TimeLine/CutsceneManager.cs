@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -5,12 +6,15 @@ using UnityEngine;
 
 public class CutsceneManager : MonoBehaviour
 {
+    public static event Action allCutscenesPlayed;
+
     [SerializeField]
     Transform[] cutscenes;
 
     CutscenePlayer[] cutscenePlayers = new CutscenePlayer[3];
 
     int cutsceneCount = 0;
+    bool doOnce;
 
     void Start()
     {
@@ -24,9 +28,10 @@ public class CutsceneManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.V))
+        if(cutsceneCount >= 3 && !doOnce && allCutscenesPlayed != null)
         {
-            TriggerCutscene();
+            allCutscenesPlayed();
+            doOnce = true;
         }
     }
 

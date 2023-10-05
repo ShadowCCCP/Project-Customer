@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class CheckFinishConditions : MonoBehaviour
@@ -18,27 +19,36 @@ public class CheckFinishConditions : MonoBehaviour
     [SerializeField]
     bool ableToFinishGame = false;
 
-    // Start is called before the first frame update
+    float finishTimer = 10;
+    float finishTimeSet;
+
     void Start()
     {
         rotateCameraScript = FindObjectOfType<RotateCamera>(); 
         physicsPickupScript = FindObjectOfType<PhysicsPickup>();
         playerMovementScript =FindObjectOfType<PlayerMovement>();
         pauseMenuScript = FindObjectOfType<PauseMenuScript>();
+
+        CutsceneManager.allCutscenesPlayed += SetAbilityToFinishGameTrue;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Fire.flameCount <= 0 && ableToFinishGame)
+        if (Fire.flameCount <= 0 && ableToFinishGame && Time.time - finishTimeSet >= finishTimer)
         {
             OnGameFinished();
         }
     }
 
+    void OnDestroy()
+    {
+        CutsceneManager.allCutscenesPlayed -= SetAbilityToFinishGameTrue;
+    }
+
     public void SetAbilityToFinishGameTrue()
     {
         ableToFinishGame = true;
+        finishTimeSet = Time.time;
     }
     void OnGameFinished()
     {

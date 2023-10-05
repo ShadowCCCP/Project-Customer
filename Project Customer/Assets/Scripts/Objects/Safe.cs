@@ -23,7 +23,6 @@ public class Safe : MonoBehaviour
     public void lockUnlocked()
     {
         locksUnlocked++;
-        Debug.Log(locksUnlocked);
         if(locksUnlocked == lockNumber)
         {
             Unlocked();

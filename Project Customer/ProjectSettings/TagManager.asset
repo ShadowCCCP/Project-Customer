@@ -18,6 +18,7 @@ TagManager:
   - Bed
   - BathDoor
   - BedDoor
+  - Plant
   layers:
   - Default
   - TransparentFX

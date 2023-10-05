@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7586886032300985034}
   - component: {fileID: 2641502129392909424}
   - component: {fileID: 854004765107274360}
-  - component: {fileID: 3420101914664961863}
   - component: {fileID: 3250784687546781326}
+  - component: {fileID: 6700611904484788588}
   m_Layer: 6
   m_Name: Baking Soda
   m_TagString: ElectricFireStop
@@ -29,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 4168884757126454886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.13, y: 2.6723406, z: 4.37}
-  m_LocalScale: {x: 0.29025242, y: 0.5, z: 0.273835}
+  m_LocalScale: {x: 0.00056287204, y: 0.00020635853, z: 0.0007348401}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2641502129392909424
 MeshFilter:
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4168884757126454886}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4780262981623566364, guid: d9b94c3cc826f20428b7b4e8dc0b35db, type: 3}
 --- !u!23 &854004765107274360
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -86,27 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3420101914664961863
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4168884757126454886}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3250784687546781326
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,3 +113,24 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6700611904484788588
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4168884757126454886}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 289.25854, y: 2215.3108, z: 289.25876}
+  m_Center: {x: 0.0025634766, y: 1107.6539, z: 0.0014648436}

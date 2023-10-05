@@ -178,7 +178,6 @@ public class Fire : MonoBehaviour
         {
             if (other.gameObject.tag == "FoamBullet")
             {
-                Debug.Log("gawk");
                 Life--;
             }
             if (other.GetComponent<WaterInteractable>())
