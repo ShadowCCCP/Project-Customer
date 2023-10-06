@@ -15654,7 +15654,7 @@ GameObject:
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!33 &2454890304769049441
 MeshFilter:
@@ -18948,7 +18948,7 @@ GameObject:
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!33 &4885012434418021206
 MeshFilter:
@@ -20414,7 +20414,7 @@ GameObject:
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &6416880764850028239
 GameObject:
